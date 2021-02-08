@@ -1,6 +1,6 @@
 ## Spectrogram
 
-[Image](Image)
+<img src="resources\spectrogram.PNG" title="Spectrogram" />
 
 This plugin can draw fancy spectrograms (don't confuse them with spectrum meters).
 Spectrogram is an image of how spectrum of the sound has changes over a period of time.
