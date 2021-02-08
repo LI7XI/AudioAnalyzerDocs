@@ -12,13 +12,13 @@ Feature suggestions are also welcomed.
   - [Introduction](/docs/introduction.md)
   - [Why using AudioAnalyzer?](/docs/why.md)
 - [Getting Started](/docs/getting-started.md)
-  - [Curve Tester](/docs/curve-tester.md)
-  - [Spectrum](/docs/spectrum.md)
-  - [Waveform](/docs/waveform.md)
-  - [Spectrogram](/docs/spectrogram.md)
-  - [Spectrogram with Waveform](/docs/spectrogram-with-waveform.md)
-  - [Peak](/docs/peak.md)
-  - [Loudness meter](/docs/loudness.md)
+  - [Curve Tester](/docs/examples/curve-tester.md)
+  - [Spectrum](/docs/examples/spectrum.md)
+  - [Waveform](/docs/examples/waveform.md)
+  - [Spectrogram](/docs/examples/spectrogram.md)
+  - [Spectrogram with Waveform](/docs/examples/spectrogram-with-waveform.md)
+  - [Peak](/docs/examples/peak.md)
+  - [Loudness meter](/docs/examples/loudness.md)
 
 ---
 
