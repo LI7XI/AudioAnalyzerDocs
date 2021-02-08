@@ -12,13 +12,13 @@ Feature suggestions are also welcomed.
   - [Introduction](/docs/introduction.md)
   - [Why using AudioAnalyzer?](/docs/why.md)
 - [Getting Started](/docs/getting-started.md)
-  - [.rmskin Examples](/docs/getting-started.md)
-  - [Spectrogram](/docs/Spectrogram.md)
+  - [Curve Tester](/docs/curve-tester.md)
+  - [Spectrum](/docs/spectrum.md)
+  - [Waveform](/docs/waveform.md)
+  - [Spectrogram](/docs/spectrogram.md)
   - [Spectrogram with Waveform](/docs/spectrogram-with-waveform.md)
-  - [Spectrum](##Spectrum)
-  - [Waveform](##Waveform)
-  - [Loudness meter](##Loudness%20meter)
-  - [Curve Tester](##Curve%20Tester)
+  - [Peak](/docs/peak.md)
+  - [Loudness meter](/docs/loudness.md)
 
 ---
 
