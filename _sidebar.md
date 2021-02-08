@@ -1,7 +1,7 @@
 - [**Home**](home.md)
   - [Introduction](/docs/introduction.md)
   - [Why using AudioAnalyzer?](/docs/why.md)
-- [Getting Started](/docs/getting-started.md)
+- [**Getting Started**](/docs/getting-started.md)
   - [Curve Tester](/docs/curve-tester.md)
   - [Spectrum](/docs/spectrum.md)
   - [Waveform](/docs/waveform.md)
