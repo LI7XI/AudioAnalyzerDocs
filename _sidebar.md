@@ -1,6 +1,7 @@
 - [**Home**](home.md)
   - [Introduction](/docs/introduction.md)
   - [Why using AudioAnalyzer?](/docs/why.md)
+- [**Showcase**](/docs/showcase.md)
 - [**Getting Started**](/docs/getting-started.md)
   - [Examples](/docs/examples/examples.md)
     - [Curve Tester](/docs/examples/curve-tester.md)
@@ -11,5 +12,4 @@
     - [Peak](/docs/examples/peak.md)
     - [Loudness meter](/docs/examples/loudness.md)
   - [How to setup a skin](/docs/skin-setup.md)
-- [**Showcase**]()
-<!-- - [**Types**]() -->
+  <!-- - [**Types**]() -->
