@@ -16,7 +16,7 @@ Simple skin with low update rate (`Update=32` = 30Fps). Low update rate is neede
 
 This is how you setup the plugin:
 
-!> Note: all option names and properties here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG` . <br/> We will keep using Upper Case letter of each word just for convention.
+!> Note: all option names and properties here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using Upper Case letter of each word just for convention.
 
 We create a measure, and specify it as a [Parent]().
 
@@ -115,7 +115,7 @@ _Todo: Does the handlers arrangement matter? (in performance and output quality)
 Now the Parent measure is ready.:tada:
 
 Lets create the Child measures.<br/>
-Child measures grab processed data from Parent measures.
+Child measure grab processed data from Parent measure.
 
 We make a Child measure, and specify its Parent.
 
