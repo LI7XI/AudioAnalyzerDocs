@@ -12,7 +12,7 @@ To do this, it converts decibels in some range (particularly, in range from -50 
 
 However, numeric values are not converted and not clamped, so they can show that there is some sound that is too quiet to be displayed on Mar meter.
 
-**Note** that for loudness calculations there is a `filter like-a` property specified. Without this property the values it displays would be very-very different from perceived loudness.
+?> Note that for loudness calculations there is a `filter like-a` property specified. Without this property the values it displays would be very-very different from perceived loudness.
 
 There is also a peak meter in the [.rmskin file](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/raw/master/AudioAnalyzer/documentation/user-documentation/example%20skins/AudioAnalyzer%20Example%20Skins_1.1.5.1.rmskin). It acts similar to loudness meter, except what it shows doesn't correlate with perceived loudness. In sound industry peak meters are usually used to detect possible clipping. It just a showcase that you can detect sound peaks, don't use it when you need loudness.
 

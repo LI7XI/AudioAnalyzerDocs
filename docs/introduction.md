@@ -1,6 +1,4 @@
-## **Introduction:**
-
-<!-- <p align="right">Introduction:</p> -->
+## Introduction
 
 Rainmeter has AudioLevel plugin, which provides you a basic functionality on extracting useful data from audio stream. However, the "basic" is the very fitting term here.
 

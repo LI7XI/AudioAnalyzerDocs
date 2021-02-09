@@ -2,4 +2,4 @@
 
 A collection of skins created using this plugin.
 
-_WIP_
+_WIP_.

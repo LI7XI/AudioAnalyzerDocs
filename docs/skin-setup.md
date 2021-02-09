@@ -1,8 +1,17 @@
 ## How to setup a skin
 
-!> Note: all option names and properties here are case-insensitive. Which means Option=Something is equal to oPTioN=soMThInG . <br/> We will keep using Upper Case letter of each word just for convention.
+First of all, lets create a skin:
+
+```ini
+[Rainmeter]
+Update=32
+```
+
+Simple skin with low update rate (`Update=32` = 30Fps). Low update rate is needed to make values update faster.
 
 This is how you setup the plugin:
+
+!> Note: all option names and properties here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG` . <br/> We will keep using Upper Case letter of each word just for convention.
 
 We create a measure, and specify it as a parent.
 
@@ -35,7 +44,7 @@ First, to speceify a process description we write processing, followed by a hyph
 Processing-Main=
 ```
 
-Here we speceify the [process properties](), Like [Channels](), [Handlers]() and other properties seperated by '|' (a pipe symbol).
+Here we speceify the [process properties](), Like [Channels](), [Handlers]() and other properties seperated by a '|' (pipe symbol).
 
 ```ini
 Processing-Main=Channels auto | Handlers HandlerName | Filter like-a
