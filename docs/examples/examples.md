@@ -1,6 +1,6 @@
 ## Examples
 
-Here are simple [examples](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/raw/master/AudioAnalyzer/documentation/user-documentation/example%20skins/AudioAnalyzer%20Example%20Skins_1.1.5.1.rmskin) of what this plugin can do:
+Here are simple examples and [.rmskin file](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/raw/master/AudioAnalyzer/documentation/user-documentation/example%20skins/AudioAnalyzer%20Example%20Skins_1.1.5.1.rmskin) of what this plugin can do:
 
 ### [Curve Tester](/docs/examples/curve-tester.md)
 
@@ -29,4 +29,3 @@ Here are simple [examples](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/
 ### [Loudness](/docs/examples/loudness.md)
 
 <a href="#/docs/examples/loudness.md"><img src="resources\loudness.PNG" title="Loudness" /></a>
-
