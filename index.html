@@ -31,17 +31,43 @@
       text-decoration: none !important;
       color: #3eceff !important;
     }
+
+    b {
+      font-size: 1.25em;
+      color: white;
+    }
+
+    b:not(:first-child) {
+      background-color: rgb(35 40 77);
+      border-radius: 5px;
+      padding: 0 0.4em;
+    }
+
+    span.d {
+      color: white;
+      background-color: rgb(35 40 77);
+      padding: 0 0.4em;
+      border-radius: 5px;
+      display: inline-block;
+      position: absolute;
+      right: 3em;
+    }
+
+    pre,
+    pre code {
+      max-height: 300px !important;
+    }
   </style>
   <body>
     <div id="app"></div>
     <script>
       window.$docsify = {
         name: "AudioAnalyzer",
+        nameLink: "/",
         repo: "https://github.com/LI7XI/AudioAnalyzerDocs",
-        loadSidebar: "_sidebar.md",
         homepage: "home.md",
+        loadSidebar: "_sidebar.md",
         themeColor: "#3ECEFF",
-        // subMaxLevel: 2,
       };
     </script>
     <!-- Docsify v4 -->
