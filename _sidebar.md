@@ -1,4 +1,4 @@
-- [**Home**](home.md)
+- [**Home**](/home.md)
   - [Introduction](/docs/introduction.md)
   - [Why using AudioAnalyzer?](/docs/why.md)
 - [**Showcase**](/docs/showcase.md)
@@ -12,4 +12,9 @@
     - [Peak](/docs/examples/peak.md)
     - [Loudness meter](/docs/examples/loudness.md)
   - [How to setup a skin](/docs/skin-setup.md)
-  <!-- - [**Types**]() -->
+- [**Plugin structure**](/docs/plugin-structure/plugin-structure.md)
+  - [Parent](/docs/plugin-structure/parent.md)
+  - [Child](/docs/plugin-structure/child.md)
+- [**Handler Types**](/docs/handler-types/handler-types.md)
+- [**Section Variables**]()
+- [**Tips and Code snippets**]()
