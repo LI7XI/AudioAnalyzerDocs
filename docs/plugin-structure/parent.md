@@ -23,7 +23,7 @@ MagicNumber=104
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Source</b><b>Default: DefaultInput</b></p>
+<p style="display: flex; justify-content: space-between;"><b>Source</b><b>Default: DefaultOutput</b></p>
 
 Specifies device from which to capture audio.
 
@@ -42,7 +42,7 @@ If you are distributing you skin, don't just set Source to some exact device id,
 _Examples:_
 
 ```ini
-Source=DefaultOutput
+Source=DefaultInput
 ```
 
 Or
