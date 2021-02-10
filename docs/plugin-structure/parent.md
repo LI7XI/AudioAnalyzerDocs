@@ -13,7 +13,7 @@ This plugin has an old version which is partially compatible with the new one. T
 Always set MagicNumber to value 104, or else plugin will run in legacy mode which have many default values different from what is described in this documentation.
 
 - `0`: Legacy Mode.
-- `104`: Makes the plugin use the new features.
+- `104`: Makes the plugin use the newest features.
 
 _Examples:_
 
