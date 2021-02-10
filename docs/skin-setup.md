@@ -70,7 +70,7 @@ Handler-MainHandler1=
 
 Then we speceify its [Type]().
 
-There are many types avalible, in this example we will choose [fft]() type, since we are going to create a [Specturm]().
+There are many types available, in this example we will choose [fft]() type, since we are going to create a [Specturm]().
 
 ```ini
 Handler-MainHandler1=Type fft
@@ -101,7 +101,7 @@ If you forgot to add them, The plugin will simply output a warning in Rainmeter 
 Also Lets rename them to keep things more descriptive.
 
 ```ini
-Processing-Main=Channels Auto | Handlers Mainfft, MainResampler, MainTransform, MainFilter, MainMapper | filter like-a
+Processing-Main=Channels Auto | Handlers Mainfft, MainResampler, MainTransform, MainFilter, MainMapper | Filter like-a
 
 Handler-Mainfft=Type fft | BinWidth 5 | OverlapBoost 10 | CascadesCount 3
 Handler-MainResampler=Type BandResampler | Source Mainfft | Bands log 5 20 4000

@@ -4,10 +4,12 @@
 
 You can get latest version at [Github](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/releases/tag/AudioAnalyzer-v1.1.5).<br/>
 If you found any bug you can report it [here](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/issues).
-Feature suggestions are also welcomed.
+Feedback and feature suggestions are also welcomed.
 
 ## Table of Content
+
 _Work in progress._
+
 <!-- - [Home](home.md)
   - [Introduction](/docs/introduction.md)
   - [Why using AudioAnalyzer?](/docs/why.md)
