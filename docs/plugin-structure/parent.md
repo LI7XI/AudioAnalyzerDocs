@@ -292,7 +292,8 @@ There are several ways this can happen:
 
 - You are capturing data from default device, then onDeviceDisconnected is called when all devices has been disconnected, so there is no default device anymore.
 - You were capturing data from some specific device, but this device is no longer available.
-- Device that was being captured is not in [exclusive mode]()(?).
+- Device that was being captured is not in [exclusive mode]().<br/></br>
+  Exclusive mode is when some application gets an exclusive ownership of the audio device. When device is in exclusive mode, no other application can connect to this device.
 - Attempt to connect to this device ended with some unknown error.
 
 _Examples:_
@@ -311,8 +312,12 @@ Events that cause `OnDeviceListChange` include, but are not limited to:
 
 - New device was added.
 - Device settings changed.
-- Device was disabled or disconnected.(?)<br/>
-  _Or disconnected? what's the diffrence between this and OnDeviceDisconnected event?_
+- Device was disabled or disconnected.<br/>
+
+?>Differences between `OnDeviceListChange` and `OnDeviceDisconnected`: <br/><br/>
+OnDeviceDisconnected is called when the device you are using was disconnected from the plugin. Nothing to do with the device physical disconnection, it's just that plugin can no longer connect to it. In fact, if i remember correctly, OnDeviceDisconnected is only called when the plugin become disconnected from the device. When one device is disconnected but another is available, then plugin seamlessly switches to that second device and only onDeviceChange is called.<br/><br/>
+OnDeviceListChange is called when any device changed. Changes include, for example, when user pulled the headphone jack from the PC.<br/><br/>
+When OnDeviceDisconnected is called, then OnDeviceListChange is also likely to be called, but it's not guaranteed, and it doesn't work the other way around.
 
 _Examples:_
 
