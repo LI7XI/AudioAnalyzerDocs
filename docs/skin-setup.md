@@ -85,7 +85,7 @@ Handler-MainHandler1=Type fft | binWidth 10 | overlapBoost 10 | cascadesCount 3
 Handler of type fft is not very useful on its own.<br/>
 So handlers can be chained to modify how the signal is outputted.
 
-We do that by speceifing a second handler, and set the first handler as its source. <br/>
+We do that by specifying a second handler, and set the first handler as its source. <br/>
 Then we speceify its properties like any other type.
 
 ```ini
@@ -110,8 +110,6 @@ Handler-MainFilter=Type TimeResampler | Source MainTransform | Attack 100
 Handler-MainMapper=Type ValueTransformer | Source MainFilter | Transform db map[from -50 : -0] clamp
 ```
 
-_Todo: Does the handlers arrangement matter? (in performance and output quality)._
-
 Now the Parent measure is ready.:tada:
 
 Lets create the Child measures.<br/>
@@ -135,7 +133,7 @@ Channel=Auto
 
 Then we specify the Index.
 
-Since we used fft Type then a BandResampler, it provides an Index range starting from 0 to Bands-1. (Bands here means the bands we specified in [`Mainftt` handler properties]()).
+Since we used fft Type then a BandResampler, it provides an Index range starting from 0 to Bands-1. (Bands here means the bands we specified in [`Mainfft` handler properties]()).
 
 ```ini
 Index=0
@@ -149,7 +147,8 @@ That's because a Parent measure may have more than one process or multible handl
 So to tell the Child measure which value to read data from, we use an option called `ValueID`.
 
 In this option specify which handler to read data from.<br/>
-It can be any handler, But you should always use the last handler specified in the [process description](). In our case it would be `MainMapper`.
+It can be any handler, in our case we will use the last handler (`MainMapper`).
+Because it has the values we want to visualize.
 
 ```ini
 ValueID=MainMapper
