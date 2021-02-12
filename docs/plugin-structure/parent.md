@@ -212,7 +212,7 @@ Parameters:
 
   - `UiThread`: Means only using main rainmeter thread
 
-  !>When `UiThread` is used, other parameter won't have any effect.
+  !>When `UiThread` is used, `UpdateRate` won't have any effect.
 
   - `SeparateThread`(Default): Means that each process(?) will create its own working thread.
   - `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
