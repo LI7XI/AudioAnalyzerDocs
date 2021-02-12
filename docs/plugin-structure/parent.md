@@ -6,7 +6,7 @@ Now after we know the difference between [Parent and Child](/docs/plugin-structu
 
 ## Available Options
 
-<div style="display: flex; justify-content: space-between;"><b>MagicNumber</b><b>Default: 0</b></div>
+<p style="display: flex; justify-content: space-between;"><b>MagicNumber</b><b>Default: 0</b></p>
 
 This plugin has an old version which is partially compatible with the new one. To avoid breaking changes while still delivering improved experiance to old skin users, option MagicNumber was introduced. It is used to determine whether plugin should run in the new or in the legacy mode.
 

@@ -3,7 +3,7 @@
 Child measures grab there data from Parent measure.
 
 Usually child measures are used to retrieve numerical values from parent measure, with an optional string value.<br/>
-We will show you how to retrieve both numerical and string values as we go on.
+We will show you how to retrieve both [numerical and string](#stringvalue) values as we go on.
 
 ## Use cases for Child measures
 
@@ -14,7 +14,7 @@ You can use Child measure for:
 
 ## Available Options
 
-<div style="display: flex; justify-content: space-between;"><b>Parent</b><b>Required</b></div>
+<p style="display: flex; justify-content: space-between;"><b>Parent</b><b>Required</b></p>
 
 Name of parent measure to retrieve data from.
 
@@ -26,7 +26,7 @@ Parent=MeasureAudio
 
 ---
 
-<div style="display: flex; justify-content: space-between;"><b>Processing</b><b>Default: None</b></div>
+<p style="display: flex; justify-content: space-between;"><b>Processing</b><b>Default: None</b></p>
 
 Name of the process to get data from.
 
@@ -51,7 +51,7 @@ This will make sense when we explain [ValueID]() option.
 
 ---
 
-<div style="display: flex; justify-content: space-between;"><b>Index</b><b>Default: 0</b></div>
+<p style="display: flex; justify-content: space-between;"><b>Index</b><b>Default: 0</b></p>
 
 Index of value in handler.
 
@@ -68,7 +68,56 @@ _What if ValueID was set to Loudness handler type, and this option was set to ot
 
 ---
 
-<div style="display: flex; justify-content: space-between;"><b></b><b>Default: </b></div>
+<p style="display: flex; justify-content: space-between;"><b>Transform</b><b>Default: </b></p>
+
+Specify a transformation to be applied to numerical values of this Child measure.<br/>
+See [Transformations]() discussion for full list of possible values.
+
+_Examples:_
+
+```ini
+; Lets say you are getting a value in range [0 to 1] from a handler
+Transform=map[0, 100] clamp
+; Will convert it to range from 0 to 100
+```
+
+_Does this option follows the same syntax as the one in ValueTransformer handler type?_
+_Is the syntax correct? or we should discuss that after writing transformation docs?_
+
+---
+
+<p id="stringvalue" style="display: flex; justify-content: space-between;"><b>StringValue</b><b>Default: Number</b></p>
+
+Determines what kind of value this child measure will return.
+
+- `Number`: String values of measure match number value.(?)
+- `Info`: [InfoRequest](#inforequest) option will determine what string value this measure will return
+
+_Examples:_
+
+```ini
+StringValue=Number
+; makes this child measure return a numerical value based on what it receives from the handler: 0.3, 40, etc..
+; (?, is explanation correct?)
+```
+
+Or
+
+```ini
+StringValue=Info
+; examples of this are WIP
+```
+
+_What if both of `StringValue=String` and `ValueID=HandlerName` was specified?_<br/>
+_This option lacks some documentations._
+
+---
+
+<p id="inforequest" style="display: flex; justify-content: space-between;"><b>InfoRequest</b><b>Parameters: (See Below)</b></p>
+
+When [StringValue](#stringvalue) is set to `Info`, this option will determine what infos this measure will provide.
+
+?>This is similar to SectionVariables in Parent measure, but without a function call.
 
 - ``:
 - ``:
@@ -76,12 +125,13 @@ _What if ValueID was set to Loudness handler type, and this option was set to ot
 _Examples:_
 
 ```ini
-
+InfoRequest=current device, description
+; Will output...(?)
 ```
 
 ---
 
-<div style="display: flex; justify-content: space-between;"><b></b><b>Default: </b></div>
+<p style="display: flex; justify-content: space-between;"><b></b><b>Default: </b></p>
 
 - ``:
 - ``:

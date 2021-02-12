@@ -15,6 +15,7 @@
 - [**Plugin structure**](/docs/plugin-structure/plugin-structure.md)
   - [Parent](/docs/plugin-structure/parent.md)
   - [Child](/docs/plugin-structure/child.md)
+  - [Examples]()
 - [**Section Variables**]()
 - [**Handler Types**](/docs/handler-types/handler-types.md)
   - [Signal processing]()
