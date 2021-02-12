@@ -73,21 +73,35 @@ Or
 Processing=Main | AnotherProcess
 ```
 
-_Todo: What is a Process?_
-
 ---
 
 <p style="display: flex; justify-content: space-between;"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
 
-Specify process description, what this process is going to do.
+Specify the process description, what this process is going to do.
 
 Parameters:
 
 - `Channels`**(Required)**: Specify one or a list of comma-separated channel names to tell this process which channel to get audio data from.
-  Channels are present in the audio device(?).
-- `Handlers`**(Required)**: A list of handlers that this process must call in the specified order. See [Handlers]() discussion.
-- `TargetRate`(Optional): Specify the sample rate of the processed audio stream.(?)
+
+  ?>If you specified a [Channel]() that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time then stop updating.<br/>
+  Also No error log messages will be generated for this.<br/><br/>
+  But if you specified channels that aren't present in [Processing channel list]() (e.g. `Channel SomeUnavaliableChannel`), then there will be a log message.
+
+  _Todo:_
+
+  - _Is this explanation correct?_
+  - _Add possible channels list._
+
+- `Handlers`**(Required)**: A list of handlers that this process must call in the specified order.<br/>
+  See [Handlers]() discussion.
+- `TargetRate`(Optional): Specify the sample rate of the processed audio stream.
   <span class="d">Default: 44100</span>
+
+  !>**Avoid** changing this value **Unless** you need to.<br/>
+  Increasing TargetRate above 44100 could in some cases significantly increase CPU load without any difference in the result.<br/>
+  Even a small increase, like from 0.5% to 3%, I don't think it's good.<br/><br/>
+  Decreasing TargetRate below 44100 will affect results, and it's probably not the result you want. <br/>
+  Because if target rate is 8000, then any sounds above 4000 Hz won't be detected.
 
   Very high sample rates aren't very helpful, because humans only hear sounds below 22 KHz, and 44.1 KHz sample rate is enough to describe any wave with frequencies below 22.05 KHz.
 
@@ -95,9 +109,10 @@ Parameters:
   Final rate is always >= than TargetRate.
 
   So if you rate is 48000 and TargetRate is 44100, then nothing will happen. If you sampling rate is less than TargetRate then nothing will happen.
-  Setting this to 0 disables downsampling completely.
+  Setting this to 0 disables downsampling completely.<br/>
+  See [Performance]() discussion.
 
-- `Filter`(Optional): Performs signal filtering on the audio using the specified Filter.(?) <span class="d">Default: None</span><br/>
+- `Filter`(Optional): Performs signal filtering on the audio using the specified Filter. <span class="d">Default: None</span><br/>
   See [Filters]() discussion.
 
 _Examples:_
@@ -110,16 +125,14 @@ Or
 
 ```ini
 Processing-Main=channels Left, Right | Handlers PeakRaw, PeakFiltered, Peak, peakPercent
-Processing-AnotherProcess=channels Auto | Handlers Loudness, LoudnessPercent | TargeRate 48000 | filter like-a
+Processing-AnotherProcess=channels Auto | Handlers Loudness, LoudnessPercent | TargeRate 44100 | filter like-a
 ```
-
-_Todo: "process description" term still not clear._
 
 ---
 
 <p style="display: flex; justify-content: space-between;"><b>Handler-<u>HandlerName</u></b><b>Required</b></p>
 
-Specify description of a sound handler.(?)<br/>
+Specify description of a sound [handler](#what-is-a-handler).<br/>
 Contains handler types, each type has specific parameters.
 
 See [Handler Types](/docs/handler-types/handler-types.md) discussion.
@@ -147,8 +160,6 @@ Handler-loudness=Type Loudness | Transform db
 Handler-lodnessPercent=Type ValueTransformer | Source Loudness | Transform map[from -50 : 0] clamp
 ```
 
-_Todo: What is a Handler?_
-
 ---
 
 <p style="display: flex; justify-content: space-between;"><b>UnusedOptionsWarning</b><b>Default: true</b></p>
@@ -160,6 +171,8 @@ A boolean value, specify whether the plugin should log error messages in Rainmet
   ?> If you see such messages in your log, then maybe you have made a mistake in option name, or tried to use option that doesn't exist.
 
 - `false`: Disables error logs.
+
+  See [Tips]() discussion.
 
 _Examples:_
 
@@ -173,7 +186,19 @@ Or
 UnusedOptionsWarning=false
 ```
 
-_Todo: Can it be renamed to `LogErrors`? also is the syntax correct?_
+?>`UnusedOptionsWarning` only affects options that the plugin didn't read.<br/>
+Other log messages are not suppressed with `UnusedOptionsWarning`.(?)
+
+_Examples:_
+
+Which means if you wrote the following:
+
+```ini
+Processing-ProcessName=channels auto | handlers wave | speed fast
+```
+
+Then there will be a log message that says `Processing proc2: unused options: [speed]`.<br/>
+And `UnusedOptionsWarning=false` will make such log messages to disappear.
 
 ---
 
@@ -183,23 +208,23 @@ Configuration of a computing thread.
 
 Parameters:
 
-**Policy:** Specify the way the plugin will work.
+- Policy: Specify the way the plugin will work.
 
-- `UiThread`: Means only using main rainmeter thread
+  - `UiThread`: Means only using main rainmeter thread
 
-!>When `UiThread` is used, other parameter won't have any effect.
+  !>When `UiThread` is used, other parameter won't have any effect.
 
-- `SeparateThread`(Default): Means that each process(?) will create its own working thread.
-- `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
+  - `SeparateThread`(Default): Means that each process(?) will create its own working thread.
+  - `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
 
-  Specify how many times per second plugin will update its values when running separate thread.
+    Specify how many times per second plugin will update its values when running separate thread.
 
-- `WarnTime`: Time specified in milliseconds. <span class="d">Default: -1</span>
+  - `WarnTime`: Time specified in milliseconds. <span class="d">Default: -1</span>
 
-  When processing time exceeds WarnTime, a warning message in the log will be generated. You can use it to check how much of a CPU time the plugin consumes with your settings.
-  Negative values disables logging.
+    When processing time exceeds WarnTime, a warning message in the log will be generated. You can use it to check how much of a CPU time the plugin consumes with your settings.
+    Negative values disables logging.
 
-?>`UpdateRate` and `WarnTime` parameters are available only when `SeparateThread` is used.
+  ?>`UpdateRate` parameter is available only when `SeparateThread` is used.
 
 See [Performance]() discussion.
 
@@ -207,6 +232,12 @@ _Examples:_
 
 ```ini
 Threading=Policy UiThread
+```
+
+Or
+
+```ini
+Threading=Policy UiThread | WarnTime -1
 ```
 
 Or

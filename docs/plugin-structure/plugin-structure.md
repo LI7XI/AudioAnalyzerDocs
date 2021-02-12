@@ -4,7 +4,7 @@ First of all, I spent a lot of time writing meaningful log error and warning mes
 
 Plugin doesn't have a fixed set of possible ways to calculate some values. Instead, it acts somewhat like a DSP-utility and provides you a set of building blocks called '[sound handlers]()' as we saw [earlier](/docs/skin-setup.md) that may be combined in any amount into any tree-like graph.
 
-This plugin follows Parent Child paradigm.
+?> This plugin follows Parent Child paradigm.
 
 ### First, the Parent
 

@@ -17,4 +17,5 @@
   - [Child](/docs/plugin-structure/child.md)
 - [**Handler Types**](/docs/handler-types/handler-types.md)
 - [**Section Variables**]()
+- [**Performance**]()
 - [**Tips and Code snippets**]()
