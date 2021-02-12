@@ -214,14 +214,14 @@ Parameters:
 
   !>When `UiThread` is used, `UpdateRate` won't have any effect.
 
-  - `SeparateThread`(Default): Means that each process(?) will create its own working thread.
+  - `SeparateThread`(Default): Means that the audio will be processed in background thread.
   - `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
 
     Specify how many times per second plugin will update its values when running separate thread.
 
   - `WarnTime`: Time specified in milliseconds. <span class="d">Default: -1</span>
 
-    When processing time exceeds WarnTime, a warning message in the log will be generated. You can use it to check how much of a CPU time the plugin consumes with your settings.
+    When processing time exceeds WarnTime, a warning message in the log will be generated. You can use it to check how much of a CPU time the plugin consumes with your settings.<br/>
     Negative values disables logging.
 
   ?>`UpdateRate` parameter is available only when `SeparateThread` is used.
