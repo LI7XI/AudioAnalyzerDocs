@@ -237,16 +237,15 @@ Parameters:
   !>When `UiThread` is used, `UpdateRate` won't have any effect.
 
   - `SeparateThread`(Default and Recommended): Means that the audio will be processed in background thread.
-  - `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
 
-    Specify how many times per second plugin will update its values when running separate thread.
+    - `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
 
-  - `WarnTime`: Time specified in milliseconds. <span class="d">Default: -1</span>
+      Specify how many times per second plugin will update its values when running separate thread.
 
-    When processing time exceeds WarnTime, a warning message in the log will be generated. You can use it to check how much of a CPU time the plugin consumes with your settings.<br/>
-    Negative values disables logging.
+- `WarnTime`: Time specified in milliseconds. <span class="d">Default: -1</span>
 
-  ?>`UpdateRate` parameter is available only when `SeparateThread` is used.
+  When processing time exceeds WarnTime, a warning message in the log will be generated. You can use it to check how much of a CPU time the plugin consumes with your settings.<br/>
+  Negative values disables logging.
 
 See [Performance]() discussion.
 
@@ -265,13 +264,13 @@ Threading=Policy UiThread | WarnTime -1
 Or
 
 ```ini
-Threading=Policy SeparateThread | UpdateTime 90
+Threading=Policy SeparateThread | UpdateRate 90
 ```
 
 Or
 
 ```ini
-Threading=Policy SeparateThread | UpdateTime 90 | WarnTime -1
+Threading=Policy SeparateThread | UpdateRate 90 | WarnTime -1
 ```
 
 ---
@@ -339,7 +338,8 @@ Events that cause `OnDeviceListChange` include, but are not limited to:
 - Device was disabled or disconnected.<br/>
 
 ?>Differences between `OnDeviceListChange` and `OnDeviceDisconnected`: <br/><br/>
-OnDeviceDisconnected is called when the device you are using was disconnected from the plugin. Nothing to do with the device physical disconnection, it's just that plugin can no longer connect to it. In fact, if i remember correctly, OnDeviceDisconnected is only called when the plugin become disconnected from the device. When one device is disconnected but another is available, then plugin seamlessly switches to that second device and only onDeviceChange is called.<br/><br/>
+OnDeviceDisconnected is called when the device you are using was disconnected from the plugin. Nothing to do with the device physical disconnection, it's just that plugin can no longer connect to it.<br/><br/>
+OnDeviceDisconnected is only called when the plugin become disconnected from the device. When one device is disconnected but another is available, then plugin seamlessly switches to that second device and only onDeviceChange is called.<br/><br/>
 OnDeviceListChange is called when any device changed. Changes include, for example, when user pulled the headphone jack from the PC.<br/><br/>
 When OnDeviceDisconnected is called, then OnDeviceListChange is also likely to be called, but it's not guaranteed, and it doesn't work the other way around.
 
