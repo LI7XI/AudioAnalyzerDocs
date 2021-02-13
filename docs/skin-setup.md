@@ -144,14 +144,14 @@ Index=0
 Even though we specified the Parent Meausre, Child measures still need to know which value to retrieve.<br/>
 That's because a Parent measure may have more than one process or multible handlers.
 
-So to tell the Child measure which value to read data from, we use an option called `ValueID`.
+So to tell the Child measure which data handler to read values from, we use an option called `HandlerName`.
 
-In this option specify which handler to read data from.<br/>
+In this option we specify which handler to read data from.<br/>
 It can be any handler, in our case we will use the last handler (`MainMapper`).
 Because it has the values we want to visualize.
 
 ```ini
-ValueID=MainMapper
+HandlerName=MainMapper
 ```
 
 Now we are ready to make the spectrum.:tada:
@@ -188,7 +188,7 @@ Type=Child
 Parent=MeasureAudio
 Channel=Auto
 Index=0
-ValueID=MainMapper
+HandlerName=MainMapper
 
 [MeasureBand1]
 Measure=Plugin
@@ -197,7 +197,7 @@ Type=Child
 Parent=MeasureAudio
 Channel=Auto
 Index=1
-ValueID=MainMapper
+HandlerName=MainMapper
 
 [MeasureBand2]
 Measure=Plugin
@@ -206,7 +206,7 @@ Type=Child
 Parent=MeasureAudio
 Channel=Auto
 Index=2
-ValueID=MainMapper
+HandlerName=MainMapper
 
 [MeasureBand3]
 Measure=Plugin
@@ -215,7 +215,7 @@ Type=Child
 Parent=MeasureAudio
 Channel=Auto
 Index=3
-ValueID=MainMapper
+HandlerName=MainMapper
 
 [MeasureBand4]
 Measure=Plugin
@@ -224,7 +224,7 @@ Type=Child
 Parent=MeasureAudio
 Channel=Auto
 Index=4
-ValueID=MainMapper
+HandlerName=MainMapper
 
 [MeterStyles]
 X=15r
