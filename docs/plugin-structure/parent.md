@@ -234,7 +234,7 @@ Parameters:
 
   - `UiThread`: Means only using main rainmeter thread
 
-  - `SeparateThread`(Default and Recommended): Means that the audio will be processed in background thread.
+  - `SeparateThread`**(Default and Recommended)**: Means that the audio will be processed in background thread.
 
 - `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
 
