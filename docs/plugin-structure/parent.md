@@ -2,13 +2,13 @@
 
 Now after we know the difference between [Parent and Child](/docs/plugin-structure/plugin-structure.md) measures, it's time to know what options are available for each type.
 
-?> Note that all options specfied here are present only in Parent measure, Child measure options are specfied [here](/docs/plugin-structure/child.md).
+?> Note that all options specified here are present only in Parent measure, Child measure options are specified [here](/docs/plugin-structure/child.md).
 
 ## Available Options
 
 <p style="display: flex; justify-content: space-between;"><b>MagicNumber</b><b>Default: 0</b></p>
 
-This plugin has an old version which is partially compatible with the new one. To avoid breaking changes while still delivering improved experiance to old skin users, option MagicNumber was introduced. It is used to determine whether plugin should run in the new or in the legacy mode.
+This plugin has an old version which is partially compatible with the new one. To avoid breaking changes while still delivering improved experience to old skin users, option MagicNumber was introduced. It is used to determine whether plugin should run in the new or in the legacy mode.
 
 Always set MagicNumber to value 104, or else plugin will run in legacy mode which have many default values different from what is described in this documentation.
 
@@ -39,7 +39,7 @@ First we write the option name, followed by the parameter name:
 Source=ID
 ```
 
-Then we write the optained ID from the [Section Variables]():
+Then we write the obtained ID from the [Section Variables]():
 
 ```ini
 Source=ID {0.0.0.00000000}.{134d7830-179e-4748-9861-37967e8bda9e}
@@ -93,7 +93,7 @@ Parameters:
 
 - `Channels`**(Required)**:<i id="parent-channel-para"></i> Specify one or a list of comma-separated channel names to tell this process which channel to get audio data from.
 
-  ?>If you specified a [Channel](#channel-list) that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time, then stop updating until this channel is available (if the channel became avaliable again then the plugin will connect to it automatically. No skin refresh required).<br/>
+  ?>If you specified a [Channel](#channel-list) that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time, then stop updating until this channel is available (if the channel became available again then the plugin will connect to it automatically. No skin refresh required).<br/>
   Also No error log messages will be generated for this.<br/><br/>
   But if you specified channels that aren't present in [Processing channel list](#channel-list) (e.g. `Channel SomeUnsupportedChannel`), then there will be a log message.
 
@@ -106,7 +106,7 @@ Parameters:
 
   This plugin supports the following channels (with optional name aliases):<i id="channel-list"></i>
 
-  - `Auto` &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; (No alias avaliable)
+  - `Auto` &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; (No alias available)
   - `FrontLeft` &emsp; &nbsp; &nbsp; &nbsp; (`Left` or `FL`)
   - `FrontRight` &emsp; &nbsp; &nbsp; (`Right` or `FR`)
   - `Center` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (`C`)
@@ -191,7 +191,7 @@ Handler-lodnessPercent=Type ValueTransformer | Source Loudness | Transform map[f
 
 A boolean value, specify whether the plugin should log error messages in Rainmeter log window.
 
-- `true`(Recommended): The plugin will log a warning message if some of the Parameters in processings or handlers aren't actually used by handlers.
+- `true`(Recommended): The plugin will log a warning message if some of the Parameters in `Processing` option or handlers aren't recognized.
 
   ?> If you see such messages in your log, then maybe you have made a mistake in option name, or tried to use option that doesn't exist.
 
@@ -212,9 +212,9 @@ UnusedOptionsWarning=false
 ```
 
 ?>`UnusedOptionsWarning` only affects options that the plugin didn't read.<br/>
-Other log messages are not suppressed with `UnusedOptionsWarning`.(?)
+Other log messages are not suppressed with `UnusedOptionsWarning`.
 
-Which means if you wrote the following:
+Which means only if you did the following:
 
 ```ini
 Processing-ProcessName=channels auto | handlers wave | speed fast
