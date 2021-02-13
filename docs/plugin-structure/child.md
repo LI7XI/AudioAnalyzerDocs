@@ -82,11 +82,10 @@ Channel=FR
 
 !>Note that Child measure can only listen to one Channel at a time.
 
-_Not documented, is it correct?_
-
 ```ini
+; Something like this:
 Channel=FL, Right
-; (?)
+; Is not allowed
 ```
 
 ---
@@ -127,21 +126,15 @@ HandlerName=Handler1
 
 ```
 
-?>`HandlerName` option used to be called `ValueID`. It's preferred to use `HandlerName` Since `ValueID` is kept just for compatibility with old skins.
-
 ---
 
 <p style="display: flex; justify-content: space-between;"><b>Index</b><b>Default: 0</b></p>
 
 Index of value in handler.
 
-An example of a value index would be:
-
-- A bin from `Handler-HandlerName=Type fft`.
-- A Band from:
-
-  - `Handler-HandlerName=Type BandResampler`.
-  - `Handler-HandlerName=Type BandCascadeTransformer`.
+Many handlers produce arrays of data, and the `Index` option specifies the index of value in that array.
+For example:
+Generally, only handlers that transform data from FFT produce arrays of data (Like, if you have handler chain FFT → BandResampler → ValueTransformer → TimeResampler, then all four of these will make data arrays). Independent handlers (like Loudness) usually produce only one value, so any index except for 0 will be invalid.
 
 _Examples:_
 
