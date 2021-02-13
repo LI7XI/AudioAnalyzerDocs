@@ -202,7 +202,9 @@ Or
 
 ```ini
 StringValue=Info
-; examples of this are WIP
+; And
+InfoRequest=Current Device, Name
+; Will make this Child measure provide the following: Realtek High Definition Audio
 ```
 
 ---
@@ -211,11 +213,24 @@ StringValue=Info
 
 When [StringValue](#stringvalue) is set to `Info`, this option will determine what infos this measure will provide.
 
-?>This is similar to SectionVariables in Parent measure, but without a function call.
+?>This is similar to [Section Variables]() in Parent measure, but without a function call.
 
-_Examples: WIP_
+_Examples:_
+
+Section Variables are used like this: `[&ParentMeasure:Resolve(Current Device, Name)]`
+
+Instead of that, we will specify the arguments here:
 
 ```ini
-InfoRequest=current device, description
-; Will output...(?)
+InfoRequest=Current Device, Name
 ```
+
+That will make This Child measure provide the infos we requested.
+
+```ini
+Variable=[InfosMeasure]
+; Makes the value of that variable the name of the current Audio Device.
+; As example: Realtek High Definition Audio
+```
+
+?> A complete list of possible arguments can be found [here](/docs/section-vars.md)
