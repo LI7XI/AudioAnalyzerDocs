@@ -59,7 +59,7 @@ Channel to get data from.
 
 Possible Channels (with optional name aliases):
 
-- `Auto` &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; (No alias avaliable)
+- `Auto` &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; (No alias available)
 - `FrontLeft` &emsp; &nbsp; &nbsp; &nbsp; (`Left` or `FL`)
 - `FrontRight` &emsp; &nbsp; &nbsp; (`Right` or `FR`)
 - `Center` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (`C`)

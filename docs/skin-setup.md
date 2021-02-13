@@ -43,32 +43,32 @@ Then we specify its Description.
 
 Unlike other plugins, this plugin follows a syntax similar to [Shape meter]().
 
-First, to speceify a process description we write processing, followed by a hyphen, then the process name.
+First, to specify a process description we write processing, followed by a hyphen, then the process name.
 
 ```ini
 Processing-Main=
 ```
 
-Here we speceify the [process properties](), Like [Channels](), [Handlers]() and other properties seperated by a '|' (pipe symbol).
+Here we specify the [process properties](), Like [Channels](), [Handlers]() and other properties separated by a '|' (pipe symbol).
 
 ```ini
 Processing-Main=Channels Auto | Handlers MainHandler | Filter Like-a
 ```
 
-a property may have more than one option, we can write multible comma-separated options. Like so:
+a property may have more than one option, we can write multiple comma-separated options. Like so:
 
 ```ini
 Processing-Main=Channels Left, Right | Handlers MainHandler1, MainHandler2 | Filter Like-a
 ```
 
-Now lets speceify what handlers do. <br/>
+Now lets specify what handlers do. <br/>
 We write Handler, followed by a hyphen, then the handler name.
 
 ```ini
 Handler-MainHandler1=
 ```
 
-Then we speceify its [Type]().
+Then we specify its [Type]().
 
 There are many types available, in this example we will choose [fft]() type, since we are going to create a [Specturm]().
 
@@ -76,7 +76,7 @@ There are many types available, in this example we will choose [fft]() type, sin
 Handler-MainHandler1=Type fft
 ```
 
-After we set the type, we need to speceify its properties.
+After we set the type, we need to specify its properties.
 
 ```ini
 Handler-MainHandler1=Type fft | binWidth 10 | overlapBoost 10 | cascadesCount 3
@@ -86,7 +86,7 @@ Handler of type fft is not very useful on its own.<br/>
 So handlers can be chained to modify how the signal is outputted.
 
 We do that by specifying a second handler, and set the first handler as its source. <br/>
-Then we speceify its properties like any other type.
+Then we specify its properties like any other type.
 
 ```ini
 Handler-MainHandler1=Type fft | BinWidth 5 | OverlapBoost 10 | CascadesCount 3
@@ -141,8 +141,8 @@ Index=0
 
 ?> Now notice the following.
 
-Even though we specified the Parent Meausre, Child measures still need to know which value to retrieve.<br/>
-That's because a Parent measure may have more than one process or multible handlers.
+Even though we specified the Parent Measure, Child measures still need to know which value to retrieve.<br/>
+That's because a Parent measure may have more than one process or multiple handlers.
 
 So to tell the Child measure which data handler to read values from, we use an option called `HandlerName`.
 
