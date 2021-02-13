@@ -91,7 +91,7 @@ Specify the process description, what this process is going to do.
 
 Parameters:
 
-- `Channels`**(Required)**: Specify one or a list of comma-separated channel names to tell this process which channel to get audio data from.
+- `Channels`**(Required)**:<i id="parent-channel-para"></i> Specify one or a list of comma-separated channel names to tell this process which channel to get audio data from.
 
   ?>If you specified a [Channel](#channel-list) that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time, then stop updating until this channel is available (if the channel became avaliable again then the plugin will connect to it automatically. No skin refresh required).<br/>
   Also No error log messages will be generated for this.<br/><br/>
@@ -104,8 +104,9 @@ Parameters:
   Different Audio devices have different Audio Channels.
   Most common are just stereo devices that have `Left` and `Right` channels, but there are also audio systems with more channels.
 
-  This plugin supports the following channels (with optional name aliases):<i id="channel-list"></i><i id="channel-list"></i>
+  This plugin supports the following channels (with optional name aliases):<i id="channel-list"></i>
 
+  - `Auto` &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; (No alias avaliable)
   - `FrontLeft` &emsp; &nbsp; &nbsp; &nbsp; (`Left` or `FL`)
   - `FrontRight` &emsp; &nbsp; &nbsp; (`Right` or `FR`)
   - `Center` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (`C`)
