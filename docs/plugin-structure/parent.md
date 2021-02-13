@@ -312,7 +312,7 @@ Specify a bang to be called every time device has been disconnected.
 
 There are several ways this can happen:
 
-- You are capturing data from default device, then onDeviceDisconnected is called when all devices has been disconnected, so there is no default device anymore.
+- Plugin was capturing a default device, and all devices of that type became unavailable.
 - You were capturing data from some specific device, but this device is no longer available.
 - Device that was being captured is not in [exclusive mode](https://answers.microsoft.com/en-us/windows/forum/windows_7-pictures/what-is-exclusive-mode-and-what-does-it-do/26922597-f6c8-4080-a675-199e37f37a0b).<br/>
 
