@@ -26,28 +26,59 @@ Parent=MeasureAudio
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Processing</b><b>Default: None</b></p>
+<p style="display: flex; justify-content: space-between;"><b>HandlerName</b><b>Default: None</b></p>
 
-Name of the process to get data from.
+Name of the Handler in Parent measure that will provide values.
 
-?>This option is optional. If you don't specify it, the plugin will try to find the process with the specified HandlerName.
+_Example:_
 
-!>But you have to specify this option only if parent measure has several processes with same handler.
+```ini
+; Lets say you have this in parent measure
+Processing-Main=Channels Auto | Handlers Handler1, handler2
 
-_Examples:_
+; Then HandlerName would be
+HandlerName=Handler1
+; Or
+HandlerName=Handler2
+```
+
+But if there is a HandlerName that is present in 2 processes Like this:
+
+```ini
+Processing-ProcessA=Channels Auto | Handlers SameHandlerName
+Processing-ProcessB=Channels Auto | Handlers SameHandlerName
+```
+
+Then you have to specify [Processing](#processing) option.
+
+---
+
+<p id="processing" style="display: flex; justify-content: space-between;"><b>Processing</b><b>Default: None</b></p>
+
+Name of the process that have the handler specified in `HandlerName` option.
+
+?>This option is optional. If you don't specify it, the plugin will automatically try to find the process with the specified `HandlerName`.
+
+Child measure retrieve data from a specific handler. Usually it's enough to specify `HandlerHame` option to find that handler. However, it's possible to have same handler name in several processes. Like this:
+
+```ini
+Processing-ProcessA=Channels Auto | Handlers SameHandlerName
+Processing-ProcessB=Channels Auto | Handlers SameHandlerName
+```
+
+In such case, it's not clear which handler this Child measure should use.
+Here is where `Processing` option comes in, it allows you to specify exactly from which Process you want this handler. Like so:
 
 ```ini
 ; If you have this in parent measure, 2 proesses has same hander name
-Processing-Process1=Channels Auto | Handlers SameHandlerName
-Processing-Process2=Channels Auto | Handlers SameHandlerName
+Processing-ProcessA=Channels Auto | Handlers SameHandlerName
+Processing-ProcessB=Channels Auto | Handlers SameHandlerName
 
-; Then you have to Specify which process handler you want this child measure to read values from
-Processing=Process1
+; Then you can specify which process handler you want this child measure to read values from
+Processing=ProcessA
 ; Or
-Processing=Process2
+Processing=ProcessB
 ```
-
-This will make sense when we explain [HandlerName]() option.
 
 ---
 
@@ -55,7 +86,7 @@ This will make sense when we explain [HandlerName]() option.
 
 Channel to get data from.
 
-?>This option accepts same Channels specified in [Channels](/docs/plugin-structure/parent?id=parent-channel-para) parameter in Processing option of the Parent. (Correct? or simply i should say, this is same as that parameter?)
+?>This option accepts same Channels specified in [Channels](/docs/plugin-structure/parent?id=parent-channel-para) parameter in Processing option of the Parent.
 
 Possible Channels (with optional name aliases):
 
@@ -86,44 +117,6 @@ Channel=FR
 ; Something like this:
 Channel=FL, Right
 ; Is not allowed
-```
-
----
-
-<p style="display: flex; justify-content: space-between;"><b>HandlerName</b><b>Default: None</b></p>
-
-Name of the Handler in Parent measure that will provide values.
-
-_Examples:_
-
-```ini
-; Lets say you have this in parent measure
-Processing-Main=Channels Auto | Handlers Handler1, handler2
-
-; Then HandlerName would be
-HandlerName=Handler1
-; Or
-HandlerName=Handler2
-```
-
-But if there is a HandlerName that is present in 2 processes, then you have to specify [Processing]() option.
-
-_Examples:_
-
-```ini
-; Lets say you have this in parent measure
-Processing-ProcessA=Channels Auto | Handlers Handler1, handler2
-Processing-ProcessB=Channels Auto | Handlers Handler1, handler2
-
-; The plugin won't know which process handler you want this child measure to read values from
-; So you have to specify the Processing option in Child measure
-
-Processing=ProcessA
-HandlerName=Handler1
-; Or
-Processing=ProcessB
-HandlerName=Handler1
-
 ```
 
 ---
