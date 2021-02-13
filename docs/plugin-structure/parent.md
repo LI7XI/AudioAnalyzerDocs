@@ -93,9 +93,9 @@ Parameters:
 
 - `Channels`**(Required)**: Specify one or a list of comma-separated channel names to tell this process which channel to get audio data from.
 
-  ?>If you specified a [Channel](#channel-list) that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time, then stop updating until this channel is available again.<br/>
+  ?>If you specified a [Channel](#channel-list) that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time, then stop updating until this channel is available (if the channel became avaliable again then the plugin will connect to it automatically. No skin refresh required).<br/>
   Also No error log messages will be generated for this.<br/><br/>
-  But if you specified channels that aren't present in [Processing channel list](#channel-list) (e.g. `Channel SomeUnavaliableChannel`), then there will be a log message.
+  But if you specified channels that aren't present in [Processing channel list](#channel-list) (e.g. `Channel SomeUnsupportedChannel`), then there will be a log message.
 
   _Todo:_
 
@@ -234,13 +234,11 @@ Parameters:
 
   - `UiThread`: Means only using main rainmeter thread
 
-  !>When `UiThread` is used, `UpdateRate` won't have any effect.
-
   - `SeparateThread`(Default and Recommended): Means that the audio will be processed in background thread.
 
-    - `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
+- `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
 
-      Specify how many times per second plugin will update its values when running separate thread.
+  Specify how many times per second plugin will update its values when running separate thread.
 
 - `WarnTime`: Time specified in milliseconds. <span class="d">Default: -1</span>
 
@@ -271,6 +269,13 @@ Or
 
 ```ini
 Threading=Policy SeparateThread | UpdateRate 90 | WarnTime -1
+```
+
+!>When `UiThread` is used, `UpdateRate` won't have any effect.
+
+```ini
+Threading=Policy UiThread | UpdateRate 90
+; UpdateRate here will have no effect. UpdateRate will be controlled internally by rainmeter.
 ```
 
 ---
@@ -312,6 +317,10 @@ Specify a bang to be called every time device has been disconnected.
 There are several ways this can happen:
 
 - Plugin was capturing a default device, and all devices of that type became unavailable.
+
+  For example, lets say you have speakers and headphones, and you have set `Source=defaultoutput`, then if you pull the headphone jack from the PC, the plugin will automatically connect to speakers.<br/>
+  But then, if you also pull speakers jack, there will be no audio devices available, and onDeviceDisconnected will be called.
+
 - You were capturing data from some specific device, but this device is no longer available.
 - Device that was being captured is not in [exclusive mode](https://answers.microsoft.com/en-us/windows/forum/windows_7-pictures/what-is-exclusive-mode-and-what-does-it-do/26922597-f6c8-4080-a675-199e37f37a0b).<br/>
 
