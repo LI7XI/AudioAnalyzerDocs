@@ -29,15 +29,25 @@ Specifies device from which to capture audio.
 
 - `DefaultInput`: Plugin will grab audio from default input device (such as microphone).
 - `DefaultOutput`: Plugin will grab audio from default output device, such as speakers.
-- _`device description`_: You can specify an exact device to capture data from it instead of default devices.
+- _`Device description`_: You can specify an exact device to capture data from it instead of default devices.
 
 Device description Syntax is the following:
 
-ID: id_string
+First we write the option name, followed by the parameter name:
 
-Possible id_string values may be obtained from plugin section variables "device list input" and "device list output" (see section variables discussion for exact syntax).
+```ini
+Source=ID
+```
 
-If you are distributing you skin, don't just set Source to some exact device id, because other computers will have different devices with different ids. If you want to provide user with a way to capture one exact device, create a Lua script that will read ids from section variable and give user some way to select one of them.
+Then we write the optained ID from the [Section Variables]():
+
+```ini
+Source=ID {0.0.0.00000000}.{134d7830-179e-4748-9861-37967e8bda9e}
+```
+
+!> If you are distributing your skin, don't just set Source to some exact device ID, because other computers will have different devices with different IDs. If you want to provide user with a way to capture one exact device, create a Lua script that will read IDs from Section Variable and give user some way to select one of them.
+
+See [Tips and Code Snippets]() discussion for how to achieve this using Lua and Rainmeter `[#Variables]`.
 
 _Examples:_
 
@@ -48,7 +58,7 @@ Source=DefaultInput
 Or
 
 ```ini
-Source=ID id_string
+Source=ID: {0.0.0.00000000}.{134d7830-179e-4748-9861-37967e8bda9e}
 ```
 
 _Todo: Check examples validity._
