@@ -93,14 +93,28 @@ Parameters:
 
 - `Channels`**(Required)**: Specify one or a list of comma-separated channel names to tell this process which channel to get audio data from.
 
-  ?>If you specified a [Channel]() that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time then stop updating.<br/>
+  ?>If you specified a [Channel](#channel-list) that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time, then stop updating until this channel is available again.<br/>
   Also No error log messages will be generated for this.<br/><br/>
-  But if you specified channels that aren't present in [Processing channel list]() (e.g. `Channel SomeUnavaliableChannel`), then there will be a log message.
+  But if you specified channels that aren't present in [Processing channel list](#channel-list) (e.g. `Channel SomeUnavaliableChannel`), then there will be a log message.
 
   _Todo:_
 
   - _Is this explanation correct?_
-  - _Add possible channels list._
+
+  Different Audio devices have different Audio Channels.
+  Most common are just stereo devices that have `Left` and `Right` channels, but there are also audio systems with more channels.
+
+  This plugin supports the following channels (with optional name aliases):<i id="channel-list"></i><i id="channel-list"></i>
+
+  - `FrontLeft` &emsp; &nbsp; &nbsp; &nbsp; (`Left` or `FL`)
+  - `FrontRight` &emsp; &nbsp; &nbsp; (`Right` or `FR`)
+  - `Center` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (`C`)
+  - `CenterBack` &emsp; &nbsp; &nbsp; (`CB`)
+  - `LowFrequency` &emsp; (`LFE`)
+  - `BackLeft` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; (`BL`)
+  - `BackRight` &emsp; &nbsp; &nbsp; &nbsp; (`BR`)
+  - `SideLeft` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; (`SL`)
+  - `SideRight` &emsp; &nbsp; &nbsp; &nbsp; (`SR`)
 
 - `Handlers`**(Required)**: A list of handlers that this process must call in the specified order.<br/>
   See [Handlers]() discussion.
@@ -134,7 +148,7 @@ Processing-Main=Channels Auto | Handlers Mainfft, MainResampler | Filter like-a
 Or
 
 ```ini
-Processing-Main=channels Left, Right | Handlers PeakRaw, PeakFiltered, Peak, peakPercent
+Processing-Main=channels FL, Right | Handlers PeakRaw, PeakFiltered, Peak, peakPercent
 Processing-AnotherProcess=channels Auto | Handlers Loudness, LoudnessPercent | TargeRate 44100 | filter like-a
 ```
 
@@ -199,8 +213,6 @@ UnusedOptionsWarning=false
 ?>`UnusedOptionsWarning` only affects options that the plugin didn't read.<br/>
 Other log messages are not suppressed with `UnusedOptionsWarning`.(?)
 
-_Examples:_
-
 Which means if you wrote the following:
 
 ```ini
@@ -208,7 +220,7 @@ Processing-ProcessName=channels auto | handlers wave | speed fast
 ```
 
 Then there will be a log message that says `Processing proc2: unused options: [speed]`.<br/>
-And `UnusedOptionsWarning=false` will make such log messages to disappear.
+And `UnusedOptionsWarning=false` will make such log messages not appear.
 
 ---
 
@@ -224,7 +236,7 @@ Parameters:
 
   !>When `UiThread` is used, `UpdateRate` won't have any effect.
 
-  - `SeparateThread`(Default): Means that the audio will be processed in background thread.
+  - `SeparateThread`(Default and Recommended): Means that the audio will be processed in background thread.
   - `UpdateRate`: A number in range from 1 to 200. <span class="d">Default: 60</span>
 
     Specify how many times per second plugin will update its values when running separate thread.
