@@ -3,7 +3,7 @@
 Child measures grab there data from Parent measure.
 
 Usually child measures are used to retrieve numerical values from parent measure, with an optional string value.<br/>
-We will show you how to retrieve both [numerical and string](#stringvalue) values as we go on.
+We will show you how to retrieve both [numerical and string](#string-value) values as we go on.
 
 ## Use cases for Child measures
 
@@ -12,9 +12,20 @@ Child measure can be used for:
 - Getting [audio device infos]().
 - Providing access to values of handlers in Parent measure.
 
+## Jump list
+
+- [Parent](#parent).
+- [HandlerName](#handler-name).
+- [Processing](#processing).
+- [Channel](#channel).
+- [Index](#index).
+- [Transform](#transfrom).
+- [StringValue](#string-value).
+- [InfoRequest](#info-request).
+
 ## Available Options
 
-<p style="display: flex; justify-content: space-between;"><b>Parent</b><b>Required</b></p>
+<p id="parent" style="display: flex; justify-content: space-between;"><b>Parent</b><b>Required</b></p>
 
 Name of parent measure to retrieve data from.
 
@@ -26,7 +37,7 @@ Parent=MeasureAudio
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>HandlerName</b><b>Default: None</b></p>
+<p id="handler-name" style="display: flex; justify-content: space-between;"><b>HandlerName</b><b>Default: None</b></p>
 
 Name of the Handler in Parent measure that will provide values.
 
@@ -82,7 +93,7 @@ Processing=ProcessB
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Channel</b><b>Default: Auto</b></p>
+<p id="channel" style="display: flex; justify-content: space-between;"><b>Channel</b><b>Default: Auto</b></p>
 
 Channel to get data from.
 
@@ -121,7 +132,7 @@ Channel=FL, Right
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Index</b><b>Default: 0</b></p>
+<p id="index" style="display: flex; justify-content: space-between;"><b>Index</b><b>Default: 0</b></p>
 
 Index of value in handler.
 
@@ -158,7 +169,7 @@ Index=7
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Transform</b><b>Default: </b></p>
+<p id="transform" style="display: flex; justify-content: space-between;"><b>Transform</b><b>Default: </b></p>
 
 > Specify a transformation to be applied to numerical values of this Child measure.<br/>
 > See [Transformations]() discussion for full list of possible values.
@@ -177,12 +188,12 @@ _WIP._
 
 ---
 
-<p id="stringvalue" style="display: flex; justify-content: space-between;"><b>StringValue</b><b>Default: Number</b></p>
+<p id="string-value" style="display: flex; justify-content: space-between;"><b>StringValue</b><b>Default: Number</b></p>
 
 Determines what kind of value this child measure will return.
 
 - `Number`: Will make this Child measure provide the retrieved String values of handler as a numerical value.(Correct?)
-- `Info`: [InfoRequest](#inforequest) option will determine what string value this Child measure will provide
+- `Info`: [InfoRequest](#info-request) option will determine what string value this Child measure will provide
 
 _Examples:_
 
@@ -195,16 +206,17 @@ Or
 
 ```ini
 StringValue=Info
-; And
+; Then
 InfoRequest=Current Device, Name
-; Will make this Child measure provide the following: Realtek High Definition Audio
+; Will make this Child measure provide the name of current Audio device
+; For example: Realtek High Definition Audio
 ```
 
 ---
 
-<p id="inforequest" style="display: flex; justify-content: space-between;"><b>InfoRequest</b><b>Parameters: (See Below)</b></p>
+<p id="info-request" style="display: flex; justify-content: space-between;"><b>InfoRequest</b><b>Parameters: (See Below)</b></p>
 
-When [StringValue](#stringvalue) is set to `Info`, this option will determine what infos this measure will provide.
+When [StringValue](#string-value) is set to `Info`, this option will determine what infos this measure will provide.
 
 ?>This is similar to [Section Variables]() in Parent measure, but without a function call.
 
@@ -221,9 +233,8 @@ InfoRequest=Current Device, Name
 That will make This Child measure provide the infos we requested.
 
 ```ini
-Variable=[InfosMeasure]
-; Makes the value of that variable the name of the current Audio Device.
-; As example: Realtek High Definition Audio
+[!log [&ChildMeasure]]
+; Will output: Realtek High Definition Audio
 ```
 
 ?> A complete list of possible arguments can be found [here](/docs/section-vars.md)
