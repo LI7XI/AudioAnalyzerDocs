@@ -16,7 +16,20 @@ Simple skin with low update rate (`Update=32` = 30Fps). Low update rate is neede
 
 This is how you setup the plugin:
 
-!> Note: all option names and properties here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using Upper Case letter of each word just for convention.
+?>Note: all option names and properties here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using Upper Case letter of each word just for convention.
+
+!>But any options you can specify (e.g. a Process or a Handler name) **Should only** contain Characters, Numbers and/or Underscores.
+
+For example:
+
+```ini
+; This is valid:
+MainHandler1, Main_Handler_1, mAin_HAnDlER1
+; This is invalid:
+M@in$h^&ler
+```
+
+With that out of the way, Lets start!
 
 We create a measure, and specify it as a [Parent]().
 
