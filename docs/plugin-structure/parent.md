@@ -3,11 +3,25 @@
 Now after we know the difference between [Parent and Child](/docs/plugin-structure/plugin-structure.md) measures, it's time to know what options are available for each type.
 
 ?> Note that all options specified here are present only in Parent measure, Child measure options are specified [here](/docs/plugin-structure/child.md).<br/>
-Resources used to illustrate the options are linked at the [bottom](#Resources) of this page
+Resources used to illustrate the options are linked at the [bottom](#Resources) of this page.
+
+## Jump list
+
+- [MagicNumber](#magic-number).
+- [Source](#source).
+- [Processing](#processing).
+- [Processing-ProcessName](#processing-processName).
+- [Handler-HandlerName](#handler-handlername).
+- [UnusedOptionsWarning](#unused-option-warning).
+- [Threading](#threading).
+- [Callback-OnUpdate](#callback-onupdate).
+- [Callback-OnDeviceChange](#callback-ondevicechange).
+- [OnDeviceDisconnected](#ondevice-disconnected).
+- [OnDeviceListChange](#ondevice-listchange).
 
 ## Available Options
 
-<p style="display: flex; justify-content: space-between;"><b>MagicNumber</b><b>Default: 0</b></p>
+<p id="magic-number" style="display: flex; justify-content: space-between;"><b>MagicNumber</b><b>Default: 0</b></p>
 
 This plugin has an old version which is partially compatible with the new one. To avoid breaking changes while still delivering improved experience to old skin users, option MagicNumber was introduced. It is used to determine whether plugin should run in the new or in the legacy mode.
 
@@ -24,7 +38,7 @@ MagicNumber=104
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Source</b><b>Default: DefaultOutput</b></p>
+<p id="source" style="display: flex; justify-content: space-between;"><b>Source</b><b>Default: DefaultOutput</b></p>
 
 Specifies device from which to capture audio.
 
@@ -66,7 +80,7 @@ _Todo: Testing examples validity._
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Processing</b><b>Required</b></p>
+<p id="processing" style="display: flex; justify-content: space-between;"><b>Processing</b><b>Required</b></p>
 
 Specify one or a list of processes separated by pipe symbol.
 
@@ -86,7 +100,7 @@ Processing=Main | Another_Process1
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
+<p id="processing-processName" style="display: flex; justify-content: space-between;"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
 
 Specify the process description, what this process is going to do.
 
@@ -165,11 +179,11 @@ Processing-AnotherProcess=channels Auto | Handlers Loudness, LoudnessPercent | T
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Handler-<u>HandlerName</u></b><b>Required</b></p>
+<p id="handler-handlername" style="display: flex; justify-content: space-between;"><b>Handler-<u>HandlerName</u></b><b>Required</b></p>
 
-Specify description of a sound [handler](#what-is-a-handler).<br/>
-Contains handler types, each type has specific parameters.
+Specify description of a sound [handler](#what-is-a-handler).
 
+This option contains handler types, each type has specific parameters.<br/>
 See [Handler Types](/docs/handler-types/handler-types.md) discussion.
 
 _Examples:_
@@ -197,7 +211,7 @@ Handler-lodnessPercent=Type ValueTransformer | Source Loudness | Transform map[f
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>UnusedOptionsWarning</b><b>Default: true</b></p>
+<p id="unused-option-warning" style="display: flex; justify-content: space-between;"><b>UnusedOptionsWarning</b><b>Default: true</b></p>
 
 A boolean value, specify whether the plugin should log error messages in Rainmeter log window.
 
@@ -235,7 +249,7 @@ And `UnusedOptionsWarning=false` will make such log messages not appear.
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Threading</b><b>Parameters: (See below)</b></p>
+<p id="threading" style="display: flex; justify-content: space-between;"><b>Threading</b><b>Parameters: (See below)</b></p>
 
 Configuration of a computing thread.
 
@@ -291,7 +305,7 @@ Threading=Policy UiThread | UpdateRate 90
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Callback-OnUpdate</b><b>Default: None</b></p>
+<p id="callback-onupdate" style="display: flex; justify-content: space-between;"><b>Callback-OnUpdate</b><b>Default: None</b></p>
 
 Specify a bang to be called every time values are updated.
 
@@ -303,7 +317,7 @@ Callback-OnUpdate=[!Log "Logs Spam!"]
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>Callback-OnDeviceChange</b><b>Default: None</b></p>
+<p id="callback-ondevicechange" style="display: flex; justify-content: space-between;"><b>Callback-OnDeviceChange</b><b>Default: None</b></p>
 
 Specify a bang to be called every time device has changed. This include first connection to audio device.
 
@@ -321,7 +335,7 @@ Callback-OnDeviceChange=[!Log "Audio Device is changed"]
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>OnDeviceDisconnected</b><b>Default: None</b></p>
+<p id="ondevice-disconnected" style="display: flex; justify-content: space-between;"><b>OnDeviceDisconnected</b><b>Default: None</b></p>
 
 Specify a bang to be called every time device has been disconnected.
 
@@ -347,7 +361,7 @@ OnDeviceDisconnected=[!Log "An Audio Device has been disconnected"]
 
 ---
 
-<p style="display: flex; justify-content: space-between;"><b>OnDeviceListChange</b><b>Default: None</b></p>
+<p id="ondevice-listchange" style="display: flex; justify-content: space-between;"><b>OnDeviceListChange</b><b>Default: None</b></p>
 
 Specify a bang to be called every time something happens to any audio device in the system.
 
