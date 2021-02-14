@@ -62,13 +62,13 @@ First, to specify a process description we write processing, followed by a hyphe
 Processing-Main=
 ```
 
-Here we specify the [process properties](), Like [Channels](), [Handlers]() and other properties separated by a '|' (pipe symbol).
+Here we specify the [process parameters](), Like [Channels](), [Handlers]() and other parameters separated by a '|' (pipe symbol).
 
 ```ini
 Processing-Main=Channels Auto | Handlers MainHandler | Filter Like-a
 ```
 
-a property may have more than one option, we can write multiple comma-separated options. Like so:
+a parameter may have more than one option, we can write multiple comma-separated options. Like so:
 
 ```ini
 Processing-Main=Channels Left, Right | Handlers MainHandler1, MainHandler2 | Filter Like-a
