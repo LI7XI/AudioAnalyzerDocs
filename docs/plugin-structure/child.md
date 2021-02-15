@@ -25,7 +25,7 @@ Child measure can be used for:
 
 ## Available Options
 
-<p id="parent" style="display: flex; justify-content: space-between;"><b>Parent</b><b>Required</b></p>
+<p id="parent" class="p-title"><b>Parent</b><b>Required</b></p>
 
 Name of parent measure to retrieve data from.
 
@@ -37,7 +37,7 @@ Parent=MeasureAudio
 
 ---
 
-<p id="handler-name" style="display: flex; justify-content: space-between;"><b>HandlerName</b><b>Default: None</b></p>
+<p id="handler-name" class="p-title"><b>HandlerName</b><b>Default: None</b></p>
 
 Name of the Handler in Parent measure that will provide values.
 
@@ -64,7 +64,7 @@ Then you have to specify [Processing](#processing) option.
 
 ---
 
-<p id="processing" style="display: flex; justify-content: space-between;"><b>Processing</b><b>Default: None</b></p>
+<p id="processing" class="p-title"><b>Processing</b><b>Default: None</b></p>
 
 Name of the process that have the handler specified in `HandlerName` option.
 
@@ -93,7 +93,7 @@ Processing=ProcessB
 
 ---
 
-<p id="channel" style="display: flex; justify-content: space-between;"><b>Channel</b><b>Default: Auto</b></p>
+<p id="channel" class="p-title"><b>Channel</b><b>Default: Auto</b></p>
 
 Channel to get data from.
 
@@ -132,7 +132,7 @@ Channel=FL, Right
 
 ---
 
-<p id="index" style="display: flex; justify-content: space-between;"><b>Index</b><b>Default: 0</b></p>
+<p id="index" class="p-title"><b>Index</b><b>Default: 0</b></p>
 
 Index of value in handler.
 
@@ -169,7 +169,7 @@ Index=7
 
 ---
 
-<p id="transform" style="display: flex; justify-content: space-between;"><b>Transform</b><b>Default: </b></p>
+<p id="transform" class="p-title"><b>Transform</b><b>Default: </b></p>
 
 > Specify a transformation to be applied to numerical values of this Child measure.<br/>
 > See [Transformations]() discussion for full list of possible values.
@@ -188,18 +188,20 @@ _WIP._
 
 ---
 
-<p id="string-value" style="display: flex; justify-content: space-between;"><b>StringValue</b><b>Default: Number</b></p>
+<p id="string-value" class="p-title"><b>StringValue</b><b>Default: Number</b></p>
 
-Determines what kind of value this child measure will return.
+Determines what kind of value this child measure will provide.
 
-- `Number`: Will make this Child measure provide the retrieved String values of handler as a numerical value.(Correct?)
-- `Info`: [InfoRequest](#info-request) option will determine what string value this Child measure will provide
+> - `Number`: Will make this Child measure provide the retrieved String values of handler as a numerical value.(Correct?)
+> - `Info`: [InfoRequest](#info-request) option will determine what string value this Child measure will provide.
+
+_Todo: a rewrite._
 
 _Examples:_
 
 ```ini
 StringValue=Number
-; makes this child measure return a numerical value based on what it receives from the handler: 0.3, 0.78, etc..
+; makes this Child measure provide a numerical value based on what it receives from the handler: 0.3, 0.78, etc..
 ```
 
 Or
@@ -214,7 +216,7 @@ InfoRequest=Current Device, Name
 
 ---
 
-<p id="info-request" style="display: flex; justify-content: space-between;"><b>InfoRequest</b><b>Parameters: (See Below)</b></p>
+<p id="info-request" class="p-title"><b>InfoRequest</b><b>Parameters: (See Below)</b></p>
 
 When [StringValue](#string-value) is set to `Info`, this option will determine what infos this measure will provide.
 

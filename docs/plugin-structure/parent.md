@@ -21,7 +21,7 @@ Resources used to illustrate the options are linked at the [bottom](#Resources) 
 
 ## Available Options
 
-<p id="magic-number" style="display: flex; justify-content: space-between;"><b>MagicNumber</b><b>Default: 0</b></p>
+<p id="magic-number" class="p-title"><b>MagicNumber</b><b>Default: 0</b></p>
 
 This plugin has an old version which is partially compatible with the new one. To avoid breaking changes while still delivering improved experience to old skin users, option MagicNumber was introduced. It is used to determine whether plugin should run in the new or in the legacy mode.
 
@@ -38,7 +38,7 @@ MagicNumber=104
 
 ---
 
-<p id="source" style="display: flex; justify-content: space-between;"><b>Source</b><b>Default: DefaultOutput</b></p>
+<p id="source" class="p-title"><b>Source</b><b>Default: DefaultOutput</b></p>
 
 Specifies device from which to capture audio.
 
@@ -80,7 +80,7 @@ _Todo: Testing examples validity._
 
 ---
 
-<p id="processing" style="display: flex; justify-content: space-between;"><b>Processing</b><b>Required</b></p>
+<p id="processing" class="p-title"><b>Processing</b><b>Required</b></p>
 
 Specify one or a list of processes separated by pipe symbol.
 
@@ -100,7 +100,7 @@ Processing=Main | Another_Process1
 
 ---
 
-<p id="processing-processName" style="display: flex; justify-content: space-between;"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
+<p id="processing-processName" class="p-title"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
 
 Specify the process description, what this process is going to do.
 
@@ -179,7 +179,7 @@ Processing-AnotherProcess=channels Auto | Handlers Loudness, LoudnessPercent | T
 
 ---
 
-<p id="handler-handlername" style="display: flex; justify-content: space-between;"><b>Handler-<u>HandlerName</u></b><b>Required</b></p>
+<p id="handler-handlername" class="p-title"><b>Handler-<u>HandlerName</u></b><b>Required</b></p>
 
 Specify description of a sound [handler](#what-is-a-handler).
 
@@ -211,7 +211,7 @@ Handler-lodnessPercent=Type ValueTransformer | Source Loudness | Transform map[f
 
 ---
 
-<p id="unused-option-warning" style="display: flex; justify-content: space-between;"><b>UnusedOptionsWarning</b><b>Default: true</b></p>
+<p id="unused-option-warning" class="p-title"><b>UnusedOptionsWarning</b><b>Default: true</b></p>
 
 A boolean value, specify whether the plugin should log error messages in Rainmeter log window.
 
@@ -249,7 +249,7 @@ And `UnusedOptionsWarning=false` will make such log messages not appear.
 
 ---
 
-<p id="threading" style="display: flex; justify-content: space-between;"><b>Threading</b><b>Parameters: (See below)</b></p>
+<p id="threading" class="p-title"><b>Threading</b><b>Parameters: (See below)</b></p>
 
 Configuration of a computing thread.
 
@@ -305,7 +305,7 @@ Threading=Policy UiThread | UpdateRate 90
 
 ---
 
-<p id="callback-onupdate" style="display: flex; justify-content: space-between;"><b>Callback-OnUpdate</b><b>Default: None</b></p>
+<p id="callback-onupdate" class="p-title"><b>Callback-OnUpdate</b><b>Default: None</b></p>
 
 Specify a bang to be called every time values are updated.
 
@@ -317,7 +317,7 @@ Callback-OnUpdate=[!Log "Logs Spam!"]
 
 ---
 
-<p id="callback-ondevicechange" style="display: flex; justify-content: space-between;"><b>Callback-OnDeviceChange</b><b>Default: None</b></p>
+<p id="callback-ondevicechange" class="p-title"><b>Callback-OnDeviceChange</b><b>Default: None</b></p>
 
 Specify a bang to be called every time device has changed. This include first connection to audio device.
 
@@ -335,7 +335,7 @@ Callback-OnDeviceChange=[!Log "Audio Device is changed"]
 
 ---
 
-<p id="ondevice-disconnected" style="display: flex; justify-content: space-between;"><b>OnDeviceDisconnected</b><b>Default: None</b></p>
+<p id="ondevice-disconnected" class="p-title"><b>OnDeviceDisconnected</b><b>Default: None</b></p>
 
 Specify a bang to be called every time device has been disconnected.
 
@@ -347,7 +347,7 @@ There are several ways this can happen:
   But then, if you also pull speakers jack, there will be no audio devices available, and onDeviceDisconnected will be called.
 
 - You were capturing data from some specific device, but this device is no longer available.
-- Device that was being captured is not in [exclusive mode](https://answers.microsoft.com/en-us/windows/forum/windows_7-pictures/what-is-exclusive-mode-and-what-does-it-do/26922597-f6c8-4080-a675-199e37f37a0b).<br/>
+- Device that was being captured is not in [exclusive mode](https://answers.microsoft.com/en-us/windows/forum/windows_7-pictures/what-is-exclusive-mode-and-what-does-it-do/26922597-f6c8-4080-a675-199e37f37a0b).<span id="exclusive-mode"></span><br/>
 
   ?>Exclusive mode is when some application gets an exclusive ownership of the audio device. When device is in exclusive mode, no other application can connect to this device.
 
@@ -361,7 +361,7 @@ OnDeviceDisconnected=[!Log "An Audio Device has been disconnected"]
 
 ---
 
-<p id="ondevice-listchange" style="display: flex; justify-content: space-between;"><b>OnDeviceListChange</b><b>Default: None</b></p>
+<p id="ondevice-listchange" class="p-title"><b>OnDeviceListChange</b><b>Default: None</b></p>
 
 Specify a bang to be called every time something happens to any audio device in the system.
 
