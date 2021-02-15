@@ -99,7 +99,7 @@ Many devices have `Description` and `Form factor` values the same, but there are
 
 Possible values of `Form factor` are: `RemoteNetworkDevice`, `Speakers`, `LineLevel`, `Headphones`, `Microphone`, `Headset`, `Handset`, `UnknownDigitalPassthrough`, `SPDIF`, `DigitalAudioDisplayDevice`, `<unknown>`.
 
-Sample rate and channels may also be represented as "unknown" for some devices when it's impossible to determine that audio device format.
+Sample rate and channels may also be represented as `<unknown>` for some devices when it's impossible to determine that audio device format.
 
 ---
 
