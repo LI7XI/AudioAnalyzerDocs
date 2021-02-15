@@ -18,7 +18,7 @@
   - [Examples]()
 - [**Section Variables**](/docs/section-vars.md)
 - [**Handler Types**](/docs/handler-types/handler-types.md)
-  - [What is a handler]()
+  - [What is a Handler]()
   - [Signal processing]()
   - [Transformations]()
 - [**Audio Filters**]()
