@@ -29,10 +29,11 @@ OnUpdateAction=[!Delay 1500][!Log "[&MeasureAudio:Resolve(Current Device, Name)]
 
 The example above will log the Audio device name in [Rainmeter Logs window]() every time you load or refresh the skin.
 
-The Resolve Function (Function?) takes 2 arguments:
+The Resolve Function takes 2 arguments:
 
-- `FirstArgument`: (?, sorry i can't find an example :c )
-  - `SecondArgument`: Is what infos you want to know about the `FirstArgument`.
+- `FirstArgument`: Specifies the Type of information you want to get. Like: `Current Device`, `Device List`, `Value` (of a handler), `HandlerInfo` (infos about the handler proprieties).
+
+  - `SecondArgument`: Specifies which infos `FirstArgument` should provide about its Type. Like: `Current Device` `Name`
 
 ## Available Arguments
 
