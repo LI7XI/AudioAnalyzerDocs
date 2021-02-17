@@ -26,7 +26,7 @@ For example:
 ; This is valid:
 MainHandler1, Main_Handler_1, mAin_HAnDlER1
 ; This is invalid:
-M@in$h^&ler
+M@in$h^&le-r
 ```
 
 With that out of the way, Lets start!

@@ -3,14 +3,14 @@
 Now after we know the difference between [Parent and Child](/docs/plugin-structure/plugin-structure.md) measures, it's time to know what options are available for each type.
 
 ?> Note that all options specified here are present only in Parent measure, Child measure options are specified [here](/docs/plugin-structure/child.md).<br/>
-Resources used to illustrate the options are linked at the [bottom](#Resources) of this page.
+Reference used to illustrate the options are linked at the [bottom](#Reference) of this page.
 
 ## Jump list
 
 - [MagicNumber](#magic-number).
 - [Source](#source).
 - [Processing](#processing).
-- [Processing-ProcessName](#processing-processName).
+- [Processing-ProcessName](#processing-processname).
 - [Handler-HandlerName](#handler-handlername).
 - [UnusedOptionsWarning](#unused-option-warning).
 - [Threading](#threading).
@@ -100,7 +100,7 @@ Processing=Main | Another_Process1
 
 ---
 
-<p id="processing-processName" class="p-title"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
+<p id="processing-processname" class="p-title"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
 
 Specify the process description, what this process is going to do.
 
@@ -397,8 +397,8 @@ OnDeviceListChange=[!Log "Audio Device was disabled or disconnected"]
 
 ---
 
-## Resources
+## Reference
 
-Here are links for the resources used to illustrate the options:
+Here are links for the Reference used to illustrate the options:
 
 - [Sample Rate](https://www.masteringthemix.com/blogs/learn/113159685-sample-rates-and-bit-depth-in-a-nutshell)

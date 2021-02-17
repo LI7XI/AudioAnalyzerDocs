@@ -33,7 +33,7 @@ The Resolve Function takes 2 arguments:
 
 - `FirstArgument`: Specifies the Type of information you want to get. Like: `Current Device`, `Device List`, `Value` (of a handler), `HandlerInfo` (infos about the handler proprieties).
 
-  - `SecondArgument`: Specifies which infos `FirstArgument` should provide about its Type. Like: `Current Device` `Name`
+  - `SecondArgument`: Specifies which infos `FirstArgument` should provide about its Type. Like: `FirstArg: Current Device` `SecondArg: Name`
 
 ## Available Arguments
 
