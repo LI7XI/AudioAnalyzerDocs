@@ -1,3 +1,0 @@
-## RMS
-
-Root means Square
