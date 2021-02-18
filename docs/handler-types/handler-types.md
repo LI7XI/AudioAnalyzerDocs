@@ -1,5 +1,6 @@
 ## Handler Types
 
+<!--
 There are to types of handlers:
 
 - [Signal processors]().
@@ -30,4 +31,6 @@ It's a chain of math operations on a value, that change it.
 _Description of this page is WIP, infos here may not be correct._
 _I may even rewrite everything here._
 
-But before we get into them, lets understand [what is a Handler](/docs/handler-types/what-is-a-handler.md).
+But before we get into them, lets understand [what is a Handler](/docs/handler-types/what-is-a-handler.md). -->
+
+_WIP_
