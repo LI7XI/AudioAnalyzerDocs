@@ -20,7 +20,7 @@ But now there is a better dedicated [Loudness](/docs/handler-types/signal-proces
 
 <p id="type" class="p-title"><b>Type</b><b>RMS</b></p>
 
-Specifies the type of the handler
+Specifies the type of the handler.
 
 _Examples:_
 
