@@ -9,27 +9,12 @@ Lets say this is your image meter:
 ```ini
 [MeterSpectrogram]
 Meter=Image
-ImageName=
-DynamicVariables=1
-; DynamicVariables=1 is important.
+MeasureName=
 ```
 
 !>Note: Don't use `W` and `H` options of the meter for resizing, the image may look blurred or distorted. Instead, change how the image is outputted from the handler itself.
 
-You will use [handlerInfo]() Section Variable with `File` data property. Like this:
-
-```ini
-[&ParentMeasure:resolve(HandlerInfo, Channel Auto | Handler SpectogramHandler | Data File)]
-```
-
-Then you set the above as a value to `ImageName` option.
-
-```ini
-ImageName=[&ParentMeasure:resolve(HandlerInfo, Channel Auto | Handler SpectogramHandler | Data File)].
-```
-
-However, a more convenient way to obtain file name is to use a child measure with `StringValue=Info`.<br/>
-Like so:
+You make a child measure with `StringValue=Info`, and set the `InfoRequest` to the following:
 
 ```ini
 StringValue=Info
@@ -42,20 +27,30 @@ Then you use that in your image meter. Like so:
 [MeterSpectrogram]
 Meter=Image
 MeasureName=ChildMeasure
-; Dynamic variables are not needed since we are using MeasureName option.
 ```
 
-Color of the pixel is linearly interpolated between color points, described by either [Colors]() property, or between [BaseColor]() and [MaxColor]() if Colors property is not present.
+Color of the pixel is linearly interpolated between color points, described by either [Colors](#colors) property, or between [BaseColor](#base-color) and [MaxColor](max-color) if Colors property is not present.
 
-Width of the image is determined by [Length]() property, height of the image is determined by number of values in [source]() handler. You can control height by changing number of bands in [BandResampler]() handler.
+Width of the image is determined by [Length](#lenth) property, height of the image is determined by number of values in [Source](#source) handler. You can control height by changing number of bands in [BandResampler]() handler.
 
 ### Jump list
 
 - [Type](#type).
 - [Source](#source).
-- [](#).
-- [](#).
-- [](#).
+- [Length](#length).
+- [Resolution](#resolution).
+- [Folder](#folder).
+- [Colors](#colors).
+- [BaseColor](#base-color).
+- [MaxColor](#max-color).
+- [MixMode](#mix-mode).
+- [Stationary](#stationary).
+- [BorderSize](#border-size).
+- [BorderColor](#border-color).
+- [FadingRatio](#fading-ratio).
+- [SilenceThreshold](#silence-threshold).
+- [Usage Examples](#Usage-Examples).
+- [Documentation Questions](#q).
 
 ---
 
@@ -83,7 +78,7 @@ Handler-SourceHandler=Type BandResampler
 ; Or
 Handler-SourceHandler=Type BandCascadeTransformer
 
-; In child measure
+; Then
 Handler-HandlerName=Type Spectrogram | Source SourceHandler
 ```
 
@@ -104,7 +99,7 @@ Handler-HandlerName=Type Spectrogram | Source SourceHandler | Length 320
 
 ---
 
-<p id="type" class="p-title"><b>Resolution</b><b>Default: 50</b></p>
+<p id="resolution" class="p-title"><b>Resolution</b><b>Default: 50</b></p>
 
 A float number that is bigger than `0`.<br>
 Time in milliseconds of block that represents one pixel width in image.
@@ -125,19 +120,19 @@ Resolution: `15`
 
 ---
 
-<p id="type" class="p-title"><b>Folder</b><b>Default: <code>Skin folder</code></b></p>
+<p id="folder" class="p-title"><b>Folder</b><b>Default: <code>Skin folder</code></b></p>
 
 Path to folder where image will be stored.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Spectrogram | Source SourceHandler | Folder #@#Images/
+Handler-HandlerName=Type Spectrogram | Source SourceHandler | Folder #@#Images
 ```
 
 ---
 
-<p id="type" class="p-title"><b>Colors</b><b>Parameters: (See below)</b></p>
+<p id="colors" class="p-title"><b>Colors</b><b>Parameters: (See below)</b></p>
 
 A set of points that describe colors of the spectrogram.
 
@@ -158,11 +153,11 @@ Handler-HandlerName=Type Spectrogram | Source SourceHandler | Colors 0.0 : 0.1,0
 
 ---
 
-<p id="type" class="p-title"><b>BaseColor</b><b>Default: 0,0,0</b></p>
+<p id="base-color" class="p-title"><b>BaseColor</b><b>Default: 0,0,0</b></p>
 
 Color of the space where band values are below 0.
 
-?>Only used when Colors property is not present, otherwise ignored.<small id="i1">[1](#q1)</small>
+?>Only used when Colors property is not present, otherwise ignored.<small id="i1">[1](#q)</small>
 
 _Examples:_
 
@@ -180,11 +175,11 @@ BaseColor `1,1,0.4`
 
 ---
 
-<p id="type" class="p-title"><b>MaxColor</b><b>Default: 1,1,1</b></p>
+<p id="max-color" class="p-title"><b>MaxColor</b><b>Default: 1,1,1</b></p>
 
 Color of the space where band values are above 1.
 
-?>Only used when Colors property is not present, otherwise ignored.<small id="i1">[1](#q1)</small>
+?>Only used when Colors property is not present, otherwise ignored.<small id="i1">[1](#q)</small>
 
 _Examples:_
 
@@ -204,34 +199,120 @@ MaxColor `0,0,1`
 
 ---
 
-<p id="type" class="p-title"><b>option</b><b>Default: 0</b></p>
+<p id="mix-mode" class="p-title"><b>MixMode</b><b>Default: sRGB</b></p>
 
-Description
+Sets the color space in which values are interpolated.
 
-_Examples:_
+!>Note that any color you can specify (e.g. `Colors`, `BaseColor`, etc..) will use the same color space defined here.
 
-```ini
-Handler-HandlerName=Type Spectrogram | Source SourceHandler
-```
+Parameters:
 
----
-
-<p id="type" class="p-title"><b>option</b><b>Default: 0</b></p>
-
-Description
+- `sRGB` : When using sRGB colors: `0.6,0.5,0.7`.
+- `HSV` : When using Hue, Saturation, Value colors: `122,0.67,0.89`.
+- `HSL` : When using Hue, Saturation, Lightness colors: `200,0.7,0.4`.
+- `YCbCr`: When using .<small id="i2">[2](#q)</small>
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Spectrogram | Source SourceHandler
+Handler-HandlerName=Type Spectrogram | Source SourceHandler | MixMode HSV | BaseColor 160,0.5,0.79
 ```
 
 ---
+
+<p id="stationary" class="p-title"><b>Stationary</b><b>Default: false</b></p>
+
+When false image is completely redrawn on each update. Image is moving to the left as it updates.
+
+When true image is only redrawn in places where it has changed. All stripes are stationary, but some are replaces with new values.
+
+_Examples:_
+
+```ini
+Handler-HandlerName=Type Spectrogram | Source SourceHandler | Stationary true
+```
+
+Stationary `false`
+
+<img src="docs\handler-types\examples\spectrogram\stationary-false.gif" title="Stationary false" />
+
+Stationary `true`
+
+<img src="docs\handler-types\examples\spectrogram\stationary-true.gif" title="Stationary true" />
+
+---
+
+<p id="border-size" class="p-title"><b>BorderSize</b><b>Default: 0</b></p>
+
+Define size of the border in the oldest stripes of the image.
+It only makes sense to use this property when Stationary is true.
+
+_Examples:_
+
+```ini
+Handler-HandlerName=Type Spectrogram | Source SourceHandler | Stationary true | BorderSize 3
+```
+
+BorderSize `20`
+
+<img src="docs\handler-types\examples\spectrogram\border-size20.png" title="BorderSize 20" />
+
+---
+
+<p id="border-color" class="p-title"><b>BorderColor</b><b>Default: 1.0,0.2,0.2</b></p>
+
+Color of the border
+
+_Examples:_
+
+```ini
+Handler-HandlerName=Type Spectrogram | Source SourceHandler | Stationary true | BorderSize 3 | BorderColor 0.3,0.3,0.75
+```
+
+---
+
+<p id="fading-ratio" class="p-title"><b>FadingRatio</b><b>Default: 0</b></p>
+
+A Float number in range from `0` to `1`.<br/>
+Oldest `FadingRatio * 100%` stripes in the image are smoothly faded into the background color.
+
+_Examples:_
+
+```ini
+Handler-HandlerName=Type Spectrogram | Source SourceHandler | FadingRatio 1
+```
+
+FadingRatio `0.3`
+
+<img src="docs\handler-types\examples\spectrogram\fading-ratio03.png" title="FadingRatio 0.3" />
+
+FadingRatio `1`
+
+<img src="docs\handler-types\examples\spectrogram\fading-ratio1.png" title="FadingRatio 1" />
+
+---
+
+<p id="silence-threshold" class="p-title"><b>SilenceThreshold</b><b>Default: -70</b></p>
+
+A Float number that is bigger than `0`.<br/>
+Peak value threshold specified in decibels.
+
+If sound wave is below SilenceThreshold then it is considered silence. Else image is updated. If you set it too high image will not be updating even when it should be.
+
+The main usage for this property is to synchronize several images, if you have them in one skin. If two images have the same Resolution, SilenceThreshold and image width, and they are in the same parent measure, then they will perfectly synchronized.
+
+_Examples:_
+
+```ini
+Handler-HandlerName=Type Spectrogram | Source SourceHandler | SilenceThreshold -50
+```
+
+## Usage Examples
+
+_WIP_.
 
 ## Documentation Questions <i id="q">
 
-<small id="q1"></small>[Q1](#i1): "otherwise ignored."?<br/>
-<small id="q1"></small>[Q1](#i1): <br/>
-<small id="q1"></small>[Q1](#i1): <br/>
-<small id="q1"></small>[Q1](#i1): <br/>
+[Q1](#i1): "otherwise ignored.", should i keep that?<br/>
+[Q2](#i2): How to write this format (the syntax)?<br/>
 </i>
