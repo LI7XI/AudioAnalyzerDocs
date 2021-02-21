@@ -234,11 +234,11 @@ Handler-HandlerName=Type Spectrogram | Source SourceHandler | Stationary true
 
 Stationary `false`
 
-<img src="docs\handler-types\examples\spectrogram\stationary-false.gif" title="Stationary false" />
+<video src="docs\handler-types\examples\spectrogram\stationary-false.mp4" autoplay loop muted title="Stationary false"></video>
 
 Stationary `true`
 
-<img src="docs\handler-types\examples\spectrogram\stationary-true.gif" title="Stationary true" />
+<video src="docs\handler-types\examples\spectrogram\stationary-true.mp4" autoplay loop muted title="Stationary true"></video>
 
 ---
 
