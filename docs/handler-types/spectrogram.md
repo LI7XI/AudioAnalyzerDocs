@@ -203,7 +203,7 @@ MaxColor `0,0,1`
 
 Sets the color space in which values are interpolated.
 
-!>Note that any color you can specify (e.g. `Colors`, `BaseColor`, etc..) will use the same color space defined here.
+!>Note that `MixMode` doesn't affect how colors are read (e.g. in `Colors`, `BaseColor`, etc..). It only affects how intermediate colors are calculated.
 
 Parameters:
 
