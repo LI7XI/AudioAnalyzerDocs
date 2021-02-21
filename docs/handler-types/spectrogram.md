@@ -33,6 +33,8 @@ Color of the pixel is linearly interpolated between color points, described by e
 
 Width of the image is determined by [Length](#lenth) property, height of the image is determined by number of values in [Source](#source) handler. You can control height by changing number of bands in [BandResampler]() handler.
 
+## Spectrogram type Properties
+
 ### Jump list
 
 - [Type](#type).
