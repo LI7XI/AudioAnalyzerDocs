@@ -129,7 +129,7 @@ Path to folder where image will be stored.
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Spectrogram | Source SourceHandler | Folder #@#Images
+Handler-HandlerName=Type Spectrogram | Source SourceHandler | Folder [#@]Images
 ```
 
 ---
