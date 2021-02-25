@@ -13,7 +13,7 @@ _Todo: a full rewrite of this section._
 - [Type](#type).
 - [BinWidth](#bin-width).
 - [OverlapBoost](#overlap-boost).
-- [CascadesCound](#cascades-count).
+- [CascadesCount](#cascades-count).
 - [WindowFunction](#window-function).
 <!-- - [Usage Examples](#Usage-Examples). -->
 - [Documentation Questions](#q).
