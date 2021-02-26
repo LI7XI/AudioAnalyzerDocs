@@ -31,7 +31,9 @@ Handler-HandlerName=Type BandResampler
 
 <p id="source" class="p-title"><b>Source</b><b>Required</b></p>
 
-Name of source handler. Should be name of some handler from [FFT](/docs/handler-types/fft/fft.md) transform chain, so that source handler has many values.
+Name of source handler.
+
+!>Should be name of [FFT](/docs/handler-types/fft/fft.md) type handler.
 
 _Examples:_
 
