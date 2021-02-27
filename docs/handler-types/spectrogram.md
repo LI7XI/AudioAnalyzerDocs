@@ -138,14 +138,14 @@ Handler-HandlerName=Type Spectrogram | Source SourceHandler | Folder [#@]Images
 
 A set of points that describe colors of the spectrogram.
 
-Color point syntax: `Colors <Value> : <ColorDescription>`.<br/>
+Color point syntax: `Colors <Position> : <ColorDescription>`.<br/>
 Values correspond to values from source handler.
 
 `<ColorDescription>` in the simplest case can be represented as a comma-separated list of 3 or 4 values in range [0.0, 1.0].
 
 In that case values correspond to RGB channels and alpha channel of the color.
 
-See [Colors section]() for full list of color description possible values.
+See [Colors]() discussion for full list of color description possible values.
 
 _Examples:_
 
