@@ -16,6 +16,7 @@ _Todo: a full rewrite of this section._
 - [CascadesCount](#cascades-count).
 - [WindowFunction](#window-function).
 <!-- - [Usage Examples](#Usage-Examples). -->
+- [Handler Info](#handler-info).
 - [Documentation Questions](#q).
 
 ---
@@ -129,6 +130,28 @@ Or
 
 ```ini
 Handler-HandlerName=Type FFT | WindowFunction kaiser[3]
+```
+
+---
+
+### Handler Info
+
+- `Size`: Size of the FFT.
+- `Cascades Count`: Value of `CascadesCount` option.
+- `Overlap`: Value of `OverlapBoost` option.
+- `Nyquist Frequency`: Nyquist frequency of first cascade.
+- `Nyquist Frequency <Index>`: Nyquist frequency of Nth cascade.
+- `DC`: DC value of first cascade.
+- `DC <Index>`: DC value of Nth cascade
+- `BinWidth`: Actual BinWidth of first cascade.
+- `BinWidth <Index>`: Actual BinWidth of Nth cascade.
+
+_Examples:_
+
+```ini
+[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | HandlerName FFTHandler | Size)]]
+; Or
+[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | HandlerName FFTHandler | Nyquist Frequency 5)]]
 ```
 
 ## Documentation Questions <i id="q">

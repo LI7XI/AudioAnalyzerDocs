@@ -13,6 +13,7 @@ Each cascade of FFT result is resampled to fit into specified list of bands.
 - [MinCascade](#min-cascade).
 - [MaxCascade](#max-cascade).
 - [CubicInterpolation](#cubic-interpolation).
+- [Handler Info](#handler-info).
 - [Documentation Questions](#q).
 
 ---
@@ -126,6 +127,23 @@ CubicInterpolation `true`
 CubicInterpolation `false`
 
 <img src="docs\handler-types\examples\fft\cubic-interpolation-false.PNG" />
+
+---
+
+### Handler Info
+
+- `Bands Count`: Count of bands as specified by [freqList](#bands).
+- `Lower Bound <Index>`: Lower frequency bound of Nth band.
+- `Upper Bound <Index>`: Upper frequency bound of Nth band.
+- `Central Frequency <Index>`: Center frequency of Nth band.
+
+_Examples:_
+
+```ini
+[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | HandlerName BandResamplerHandler | Bands Count)]]
+; Or
+[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | HandlerName BandResamplerHandler | Upper Bound 5)]]
+```
 
 ## Documentation Questions <i id="q">
 
