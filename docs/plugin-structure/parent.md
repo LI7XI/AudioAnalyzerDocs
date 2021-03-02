@@ -162,7 +162,7 @@ Parameters:
   See [Performance]() discussion.
 
 - `Filter`(Optional): Performs signal filtering on the audio using the specified Filter. <span class="d">Default: None</span><br/>
-  See [Filters]() discussion.
+  See [Filters](/docs/discussions/filters.md) discussion.
 
 _Examples:_
 
