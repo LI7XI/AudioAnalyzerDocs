@@ -112,25 +112,23 @@ Parameters:
   Also No error log messages will be generated for this.<br/><br/>
   But if you specified channels that aren't present in [Processing channel list](#channel-list) (e.g. `Channel SomeUnsupportedChannel`), then there will be a log message.
 
-  _Todo:_
-
-  - _Is this explanation correct?_
-
   Different Audio devices have different Audio Channels.
   Most common are just stereo devices that have `Left` and `Right` channels, but there are also audio systems with more channels.
 
   This plugin supports the following channels (with optional name aliases):<i id="channel-list"></i>
 
-  - `Auto` &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; (No alias available)
-  - `FrontLeft` &emsp; &nbsp; &nbsp; &nbsp; (`Left` or `FL`)
-  - `FrontRight` &emsp; &nbsp; &nbsp; (`Right` or `FR`)
-  - `Center` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (`C`)
-  - `CenterBack` &emsp; &nbsp; &nbsp; (`CB`)
-  - `LowFrequency` &emsp; (`LFE`)
-  - `BackLeft` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; (`BL`)
-  - `BackRight` &emsp; &nbsp; &nbsp; &nbsp; (`BR`)
-  - `SideLeft` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; (`SL`)
-  - `SideRight` &emsp; &nbsp; &nbsp; &nbsp; (`SR`)
+  <ul class="channel-list">
+    <li><code>Auto</code><span>(No alias available)</span></li>
+    <li><code>FrontLeft</code><span>(<code>Left</code> or <code>FL</code>)</span></li>
+    <li><code>FrontRight</code><span>(<code>Right</code> or <code>FR</code>)</span></li>
+    <li><code>Center</code><span>(<code>C</code>)</span></li>
+    <li><code>CenterBack</code><span>(<code>CB</code>)</span></li>
+    <li><code>LowFrequency</code><span>(<code>LFE</code>)</span></li>
+    <li><code>BackLeft</code><span>(<code>BL</code>)</span></li>
+    <li><code>BackRight</code><span>(<code>BR</code>)</span></li>
+    <li><code>SideLeft</code><span>(<code>SL</code>)</span></li>
+    <li><code>SideRight</code><span>(<code>SR</code>)</span></li>
+  </ul>
 
 - `Handlers`**(Required)**: A list of handlers that this process must call in the specified order.<br/>
 
@@ -162,6 +160,9 @@ Parameters:
   See [Performance]() discussion.
 
 - `Filter`(Optional): Performs signal filtering on the audio using the specified Filter. <span class="d">Default: None</span><br/>
+
+  !>This is an advanced option and it's not necessary to use at all, use it only if you have something specific in mind.<br/>
+
   See [Filters](/docs/discussions/filters.md) discussion.
 
 _Examples:_
@@ -181,7 +182,7 @@ Processing-AnotherProcess=channels Auto | Handlers Loudness, LoudnessPercent | T
 
 <p id="handler-handlername" class="p-title"><b>Handler-<u>HandlerName</u></b><b>Required</b></p>
 
-Specify description of a sound [handler](#what-is-a-handler).
+Specify description of a sound handler.
 
 This option contains handler types, each type has specific parameters.<br/>
 See [Handler Types](/docs/handler-types/handler-types.md) discussion.
