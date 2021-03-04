@@ -1,27 +1,46 @@
-# AudioAnalyzer Plugin
+# AudioAnalyzer
 
-#### High Performance Audio analyzing plugin for Rainmeter.
+<h4>High Performance Audio analyzing plugin for Rainmeter.</h4>
 
 You can get latest version at [Github](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/releases/tag/AudioAnalyzer-v1.1.5).<br/>
 If you found any bug you can report it [here](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/issues).
 Feedback and feature suggestions are also welcomed.
 
+?>Note: Don't feel intimidated by the amount of options this plugin provides, you can create great looking skins with minimum modifications on the default settings.
+
 ## Table of Content
 
-_Work in progress._
-
-<!-- - [Home](home.md)
+- [Home](/home.md)
   - [Introduction](/docs/introduction.md)
-  - [Why using AudioAnalyzer?](/docs/why.md)
+  - [Why using AudioAnalyzer](/docs/why.md)
+- [Showcase](/docs/showcase.md)
 - [Getting Started](/docs/getting-started.md)
-  - [Curve Tester](/docs/examples/curve-tester.md)
-  - [Spectrum](/docs/examples/spectrum.md)
-  - [Waveform](/docs/examples/waveform.md)
-  - [Spectrogram](/docs/examples/spectrogram.md)
-  - [Spectrogram with Waveform](/docs/examples/spectrogram-with-waveform.md)
-  - [Peak](/docs/examples/peak.md)
-  - [Loudness meter](/docs/examples/loudness.md) -->
+  - [Examples](/docs/examples/examples.md)
+  - [How to setup a skin](/docs/skin-setup.md)
+- [Plugin structure](/docs/plugin-structure/plugin-structure.md)
+  - [Parent](/docs/plugin-structure/parent.md)
+  - [Child](/docs/plugin-structure/child.md)
+- [Section Variables](/docs/section-vars.md)
+- [Handler Types](/docs/handler-types/handler-types.md)
+  - [FFT](/docs/handler-types/fft/fft.md)
+    - [BandResampler](/docs/handler-types/fft/band-resampler.md)
+    - [BandCascadeTransformer](/docs/handler-types/fft/band-cascade-transformer.md)
+    - [UniformBlur](/docs/handler-types/fft/uniform-blur.md)
+  - [RMS](/docs/handler-types/rms.md)
+  - [Peak](/docs/handler-types/peak.md)
+  - [Loudness](/docs/handler-types/loudness.md)
+  - [Waveform](/docs/handler-types/waveform.md)
+  - [Spectrogram](/docs/handler-types/spectrogram.md)
+  - [TimeResampler](/docs/handler-types/time-resampler.md)
+  - [ValueTransformer](/docs/handler-types/value-transformer.md)
+- [Discussions](/docs/discussions/discussions.md)
+  - [Colors](/docs/discussions/colors.md)
+  - [Filters](/docs/discussions/filters.md)
+  - [Transforms](/docs/discussions/transforms.md)
+  - [FFT Cascades](/docs/discussions/fft-cascades.md)
+- [Performance]()
+- [Tips and Code snippets]()
 
 ---
 
-[Powered by docsify](https://docsify.js.org/)
+[Powered by Docsify](https://docsify.js.org/)
