@@ -14,6 +14,7 @@ Reference used to illustrate the options are linked at the [bottom](#Reference) 
 - [Handler-HandlerName](#handler-handlername).
 - [UnusedOptionsWarning](#unused-option-warning).
 - [Threading](#threading).
+- [BlockCaptureLoudnessChange](#block-capture-loudness-change).
 - [Callback-OnUpdate](#callback-onupdate).
 - [Callback-OnDeviceChange](#callback-ondevicechange).
 - [OnDeviceDisconnected](#ondevice-disconnected).
@@ -302,6 +303,19 @@ Threading=Policy SeparateThread | UpdateRate 90 | WarnTime -1
 ```ini
 Threading=Policy UiThread | UpdateRate 90
 ; UpdateRate here will have no effect. UpdateRate will be controlled internally by rainmeter.
+```
+
+---
+
+<p id="block-capture-loudness-change" class="p-title"><b>BlockCaptureLoudnessChange</b><b>Default: Never</b></p>
+
+- `ForApp`: Sets application volume level to maximum and prevents its change.
+- `Never`: Application volume can be set to any level.
+
+_Examples:_
+
+```ini
+BlockCaptureLoudnessChange=ForApp
 ```
 
 ---
