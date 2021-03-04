@@ -85,17 +85,38 @@
       position: absolute;
       left: 10em;
     }
+
+    div.search div.input-wrap {
+      border-width: 0 !important;
+    }
+
+    div.search div.input-wrap input {
+      background-color: #090b15 !important;
+    }
+
+    .sidebar-nav hr {
+      margin: 2em 0 1em 0 !important;
+    }
+
+    .sidebar-nav > :last-child {
+      text-align: center;
+      width: 13.5em;
+      margin-bottom: 1em !important;
+    }
   </style>
   <body>
     <div id="app"></div>
     <script>
       window.$docsify = {
         name: "AudioAnalyzer",
-        nameLink: "/",
+        nameLink: "/#/home",
         repo: "https://github.com/LI7XI/AudioAnalyzerDocs",
-        homepage: "home.md",
+        homepage: "/home.md",
         loadSidebar: "_sidebar.md",
         themeColor: "#3ECEFF",
+        search: {
+          depth: 1,
+        },
         scrollToTop: {
           auto: true,
           text: "Top",
@@ -111,6 +132,7 @@
     <!-- plugins -->
     <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
     <script src="//unpkg.com/docsify-scroll-to-top/dist/docsify-scroll-to-top.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
     <script src="//unpkg.com/docsify-copy-code"></script>
   </body>
 </html>

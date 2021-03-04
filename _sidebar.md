@@ -1,4 +1,4 @@
-- [**Home**](/home.md)
+- [**Home**](/)
   - [Introduction](/docs/introduction.md)
   - [Why using AudioAnalyzer](/docs/why.md)
 - [**Showcase**](/docs/showcase.md)
@@ -15,10 +15,8 @@
 - [**Plugin structure**](/docs/plugin-structure/plugin-structure.md)
   - [Parent](/docs/plugin-structure/parent.md)
   - [Child](/docs/plugin-structure/child.md)
-  - [Examples]()
 - [**Section Variables**](/docs/section-vars.md)
 - [**Handler Types**](/docs/handler-types/handler-types.md)
-  <!-- - [What is a Handler](/docs/handler-types/what-is-a-handler.md) -->
   - [FFT](/docs/handler-types/fft/fft.md)
     - [BandResampler](/docs/handler-types/fft/band-resampler.md)
     - [BandCascadeTransformer](/docs/handler-types/fft/band-cascade-transformer.md)
@@ -37,3 +35,6 @@
   - [FFT Cascades](/docs/discussions/fft-cascades.md)
 - [**Performance**]()
 - [**Tips and Code snippets**]()
+
+<hr class="docsify-link"/>
+<a class="docsify-link" href="https://docsify.js.org/" target="_blank" rel="noopener" title="Powered by Docsify">Powered by Docsify</a>
