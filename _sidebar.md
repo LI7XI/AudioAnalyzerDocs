@@ -18,7 +18,7 @@
   - [Examples]()
 - [**Section Variables**](/docs/section-vars.md)
 - [**Handler Types**](/docs/handler-types/handler-types.md)
-  - [What is a Handler](/docs/handler-types/what-is-a-handler.md)
+  <!-- - [What is a Handler](/docs/handler-types/what-is-a-handler.md) -->
   - [FFT](/docs/handler-types/fft/fft.md)
     - [BandResampler](/docs/handler-types/fft/band-resampler.md)
     - [BandCascadeTransformer](/docs/handler-types/fft/band-cascade-transformer.md)
