@@ -26,7 +26,7 @@ Reference used to illustrate the options are linked at the [bottom](#Reference) 
 
 This plugin has an old version which is partially compatible with the new one. To avoid breaking changes while still delivering improved experience to old skin users, option MagicNumber was introduced. It is used to determine whether plugin should run in the new or in the legacy mode.
 
-Always set MagicNumber to value 104, or else plugin will run in legacy mode which have many default values different from what is described in this documentation.
+Always set MagicNumber to `104`, or else plugin will run in legacy mode which have many default values different from what is described in this documentation.
 
 - `0`: Legacy Mode.
 - `104`: Makes the plugin use the newest features.
@@ -103,7 +103,7 @@ Processing=Main | Another_Process1
 
 <p id="processing-processname" class="p-title"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
 
-Specify the process description, what this process is going to do.
+Specify the process description, how this process is going to capture audio.
 
 Parameters:
 
@@ -131,7 +131,7 @@ Parameters:
     <li><code>SideRight</code><span>(<code>SR</code>)</span></li>
   </ul>
 
-- `Handlers`**(Required)**: A list of handlers that this process must call in the specified order.<br/>
+- `Handlers`**(Required)**: A list of handlers that this process must call in the specified order.<i id="parent-handler-para"></i><br/>
 
   !>Names in this list must be unique, and **Should only** contain Characters, Numbers and/or Underscores.
 
@@ -153,10 +153,10 @@ Parameters:
 
   Very high sample rates aren't very helpful, because humans only hear sounds below 22 KHz, and 44.1 KHz sample rate is enough to describe any wave with frequencies below 22.05 KHz.
 
-  But high sample rates significantly increase CPU demands, so it makes sense to down-sample sound wave. That's why `TargetRate` option is used, it down-samples (or up-sample?) the real Sample Rate that is being captured from your audio device, to be processed faster..(I don't know what to write here (after ", to be"), kinda want to explain why it should be down-sampled.)<br/>
-  Typical modern PC is capable of running 192 KHz, which is totally redundant. Final rate is always >= than TargetRate.(?, final rate? and is this comparison needed?)
+  Also high sample rates significantly increase CPU demands, so it makes sense to down-sample sound wave. That's why `TargetRate` option is used.<br/>
+  Typical modern PC is capable of running 192 KHz, which is totally redundant. Final rate is always >= than TargetRate.
 
-  So if you rate is 48000 and TargetRate is 44100, then nothing will happen. If you sampling rate is less than TargetRate then nothing will happen.<br/>
+  So if your audio device sample rate is 48000 and TargetRate is 44100, then nothing will happen. If you sampling rate is less than TargetRate then nothing will happen.<br/>
   Setting `TargetRate` to 0 disables down-sampling completely.<br/>
   See [Performance]() discussion.
 
