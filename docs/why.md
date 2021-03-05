@@ -24,7 +24,8 @@ On top of that, among other features, AudioAnalyzer 1.1.5 brings automatic switc
 - AudioLevel calculates bound using squared values of the FFT, which leads to incorrect filtering and (as far as I can tell) incorrect final values (they are much spikier than they need to be).
 - AudioLevel's Band doesn't blur values.
 
-Here is a small example of a simple skin using AudioLevel vs using AudioAnalyzer:
+Here is a small example of a simple skin using AudioLevel vs using AudioAnalyzer:<br/>
+Tested on i3-2312m (2c 4t 2.10GHz) CPU with all skins disabled except this one.
 
 AudioLevel: `FreqMin 20` `FreqMax 110` `Bands 160` `FFTSize 8128` `FFTOverlap 4096`
 
