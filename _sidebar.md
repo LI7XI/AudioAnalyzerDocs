@@ -33,8 +33,8 @@
   - [Filters](/docs/discussions/filters.md)
   - [Transforms](/docs/discussions/transforms.md)
   - [FFT Cascades](/docs/discussions/fft-cascades.md)
-- [**Performance**]()
-- [**Tips and Code snippets**]()
+- [**Performance**](/docs/performance.md)
+- [**Tips and Code snippets**](/docs/tips-code.md)
 
 <hr class="docsify-link"/>
 <a class="docsify-link" href="https://docsify.js.org/" target="_blank" rel="noopener" title="Powered by Docsify">Powered by Docsify</a>
