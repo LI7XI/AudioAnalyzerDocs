@@ -2,13 +2,13 @@
 
 First of all, I spent a lot of time writing meaningful log error and warning messages. When you are writing a skin, have a Rainmeter log window open. If you have made some mistake with syntax, there is a good chance that log will have a message about it. It's very helpful.
 
-Plugin doesn't have a fixed set of possible ways to calculate some values. Instead, it acts somewhat like a DSP-utility and provides you a set of building blocks called '[sound handlers](/docs/handler-types/handler-types.md)' as we saw [earlier](/docs/skin-setup.md) that may be combined in any amount into any tree-like graph.
+Plugin doesn't have a fixed set of possible ways to calculate some values. Instead, it acts somewhat like a DSP-utility and provides you a set of building blocks called [Sound Handlers](/docs/handler-types/handler-types.md) as we saw [earlier](/docs/skin-setup.md) that may be combined in any amount into any tree-like graph.
 
-?> This plugin follows Parent Child paradigm.
+?>Similar to AudioLevel, this plugin follows Parent Child paradigm.
 
 ### First, the Parent
 
-The Parent measure is the data provider, it processes the audio and returns a value to be grabbed by Child measures. This value differs based on the [handler type]() choosen to process the audio.<br/>
+The Parent measure is the data provider, it processes the audio stream and returns a value to be grabbed by Child measures. This value differs based on the [handler type](/docs/handler-types/handler-types.md) chosen to process the audio.<br/>
 
 ### Second, the Child
 
@@ -29,7 +29,19 @@ Or
 Type=Child
 ```
 
+---
+
+This plugin supports math. In every place where number (either Float or Integer) is expected you can you math operations to calculate it.
+
+Supported operations are `+ - * / ^ `, parentheses are allowed, all numbers are calculated as a floating point. If you try to divide something by zero, result will be replaced with 0.<br/>
+For example, you can write `(5*10^2 + 10)*0.7` instead of `357`.
+
 ## Automatic reconfiguring
 
 If you want your skin to react to audio device properties, this plugin provides you with some information.
-For example, there is a plugin [section variable]() "device list output" that will give you a list of available audio devices, that you can parse with a Lua script, and then somehow show user a list of devices to choose from. Of there is a "current device, channels" section variable that will give you a list of available audio channels.
+
+For example, there is a section variable called `Device List Output` that will give you a list of available audio devices, that you can parse with a Lua script, and then somehow show user a list of devices to choose from. We will go through that in [Tips](/tips-code.md) discussion.
+
+Of course there is a `Current Device` or `Channels` section variable that will give you a list of available audio channels.
+
+See [Section Variables](/docs/section-vars.md) discussion.
