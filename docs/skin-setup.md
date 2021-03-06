@@ -67,7 +67,7 @@ Here we specify the [Process parameters](/docs/plugin-structure/parent?id=proces
 Processing-Main=Channels Auto | Handlers MainHandler | Filter Like-a
 ```
 
-A parameter may have more than one option, we can write multiple comma-separated options. Like so:
+A parameter may have more than one option, we can write multiple comma-separated options. For example:
 
 ```ini
 Processing-Main=Channels Left, Right | Handlers MainHandler1, MainHandler2 | Filter Like-a
