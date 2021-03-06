@@ -1,4 +1,4 @@
-## Fourier Transform
+## Fast Fourier Transform
 
 Fourier Transform of the signal. Gives you values of frequencies from 0 to SamplingRate/2 (=Nyquist frequency).
 
@@ -86,9 +86,11 @@ Handler-HandlerName=Type FFT | BinWidth 6 | OverlapBoost 10
 <p id="cascades-count" class="p-title"><b>CascadesCount</b><b>Default: 5</b></p>
 
 An integer in range from `1` to `20`.<br/>
-The plugin can increase resolution in lower frequencies by using cascades of FFT.<small id="i5">[5](#q)</small>
+The plugin can increase resolution in low frequencies by using cascades of FFT.<small id="i5">[5](#q)</small>
 
-See [FFT Cascades]() discussion.
+Think of this parameter as a `BinWidth` divider. If you have `BinWidth 8` and `CascadesCount 2` then the BinWidth in low frequencies would be `4`, but it will still be `10` in high frequencies.
+
+See [FFT Cascades](/docs/discussions/fft-cascades.md) discussion.
 
 _Examples:_
 
