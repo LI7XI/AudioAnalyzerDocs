@@ -38,7 +38,9 @@ Lower sample rate is better in that regard. Period. The only requirement is to h
 
 Humans can only hear frequencies below 20KHz, which means sample rate of 44100 Hz is more than enough for your FFT needs. That's why this plugin have a default TargetRate option at 44100.
 
-When developing this plugin, I proposed a solution to FFT time-frequency issue: cascaded FFT.<br/>
+## The Solution
+
+This plugin uses the following solution to FFT time-frequency issue: Cascaded FFT.<br/>
 We can't have both high time and frequency resolution in low frequencies but we can have it in high frequencies. So why not take small FFT for high frequencies and big FFT for low frequencies, and then combine them?
 
 It's not ideal, but it's better than nothing. Moreover, internal optimizations of sampling rate allow for quite good complexity too.
