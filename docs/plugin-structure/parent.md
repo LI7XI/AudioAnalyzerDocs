@@ -9,13 +9,12 @@ Reference used to illustrate the options are linked at the [bottom](#Reference) 
 
 - [MagicNumber](#magic-number).
 - [Source](#source).
-- [Processing](#processing).
-- [Processing-ProcessName](#processing-processname).
+- [ProcessingUnits](#processing-units).
+- [Unit-UnitName](#unit-unitname).
 - [Handler-HandlerName](#handler-handlername).
-- [UnusedOptionsWarning](#unused-option-warning).
+- [LogUnusedOptions](#log-unused-options).
 - [Threading](#threading).
-- [BlockCaptureLoudnessChange](#block-capture-loudness-change).
-- [Callback-OnUpdate](#callback-onupdate).
+- [LockCaptureVolumeOnMax](#lock-capture-volume-on-max).
 - [Callback-OnDeviceChange](#callback-ondevicechange).
 - [OnDeviceDisconnected](#ondevice-disconnected).
 - [OnDeviceListChange](#ondevice-listchange).
@@ -81,27 +80,27 @@ _Todo: Testing examples validity._
 
 ---
 
-<p id="processing" class="p-title"><b>Processing</b><b>Required</b></p>
+<p id="processing-units" class="p-title"><b>ProcessingUnits</b><b>Required</b></p>
 
-Specify one or a list of processes separated by pipe symbol.
+Specify one or a list of processing units separated by a comma.
 
 !>Names in this list must be unique, and **Should only** contain Characters, Numbers and/or Underscores.
 
 _Examples:_
 
 ```ini
-Processing=Main
+ProcessingUnits=Main
 ```
 
 Or
 
 ```ini
-Processing=Main | Another_Process1
+ProcessingUnits=Main, Another_Process1
 ```
 
 ---
 
-<p id="processing-processname" class="p-title"><b>Processing-<u>ProcessName</u></b><b>Required</b></p>
+<p id="unit-unitname" class="p-title"><b>Unit-<u>UnitName</u></b><b>Required</b></p>
 
 Specify the process description, how this process is going to capture audio.
 
@@ -111,7 +110,7 @@ Parameters:
 
   ?>If you specified a [Channel](#channel-list) that this process can't find in the audio device, the handlers will return 0 as a value, and handlers that draw images will draw an empty image for one time, then stop updating until this channel is available (if the channel became available again then the plugin will connect to it automatically. No skin refresh required).<br/>
   Also No error log messages will be generated for this.<br/><br/>
-  But if you specified channels that aren't present in [Processing channel list](#channel-list) (e.g. `Channel SomeUnsupportedChannel`), then there will be a log message.
+  But if you specified channels that aren't present in [Unit channels list](#channel-list) (e.g. `Channel SomeUnsupportedChannel`), then there will be a log message.
 
   Different Audio devices have different Audio Channels.
   Most common are just stereo devices that have `Left` and `Right` channels, but there are also audio systems with more channels.
@@ -169,14 +168,14 @@ Parameters:
 _Examples:_
 
 ```ini
-Processing-Main=Channels Auto | Handlers Mainfft, Main_Resampler1 | Filter like-a
+Unit-Main=Channels Auto | Handlers Mainfft, Main_Resampler1 | Filter like-a
 ```
 
 Or
 
 ```ini
-Processing-Main=channels FL, Right | Handlers PeakRaw, PeakFiltered, Peak, peakPercent
-Processing-AnotherProcess=channels Auto | Handlers Loudness, LoudnessPercent | TargeRate 44100 | filter like-a
+Unit-Main=channels FL, Right | Handlers PeakRaw, PeakFiltered, Peak, peakPercent
+Unit-AnotherProcess=channels Auto | Handlers Loudness, LoudnessPercent | TargeRate 44100 | filter like-a
 ```
 
 ---
@@ -213,11 +212,11 @@ Handler-lodnessPercent=Type ValueTransformer | Source Loudness | Transform map[f
 
 ---
 
-<p id="unused-option-warning" class="p-title"><b>UnusedOptionsWarning</b><b>Default: true</b></p>
+<p id="log-unused-options" class="p-title"><b>LogUnusedOptions</b><b>Default: true</b></p>
 
 A boolean value, specify whether the plugin should log error messages in Rainmeter log window.
 
-- `true`(Recommended): The plugin will log a warning message if some of the Parameters in `Processing` option or handlers aren't recognized.
+- `true`(Recommended): The plugin will log a warning message if some of the Parameters in `Unit` option or handlers aren't recognized.
 
   ?> If you see such messages in your log, then maybe you have made a mistake in option name, or tried to use option that doesn't exist.
 
@@ -228,26 +227,26 @@ A boolean value, specify whether the plugin should log error messages in Rainmet
 _Examples:_
 
 ```ini
-UnusedOptionsWarning=true
+LogUnusedOptions=true
 ```
 
 Or
 
 ```ini
-UnusedOptionsWarning=false
+LogUnusedOptions=false
 ```
 
-?>`UnusedOptionsWarning` only affects options that the plugin didn't read.<br/>
-Other log messages are not suppressed with `UnusedOptionsWarning`.
+?>`LogUnusedOptions` only affects options that the plugin didn't read.<br/>
+Other log messages are not suppressed with `LogUnusedOptions`.
 
 Which means only if you did the following:
 
 ```ini
-Processing-ProcessName=channels auto | handlers wave | speed fast
+Unit-UnitName=channels auto | handlers wave | speed fast
 ```
 
-Then there will be a log message that says `Processing proc2: unused options: [speed]`.<br/>
-And `UnusedOptionsWarning=false` will make such log messages not appear.
+Then there will be a log message that says `Unit UnitName: unused options: [speed]`.<br/>
+And `LogUnusedOptions=false` will make such log messages not appear.
 
 ---
 
@@ -307,7 +306,7 @@ Threading=Policy UiThread | UpdateRate 90
 
 ---
 
-<p id="block-capture-loudness-change" class="p-title"><b>BlockCaptureLoudnessChange</b><b>Default: Never</b></p>
+<p id="lock-capture-volume-on-max" class="p-title"><b>LockCaptureVolumeOnMax</b><b>Default: Never</b></p>
 
 - `ForApp`: Sets application volume level to maximum and prevents its change.
 - `Never`: Application volume can be set to any level.
@@ -315,19 +314,7 @@ Threading=Policy UiThread | UpdateRate 90
 _Examples:_
 
 ```ini
-BlockCaptureLoudnessChange=ForApp
-```
-
----
-
-<p id="callback-onupdate" class="p-title"><b>Callback-OnUpdate</b><b>Default: None</b></p>
-
-Specify a bang to be called every time values are updated.
-
-_Examples:_
-
-```ini
-Callback-OnUpdate=[!Log "Logs Spam!"]
+LockCaptureVolumeOnMax=ForApp
 ```
 
 ---
