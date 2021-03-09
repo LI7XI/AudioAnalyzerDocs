@@ -42,7 +42,7 @@ Width of one FFT result bin.<small id="i1">[1](#q)</small> Also corresponds to t
 The less this option is, the more detailed result you get, but the less frequently values change.<br/>
 Recommended values start from `60` to `5`.
 
-The formula for converting `BinWidth` to AudioLevel `FFTSize`: `FFTSize = SampleRate / BinWidth`.
+The formula for converting `FFTSize` to AudioLevel `BinWidth`: `BinWidth = SampleRate / FFTSize`.
 
 So if you have an AudioLevel skin with FFTSize=4096, then, assuming sampling rate is 48000, corresponding BinWidth is 11.71875
 Though, if sample rate is 192000, then same FFTSize=4096 corresponds to BinWidth 46.875, which is completely different story in terms of details of fft result.<br/>
@@ -104,10 +104,10 @@ Handler-HandlerName=Type FFT | CascadesCount 1
 
 Window functions make FFT results better. They make result look cleaner. But different functions will give slightly different results.
 
-The syntax: Window function is defined as a type string optionally followed by arguments in brackets.<br/>
-Like this: `SomeType[10]`.
+The syntax: Window function is defined as a type string optionally followed by arguments in parentheses.<br/>
+Like this: `SomeType(10)`.
 
-!>Note that the brackets are connected to the type (`SomeType[10]`) and not separated (`SomeType [10]`).
+!>Note that the parentheses are connected to the type (`SomeType(10)`) and not separated (`SomeType (10)`).
 
 Possible types:
 
@@ -131,7 +131,7 @@ Handler-HandlerName=Type FFT | WindowFunction Hann
 Or
 
 ```ini
-Handler-HandlerName=Type FFT | WindowFunction kaiser[3]
+Handler-HandlerName=Type FFT | WindowFunction kaiser(3)
 ```
 
 ---
