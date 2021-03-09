@@ -11,7 +11,7 @@ Processing=Main
 Processing-Main=Channels Auto | Handlers MainFFT, Main_Resampler1 | Filter like-a
 ```
 
-This Process is going to provide a chunk of audio data, separated into channels (such as left and right for a stereo audio stream).
+This Process is going to provide a chunk of audio data, separated into channels (such as `Left` and `Right` for a stereo audio stream).
 
 Handlers will take this data, and process it to extract a specific signal from it. Using one of the [available handler](#available-handlers) types.
 
