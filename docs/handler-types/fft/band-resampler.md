@@ -10,11 +10,8 @@ Each cascade of FFT result is resampled to fit into specified list of bands.
 - [Type](#type).
 - [Source](#source).
 - [Bands](#bands).
-- [MinCascade](#min-cascade).
-- [MaxCascade](#max-cascade).
 - [CubicInterpolation](#cubic-interpolation).
 - [Handler Info](#handler-info).
-- [Documentation Questions](#q).
 
 ---
 
@@ -48,60 +45,26 @@ Handler-HandlerName=Type Spectrogram | Source FFTHandler
 
 Description on what bounds bands will have.
 
-This parameter takes few arguments: `<Type>`, `<BandsCount>`, `<FreqMin>`, `<FreqMax>`
+This parameter takes few arguments: `<Type>(Count <Value>, FreqMin <Value>, FreqMax <Value>)`
 
 Possible types:
 
 - `Log`: Will generate logarithmically increasing values.
-- `Linear`(Recommended<small id="i1">[1](#q)</small>): Will generate evenly distributed values.
-- `Custom`: You can specify anything you want.<small id="i2">[2](#q)</small>
+- `Linear`: Will generate evenly distributed values.
+- `Custom`: You can specify anything you want. _WIP_
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type BandResampler | Source FFTHandler | Bands Linear 5 20 110
+Handler-HandlerName=Type BandResampler | Source FFTHandler | Bands Linear(Count 5, FreqMin 5, FreqMax 110)
+; Or
+Handler-HandlerName=Type BandResampler | Source FFTHandler | Bands Log(Count 5, FreqMin 5, FreqMax 110)
 ```
 
 Or
 
 ```ini
-Handler-HandlerName=Type BandResampler | Source FFTHandler | Bands Custom (?)
-```
-
----
-
-<p id="min-cascade" class="p-title"><b>MinCascade</b><b>Default: 0</b></p>
-
-An integer in range from `0` to [FFT](/docs/handler-types/fft/fft?id=cascades-count) `CascadesCount`.<small id="i3">[3](#q)</small><br/>
-Min cascade that should be used in value calculating.
-
-Values other than 0 are meant mainly for testing purposes, because you can increase FFT `BinWidth` and get the same result but better performance.<small id="i4">[4](#q)</small><br/>
-
-Set to 0 to use all cascades. Set to value in range from `1` to FFT `CascadesCount` to use cascades starting from cascadeMin.
-
-_Examples:_
-
-```ini
-Handler-HandlerName=Type BandResampler | MinCascade 0
-```
-
----
-
-<p id="max-cascade" class="p-title"><b>MaxCascade</b><b>Default: 0</b></p>
-
-An integer in range from `MinCascade` to [FFT](/docs/handler-types/fft/fft?id=cascades-count) `CascadesCount`.<small id="i3">[3](#q)</small><br/>
-Max cascade that should be used in value calculating.<small id="i5">[5](#q)</small>
-
-Values other than 0 are meant mainly for testing purposes, because you can decrease FFT `CascadesCount` and get the same result but better performance.
-
-Set to value in range from cascadeMin to FFT `CascadesCount` to use cascades from cascadeMin to cascadeMax.<small id="i6">[6](#q)</small>
-
-If MaxCascade is less than cascadeMin then all cascades up from cascadeMin are used.
-
-_Examples:_
-
-```ini
-Handler-HandlerName=Type BandResampler | MaxCascade 0
+Handler-HandlerName=Type BandResampler | Source FFTHandler | Bands Custom ...
 ```
 
 ---
@@ -132,26 +95,17 @@ CubicInterpolation `false`
 
 ### Handler Info
 
-- `Bands Count`: Count of bands as specified by [freqList](#bands).
-- `Lower Bound <Index>`: Lower frequency bound of Nth band.
-- `Upper Bound <Index>`: Upper frequency bound of Nth band.
-- `Central Frequency <Index>`: Center frequency of Nth band.
+- `BandsCount`: Count of bands as specified in [Bands](#bands).
+- `LowerBound <Index>`: Lower frequency bound of Nth band. the `Index` here is an integer in range from `0` to `BandsCount`.
+
+  ?>Setting the Index to `<bandsCount>` (e.g. 7, 20, ...) will actually give you upper bound of the last band.
+
+- `CentralFreq <Index>`: Center frequency of Nth band. the `Index` here is an integer in range from `0` to `BandsCount - 1`.
 
 _Examples:_
 
 ```ini
-[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | HandlerName BandResamplerHandler | Bands Count)]]
+[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | Handler BandResamplerHandler | Data BandsCount)]]
 ; Or
-[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | HandlerName BandResamplerHandler | Upper Bound 5)]]
+[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | Handler BandResamplerHandler | Data LowerBound 5)]]
 ```
-
-## Documentation Questions <i id="q">
-
-[Q1](#i1): Because this is what users will expect, it took me a long time to figure it out when i copied your examples.<br/>
-[Q2](#i2): Any example?<br/>
-[Q3](#i3): I don't understand this relation and i don't know even how this parameter works, same for MaxCascade, maybe because i still didn't read the discussion, but no worries i'll come back to it later.<br/>
-[Q4](#i4): This sentence was the main reason for why i didn't use them, also, when i tried to use them, the visualization looked really weird in some cases, it was better to just make the BinWidth smaller. Also what testing purposes?<br/>
-[Q5](#i5): ?<br/>
-[Q6](#i6): Is this a typo or you really mean cascadeMin and Max?<br/>
-
-</i>
