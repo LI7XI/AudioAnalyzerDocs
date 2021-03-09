@@ -20,7 +20,7 @@ This is similar to how EBU R 128 describes loudness metering.<small>[2](#q)</sma
 - [UpdatesPerSecond](#updates-per-second).
 - [GatingLimit](#gating-limit).
 - [TimeWindow](#time-window).
-- [GatingDb](#gating-db).
+- [GatingDB](#gating-db).
 - [IgnoreGatingForSilence](#ignore-gating-for-silence).
 - [Usage Examples](#usage-examples).
 - [Reference](#reference).
@@ -95,15 +95,15 @@ Handler-HandlerName=Type Loudness | Transform db | TimeWindow 1000
 
 ---
 
-<p id="gating-db" class="p-title"><b>GatingDb</b><b>Default: -20</b></p>
+<p id="gating-db" class="p-title"><b>GatingDB</b><b>Default: -20</b></p>
 
 A Float number in range from `-70` to `0`.<br>
-Values that are in decibels less than GatingDb than an average of a block are considered silent and discarded.
+Values that are in decibels less than GatingDB than an average of a block are considered silent and discarded.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Loudness | Transform db | GatingDb -20
+Handler-HandlerName=Type Loudness | Transform dB | GatingDB -20
 ```
 
 ---
@@ -129,7 +129,7 @@ Handler-HandlerName=Type Loudness | Transform db
 Or
 
 ```ini
-Handler-HandlerName=Type Loudness | Transform db | UpdatesPerSecond 20 | GatingLimit 0.5 | TimeWindow 1000 | GatingDb -20 | IgnoreGatingForSilence True
+Handler-HandlerName=Type Loudness | Transform db | UpdatesPerSecond 20 | GatingLimit 0.5 | TimeWindow 1000 | GatingDB -20 | IgnoreGatingForSilence True
 ```
 
 ## Documentation Questions <i id="q">

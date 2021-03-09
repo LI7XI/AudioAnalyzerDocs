@@ -44,5 +44,5 @@ See [Transforms]() discussion for full list of possible values.
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type ValueTransformer | Source SourceHandler | Transform Db Map[-70, 0] Clamp
+Handler-HandlerName=Type ValueTransformer | Source SourceHandler | Transform dB Map[-70, 0] Clamp
 ```
