@@ -38,8 +38,9 @@ Feedback and feature suggestions are also welcomed.
   - [Filters](/docs/discussions/filters.md)
   - [Transforms](/docs/discussions/transforms.md)
   - [FFT Cascades](/docs/discussions/fft-cascades.md)
-- [Performance]()
-- [Tips and Code snippets]()
+- [Performance](/docs/performance.md)
+- [Tips and Code snippets](/docs/tips-code.md)
+- [Usage Examples](/docs/usage-examples/usage-examples.md)
 
 ---
 

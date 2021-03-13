@@ -35,6 +35,17 @@
   - [FFT Cascades](/docs/discussions/fft-cascades.md)
 - [**Performance**](/docs/performance.md)
 - [**Tips and Code snippets**](/docs/tips-code.md)
+- [**Usage Examples**](/docs/usage-examples/usage-examples.md)
+  - [Combine Types](/docs/usage-examples/combine-types/combine-types.md)
+    - [Spectrogram Waveform](/docs/usage-examples/combine-types/spectrogram-waveform.md)
+    - [FFT Spectrogram Waveform](/docs/usage-examples/combine-types/fft-spectrogram-waveform.md)
+  - [FFT Spectrum](/docs/usage-examples/fft-spectrum.md)
+  - [RMS](/docs/usage-examples/rms.md)
+  - [RMS Curves](/docs/usage-examples/rms-curves.md)
+  - [Peak](/docs/usage-examples/peak.md)
+  - [Loudness](/docs/usage-examples/loudness.md)
+  - [WaveForm](/docs/usage-examples/waveform.md)
+  - [Spectrogram](/docs/usage-examples/spectrogram.md)
 
 <hr class="docsify-link"/>
 <a class="docsify-link" href="https://docsify.js.org/" target="_blank" rel="noopener" title="Powered by Docsify">Powered by Docsify</a>
