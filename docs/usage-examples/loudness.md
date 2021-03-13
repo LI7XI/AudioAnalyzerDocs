@@ -54,7 +54,7 @@ Better yet, you can even do everything in one handler, for example:
 
 ```ini
 Unit-Main=Channels Auto | Handlers Loudness | Filter like-a
-Handler-Loudness=Type Loudness | Transform dB, Map(From -60 : 0), Clamp | UpdatesPerSecond [#Fps]
+Handler-Loudness=Type Loudness | Transform dB, Map(From -60 : 0), Clamp | TimeWindow 500
 ```
 
 But we wanna be extra fancy, so let's keep using 2 handlers ;)
@@ -83,7 +83,7 @@ HandlerName=LoudnessPerecnt
 Now your skin is ready to use.<br/>
 Just make any meter you like (`Bar`, `Line`, `Shape`, `String`, etc..) and use these measures.
 
-![Loudness](/examples/loudness.PNG "Loudness meter")
+![Loudness](/examples/loudness.png "Loudness meter")
 
 ## Loudness levels for different channels
 
@@ -94,6 +94,7 @@ The setup won't change that much, there are few things to change:
 
 - Channels list in the processing unit.
 - Channel option in child measures.
+- HandlerName option in child measures.
 
 Simply change `Channels Auto` in `Main` unit description and set it to `Channels Auto`, `FR, Right`, or any combination of channels you like.<br/>
 In our case we want the `Left` and `Right` channels. Also we can do everything in one handler.
@@ -114,7 +115,7 @@ Channel=FL
 Channel=R
 ```
 
-!>There are few things to note when dealing with channels.
+!>There are few things to note when dealing with channels.<i id="channels"></i>
 
 First, `Channel` option in child measure should only have one channel:
 
@@ -150,6 +151,12 @@ Unit-Main=Channels FL, R | Handlers Loudness | Filter like-a
 Channel=L
 ; Or
 Channel=Right
+```
+
+Lets change the `HandlerName` option and set it to `Loudness` since we removed the second handler and now both of child measures will get data from the same handler.
+
+```ini
+HandlerName=Loudness
 ```
 
 Now your multi-channel setup is ready!
