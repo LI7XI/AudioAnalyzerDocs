@@ -1,0 +1,11 @@
+[Variables]
+LevelColor1=255,0,74
+LevelColor2=237,84,1
+LevelColor3=219,162,2
+LevelColor4=255,248,90
+LevelColor5=194,255,67
+LevelColor6=40,255,110
+LevelColor7=0,255,113
+LevelColor8=20,215,190
+LevelColor9=47,222,255
+LevelColor10=46,200,249
