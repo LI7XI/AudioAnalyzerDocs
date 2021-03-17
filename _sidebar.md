@@ -41,11 +41,11 @@
     - [FFT Spectrogram Waveform](/docs/usage-examples/combine-types/fft-spectrogram-waveform.md)
   - [FFT Spectrum](/docs/usage-examples/fft-spectrum.md)
   - [RMS](/docs/usage-examples/rms.md)
-  - [RMS Curves](/docs/usage-examples/rms-curves.md)
   - [Peak](/docs/usage-examples/peak.md)
   - [Loudness](/docs/usage-examples/loudness.md)
   - [WaveForm](/docs/usage-examples/waveform.md)
   - [Spectrogram](/docs/usage-examples/spectrogram.md)
+  - [Curve Tester](/docs/usage-examples/curve-tester.md)
 
 <hr class="docsify-link"/>
 <a class="docsify-link" href="https://docsify.js.org/" target="_blank" rel="noopener" title="Powered by Docsify">Powered by Docsify</a>
