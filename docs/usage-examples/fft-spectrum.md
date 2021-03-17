@@ -306,3 +306,5 @@ Disabled=1
 ```
 
 <video src="docs\usage-examples\examples\fft-spectrum.mp4" autoplay loop muted title="FFT Spectrum"></video>
+
+?>In this example we only scratched the surface of what this plugin provides, so feel free to experiment with all the options, because changing one parameter may a give different results.
