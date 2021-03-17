@@ -1,6 +1,6 @@
 ## Spectrogram Waveform Example
 
-In this example, we have an objective: Syncing Spectrogram and waveform handlers together.
+In this example, we have an objective: Syncing Spectrogram and Waveform handlers together.
 
 First lets setup the skin.
 
