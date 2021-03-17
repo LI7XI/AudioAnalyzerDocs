@@ -1,8 +1,8 @@
 # AudioAnalyzer
 
-<h4>High Performance Audio analyzing plugin for Rainmeter.</h4>
+<h4>Feature-Rich High Performance Audio analyzing plugin for Rainmeter.</h4>
 
-You can get latest version at [Github](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/releases/tag/AudioAnalyzer-v1.1.5).<br/>
+You can get latest version at [Github](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/releases/latest).<br/>
 If you found any bug you can report it [here](https://github.com/d-uzlov/Rainmeter-Plugins-by-rxtd/issues).
 Feedback and feature suggestions are also welcomed.
 
