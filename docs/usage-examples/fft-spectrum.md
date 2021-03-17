@@ -58,7 +58,8 @@ Unit-Main=Channels Auto | Handlers MainFFT, MainBR(MainFFT), MainBCT(MainBR), Ma
     If you want to have a high resolution in low frequencies, you have to have a small `BinWidth`. But that will make low frequencies update even slower.
 
     Why Is that?<br/>
-    The delay problem lies in not having enough data to analyze. Unlike high frequencies, low frequencies need more data to have a higher resolution, which makes it update slower. You can read more about this [here](https://electronics.stackexchange.com/questions/239730/performing-fft-at-low-frequencies-but-high-resolution)
+    The delay problem lies in not having enough data to analyze. Unlike high frequencies, low frequencies need more data to have a higher resolution, which makes it update slower.<br/>
+    You can read more about this [here](https://electronics.stackexchange.com/questions/239730/performing-fft-at-low-frequencies-but-high-resolution)
 
     Also while you can have a small `BinWidth` to get high resolution, this high resolution is not limited to low frequencies only, but for the entire 22kHz frequency range. So we will be wasting performance on frequencies that are already detailed enough.
 
