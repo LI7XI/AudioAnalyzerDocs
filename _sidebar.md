@@ -46,6 +46,7 @@
   - [WaveForm](/docs/usage-examples/waveform.md)
   - [Spectrogram](/docs/usage-examples/spectrogram.md)
   - [Curve Tester](/docs/usage-examples/curve-tester.md)
+  - [Settings Skin](/docs/usage-examples/settings-skin.md)
 
 <hr class="docsify-link"/>
 <a class="docsify-link" href="https://docsify.js.org/" target="_blank" rel="noopener" title="Powered by Docsify">Powered by Docsify</a>
