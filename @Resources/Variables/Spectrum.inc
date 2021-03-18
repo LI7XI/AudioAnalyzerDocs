@@ -12,21 +12,22 @@ Color=210,210,230,230
 ; ------------
 FreqMin=20
 FreqMax=2000
-Bands=120
+Bands=60
 ; ------------
-Attack=100
-Decay=100
+Sensitivity=51
+Attack=30
+Decay=80
 ; ------------
 ; AudioLevel Specfic
 ; ------------
 FFTSize=4096*4
-Sensitivity=41
+FFTOverlap=((4096*4)/2)
 ; ------------
 ; AudioAnalyzer Specfic
 ; ------------
 BinWidth=10
 OverlapBoost=10
-CascadesCount=4
+CascadesCount=3
 ; ------------
 BlurRadius=1
 RadiusAdaptation=1
