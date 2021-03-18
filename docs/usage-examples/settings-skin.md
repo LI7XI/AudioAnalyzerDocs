@@ -203,4 +203,4 @@ end
 
 And with that, we finished the settings skin!
 
-<img src="docs\usage-examples\examples\settings-skin.png" title="Settings Skin" />
+<img src="docs\usage-examples\examples\settings-skin.PNG" title="Settings Skin" />

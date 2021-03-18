@@ -71,4 +71,4 @@ HandlerName=RMS
 Now your skin is ready to use.<br/>
 Just make any meter you like (`Bar`, `Line`, `Shape`, `String`, etc..) and use these measures.
 
-<img src="docs\usage-examples\examples\rms.png" title="RMS meter" />
+<img src="docs\usage-examples\examples\rms.PNG" title="RMS meter" />

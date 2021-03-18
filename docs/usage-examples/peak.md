@@ -71,4 +71,4 @@ HandlerName=Peak
 Now your skin is ready to use.<br/>
 Just make any meter you like (`Bar`, `Line`, `Shape`, `String`, etc..) and use these measures.
 
-<img src="docs\usage-examples\examples\peak.png" title="Peak meter" />
+<img src="docs\usage-examples\examples\peak.PNG" title="Peak meter" />
