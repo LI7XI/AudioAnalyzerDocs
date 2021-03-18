@@ -83,7 +83,7 @@ HandlerName=LoudnessPerecnt
 Now your skin is ready to use.<br/>
 Just make any meter you like (`Bar`, `Line`, `Shape`, `String`, etc..) and use these measures.
 
-<img src="docs\usage-examples\examples\loudness.PNG" title="Loudness meter" />
+<img src="docs\usage-examples\examples\loudness.png" title="Loudness meter" />
 
 ## Loudness levels for different channels
 
@@ -161,6 +161,6 @@ HandlerName=Loudness
 
 Now your multi-channel setup is ready!
 
-<img src="docs\usage-examples\examples\loudness-lr.PNG" title="LR Loudness meter" />
+<img src="docs\usage-examples\examples\loudness-lr.png" title="LR Loudness meter" />
 
 You can use the same approach for `5.1` and `7.1` audio channels.

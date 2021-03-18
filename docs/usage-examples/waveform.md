@@ -88,7 +88,7 @@ Meter=Image
 MeasureName=MeasureWaveform
 ```
 
-<img src="docs\usage-examples\examples\waveform.PNG" title="Waveform visualizer" />
+<img src="docs\usage-examples\examples\waveform.png" title="Waveform visualizer" />
 
 ?>Since it's an image meter, all fancy image manipulation option that rainmeter provides are available (`ImageRotate`, `ImageFlip`, `ImageCrop`, `ColorMatrix`, etc..)
 

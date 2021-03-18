@@ -126,7 +126,7 @@ Meter=Image
 MeasureName=MeasureSpectrogram
 ```
 
-<img src="docs\usage-examples\examples\spectrogram.PNG" title="Spectrogram visualizer" />
+<img src="docs\usage-examples\examples\spectrogram.png" title="Spectrogram visualizer" />
 
 ?>Since it's an image meter, all fancy image manipulation option that rainmeter provides are available (`ImageRotate`, `ImageFlip`, `ImageCrop`, `ColorMatrix`, etc..)
 
