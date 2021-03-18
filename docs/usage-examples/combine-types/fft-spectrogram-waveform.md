@@ -120,7 +120,7 @@ ImageRotate=90
 
 That's it! :tada:
 
-<video src="docs\usage-examples\examples\fft-spectrogram-waveform.mp4" autoplay loop muted title="FFT Spectrogram Waveform"></video>
+<video src="docs\usage-examples\resources\fft-spectrogram-waveform.mp4" autoplay loop muted title="FFT Spectrogram Waveform"></video>
 
 Btw, the bands count is 400, are you realizing that? also do you think this plugin is struggling with that amount? **absolutely not.**
 

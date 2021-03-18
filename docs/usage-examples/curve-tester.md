@@ -124,7 +124,7 @@ LineCount=4
 
 And here is the results:
 
-<img src="docs\usage-examples\examples\curve-tester.png" title="Curve tester" />
+<img src="docs\usage-examples\resources\curve-tester.png" title="Curve tester" />
 
 Orange line (`RMS` handler) shows raw RMS value.
 

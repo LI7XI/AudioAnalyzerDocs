@@ -92,10 +92,10 @@ Y=200
 
 That's all! Look how they are perfectly synced.
 
-<video src="docs\usage-examples\examples\spectrogram-waveform.mp4" autoplay loop muted title="Spectrogram Waveform"></video>
+<video src="docs\usage-examples\resources\spectrogram-waveform.mp4" autoplay loop muted title="Spectrogram Waveform"></video>
 
 But if we made few changes in the parameter, lets say we changed the resolution of the Waveform, we will get a different results.
 
 `Resolution 20`
 
-<img src="docs\usage-examples\examples\spectrogram-waveform-res20.png" title="Resolution 20" />
+<img src="docs\usage-examples\resources\spectrogram-waveform-res20.png" title="Resolution 20" />
