@@ -9,6 +9,8 @@
     - [Waveform](/docs/examples/waveform.md)
     - [Spectrogram](/docs/examples/spectrogram.md)
     - [Spectrogram with Waveform](/docs/examples/spectrogram-with-waveform.md)
+    - [FFT Spectrogram Waveform](/docs/examples/fft-spectrogram-waveform.md)
+    - [RMS](/docs/examples/rms.md)
     - [Peak](/docs/examples/peak.md)
     - [Loudness meter](/docs/examples/loudness.md)
   - [How to setup a skin](/docs/skin-setup.md)

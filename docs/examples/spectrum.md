@@ -1,6 +1,6 @@
 ## Spectrum
 
-<img src="resources\spectrum.PNG" title="Spectrum" />
+<div><video src="\resources\fft-spectrum.mp4" autoplay loop muted title="Spectrum"></div>
 
 A sound spectrum displays the different frequencies present in a sound.
 

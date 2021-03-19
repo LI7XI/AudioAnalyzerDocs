@@ -1,5 +1,5 @@
 ## Spectrogram with Waveform
 
-<img src="resources\spectrogram-with-waveform.PNG" title="Spectrogram" />
+<div><video src="\resources\spectrogram-waveform.mp4" autoplay loop muted title="Spectrogram with Waveform"></video></div>
 
-This skin shows you that you can draw synchronized waveform and spectrogram. If their appropriate options matches then they will update synchronously.
+This skin shows you that you can draw synchronized waveform and spectrogram. When using the appropriate settings, they will update synchronously.

@@ -1,9 +1,16 @@
 ## Spectrogram
 
-<img src="resources\spectrogram.PNG" title="Spectrogram" />
+<div><video src="\resources\spectrogram.mp4" autoplay loop muted title="spectrogram"></video></div>
 
-This plugin can draw fancy spectrograms (don't confuse them with spectrum meters).
+This plugin can draw fancy spectrograms (don't get confused with [Spectrum](/docs/examples/spectrum.md) meters).<br/>
 Spectrogram is an image of how spectrum of the sound has changes over a period of time.
-It generates an image file on you drive 60 times per second (well, it is optimized not to write when there are no changes), so if you care about your SSD life you probably want to create some small RAM-drive and put it there using 'folder' property of the spectrogram sound handler.
 
-"Bugs & Feature Suggestions" forum is always open for you complaints about how Rainmeter plugins can't transfer pictures directly to Rainmeter, without writing them on drive first. If you are a C++ developer and you know some hacks about directly modifying skins to show pictures, your pull requests are also welcome.
+On each skin `Update` cycle, the plugin will generate an image and write it to local drive (it is optimized not to write when there are no changes), so that rainmeter can read it from disk to display it.
+
+You can see where is the problem here, it's your hard drive lifespan. The issue is that rainmeter doesn't support in-memory image-transfer.
+
+For example instead of reading/writing to disk, rainmeter could read and display the image directly from RAM, that would be way faster and significantly better than writing then reading from disk, because doing that for lets say 30 times per second will decrease your drive lifespan by a large margin.
+
+A temporary solution would be to create a small RAM-drive (in case you have an SSD), and then making the plugin use that location to output the image using [Folder](/docs/handler-types/spectrogram?id=folder) parameter. It's not ideal, but this is what we have until rainmeter api start supporting in-memory image-transfer.
+
+If you are a C++ developer and you are familiar with rainmeter API maybe you can look into this issue and somehow find a fix for it.
