@@ -1,8 +1,8 @@
 ## Introduction
 
-As we all know, rainmeter has AudioLevel plugin, which provides you a basic functionality on extracting useful data from audio stream. However, the word "basic" is very fitting term here.
+As we all know, rainmeter has AudioLevel plugin, which provides basic functionalities on extracting useful data from audio stream. However, the word "basic" is a very fitting term here.
 
-Rainmeter has Fourier Transform. But it has several issues both from the mathematical nature of FFT algorithm and incorrect implementation.
+AudioLevel has Fourier Transform. But it has several issues both from the mathematical nature of FFT algorithm and incorrect implementation.
 
 Also it has `RMS` and `Peak` calculations. Which will show you if there was any sound, but they won't really give you an insight on real loudness level.
 
