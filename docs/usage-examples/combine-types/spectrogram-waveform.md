@@ -98,4 +98,4 @@ But if we made few changes in the parameter, lets say we changed the resolution 
 
 `Resolution 20`
 
-<img src="docs\usage-examples\resources\spectrogram-waveform-res20.png" title="Resolution 20" />
+<img src="docs\usage-examples\resources\spectrogram-waveform-res-20.png" title="Resolution 20" />
