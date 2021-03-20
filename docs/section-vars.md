@@ -14,16 +14,11 @@ We will show you examples on how to use them, as well as which arguments are ava
 
 ## Usage
 
-To illustrate this, we gonna make a simple measure:
+To illustrate this, we will use `OnRefreshAction` option in Rainmeter section:
 
 ```ini
-[InfosLogger]
-Measure=Calc
-Formula=0
-UpdateDivider=-1
-; UpdateDivider=-1 will make this measure update only when the skin is loaded or refreshed
-DynamicVariables=1
-OnUpdateAction=[!Delay 1500][!Log "[&MeasureAudio:Resolve(Current Device, Name)]"]
+[Rainmeter]
+OnRefreshAction=[!Delay 1500][!Log "[&MeasureAudio:Resolve(Current Device, Name)]"]
 ; Sometimes Delay is needed, infos may take a bit of time to be retrieved
 ```
 
@@ -37,20 +32,22 @@ The Resolve Function takes 1 or 2 arguments:
 
 ## Available Arguments
 
-?> Notice, the arguments are documented in a bullet list style:
+?>Notice that the arguments are documented in a bullet list style:
 
 - `ArgumentA`: _Description._
   - `ArgumentB`: _Description._
 
 You will use these arguments like like so: `[&ParentMeasure:Resolve(ArgumentA, ArgumentB)]`
 
+!>Note that `Resolve` function is case-sensitive, which means if you wrote other than `Resolve` or `resolve`, it will not work.
+
 ---
 
 - `Current Device`: Information about the current audio device.
 
-  - `Name`: Provides the Name of current device. For example: "Realtek High Definition Audio".
-  - `Type`: Provides the Type of current device. Possible values are "Input" and "Output".<span id="current-device-type"></span>
-  - `ID` : Provides the ID of current audio device. Can be used in [Source](/docs/plugin-structure/parent#source) option in Parent measure.
+  - `Name`: Provides the Name of current audio device. For example: "Realtek High Definition Audio".
+  - `Type`: Provides the Type of current audio device. Possible values are "Input" and "Output".<span id="current-device-type"></span>
+  - `ID` : Provides the ID of current audio device. It can be used in [Source](/docs/plugin-structure/parent?id=source) option in Parent measure.
 
   - `Status`: Provides 1 if everything works, 0 otherwise.
   - `Status String`: Same as `Status`, but instead of giving 0 and 1, it gives 'Active' and 'Down'.
@@ -66,38 +63,38 @@ You will use these arguments like like so: `[&ParentMeasure:Resolve(ArgumentA, A
 
   - `Description`: Provides a specific type of current device. For example, "Speakers".
   - `Format`: Provides a human readable description of format of current device. For example: "2.0 stereo, 192000Hz"
-  - `Channels`: Provides a comma-separated list of technical names of channels that exist in current layout. For example: [5.1 layout]() will have "FL, FR, C, LFE, BL, BR"
+  - `Channels`: Provides a comma-separated list of technical names of channels that exist in current layout. For example: 5.1 layout will have "FL, FR, C, LFE, BL, BR"
   - `Sample Rate`: Provides the sample rate of current device. For example: 48000
 
 _Examples:_
 
 ```ini
-[!Log [&ParentMeasure:Resolve(Current Device, Name)]]
-[!Log [&ParentMeasure:Resolve(Current Device, Sample Rate)]]
+[!Log "[&ParentMeasure:Resolve(Current Device, Name)]"]
+[!Log "[&ParentMeasure:Resolve(Current Device, Sample Rate)]"]
 ```
 
 ---
 
 - `Device List Input`: Provides a list of existing input devices.
 - `Device List Output`: Provides a list of existing output devices.
-- `Device List`: Provides a maps to one of the 2 values above. Input or output is decided based on [current device type](#current-device-type).
+- `Device List`: Provides a maps to one of the 2 values above. Input or output is decided based on [Current Device type](#current-device-type).
 
-?>The three values above are not meant to be human readable. Grab and process them with a Lua script before showing to user.
+?>The three values above are not meant to be human readable. Process them with the provided [Lua script]() before showing to user.
 
 The value of these arguments consists of several lines. Each line has the following format:
 
 `ID`;`Name`;`Description`;`Form factor`;`Sample rate`;`Channels`;
 
 ```ini
-[!Log [&ParentMeasure:Resolve(Device List Output)]]
+[!Log "[&ParentMeasure:Resolve(Device List Output)]"]
 ; Will output: {0.0.0.00000000}.{c73b9bf1-9f30-4a46-9786-c5d3d2c18aba};Realtek High Definition Audio;Speakers;Speakers;48000;fl,fr;
 ```
 
-Many devices have `Description` and `Form factor` values the same, but there are also devices with different values. For example, my monitor have monitor name as a description and DigitalAudioDisplayDevice as a form factor. Also, form factor is a well known set of values, while description may be an arbitrary human readable string.
+Many devices have `Description` and `Form factor` values the same, but there are also devices with different values. For example, my monitor have monitor name as a description and "DigitalAudioDisplayDevice" as a form factor. Also, form factor is a well known set of values, while description may be an arbitrary human readable string.
 
 Possible values of `Form factor` are: `RemoteNetworkDevice`, `Speakers`, `LineLevel`, `Headphones`, `Microphone`, `Headset`, `Handset`, `UnknownDigitalPassthrough`, `SPDIF`, `DigitalAudioDisplayDevice`, `<unknown>`.
 
-Sample rate and channels may also be represented as `<unknown>` for some devices when it's impossible to determine that audio device format.
+Sample rate and channels may also be represented as `<unknown>` for some devices when it's impossible to determine the audio device format.
 
 ---
 
@@ -105,26 +102,26 @@ Sample rate and channels may also be represented as `<unknown>` for some devices
 
   - `Channel`: Specify name of the channel. Default name is Auto.
   - `Handler`: Specify name of the desired Handler.
-  - `Proc`: Specify name of the processing that contains desired handler.
-  - `Index`: Specify integer index of the value of data generated by handler. If index is not specified, then default 0 is used.
+  - `Proc`: Specify name of the processing unit that contains desired handler.
+  - `Index`: Specify integer index of the value of data generated by handler. If index is not specified, then default (`0`) is used.
 
 See [Tips](/docs/tips-code.md) discussion.
 
 _Examples:_
 
 ```ini
-[!Log [&ParentMeasure:Resolve(Value, Handler Loudness | Channel Left)]]
-[!Log [&ParentMeasure:Resolve(Value, Proc Process1 | Channel Auto | Handler Resampler | Index 10)]]
+[!Log "[&ParentMeasure:Resolve(Value, Handler Loudness | Channel Left)]"]
+[!Log "[&ParentMeasure:Resolve(Value, Proc Process1 | Channel Auto | Handler Resampler | Index 10)]"]
 ```
 
 ---
 
 - `HandlerInfo`: Allows you to get additional information from sound handlers.
 
-  Syntax is as in `Value` argument, except instead of integer `Index` you have to specify `Data`. Syntax for Data property is handler-dependent, see [certain handler's]() description for possible values of data.
+  Syntax is same as `Value` argument, except instead of integer `Index` you have to specify `Data`. Syntax for Data property is handler-dependent, see [certain handler's](/docs/handler-types/handler-types.md) description for possible values of data.
 
 _Examples:_
 
 ```ini
-[!Log [&ParentMeasure:Resolve(HandlerInfo, Proc Process1 | Channel Auto | Handler Resampler | Data Bands Count)]]
+[!Log "[&ParentMeasure:Resolve(HandlerInfo, Proc Process1 | Channel Auto | Handler Resampler | Data Bands Count)]"]
 ```
