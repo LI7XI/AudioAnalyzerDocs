@@ -31,11 +31,11 @@ Tested on i3-2312m (2c 4t 2.10GHz) CPU with all skins disabled except this one.
 
 AudioLevel: `FreqMin 20` `FreqMax 2000` `Bands 160` `FFTSize 32512` `FFTOverlap 16256`
 
-<video src="\docs\examples\resources\test-audiolevel.mp4" autoplay loop muted title="Using AudioLevel"></video>
+<video src="/docs/examples/resources/test-audiolevel.mp4" autoplay loop muted title="Using AudioLevel"></video>
 
 AudioAnalyzer: `FreqMin 20` `FreqMax 2000` `Bands 160` `BinWidth 10` `OverlapBoost 10` `CascadesCount 3`
 
-<video src="\docs\examples\resources\test-audioanalyzer.mp4" autoplay loop muted title="Using AudioAnalyzer"></video>
+<video src="/docs/examples/resources/test-audioanalyzer.mp4" autoplay loop muted title="Using AudioAnalyzer"></video>
 
 ?>Don't worry if you don't understand the options used here, all of them are explained in this documentation.
 

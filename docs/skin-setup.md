@@ -285,6 +285,6 @@ MeasureName=MeasureBand4
 
 ## Results
 
-<video src="\docs\examples\resources\simple-spectrum.mp4" autoplay loop muted title="Simple Spectrum"></video>
+<video src="/docs/examples/resources/simple-spectrum.mp4" autoplay loop muted title="Simple Spectrum"></video>
 
 This example is also available in the .rmskin package.

@@ -1,6 +1,6 @@
 ## Waveform
 
-<div><video src="\docs\examples\resources\waveform.mp4" autoplay loop muted title="Waveform"></video></div>
+<div><video src="/docs/examples/resources/waveform.mp4" autoplay loop muted title="Waveform"></video></div>
 
 This plugin can draw the waveform of an audio signal.
 
