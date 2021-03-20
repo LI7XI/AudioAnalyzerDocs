@@ -1,16 +1,7 @@
 ## Child Measure
 
-Child measures grab there data from Parent measure.
-
-Usually child measures are used to retrieve numerical values from parent measure, with an optional string value.<br/>
+Child measures are used to retrieve numerical values from parent measure, with an optional string value.<br/>
 We will show you how to retrieve both [numerical and string](#string-value) values as we go on.
-
-## Use cases for Child measures
-
-Child measure can be used for:
-
-- Getting [audio device infos]().
-- Providing access to values of handlers in Parent measure.
 
 ## Jump list
 
@@ -27,7 +18,7 @@ Child measure can be used for:
 
 <p id="parent" class="p-title"><b>Parent</b><b>Required</b></p>
 
-Name of parent measure to retrieve data from.
+Name of parent measure.
 
 _Examples:_
 
@@ -45,7 +36,7 @@ _Example:_
 
 ```ini
 ; Lets say you have this in parent measure
-Processing-Main=Channels Auto | Handlers Handler1, handler2
+ProcessingUnits-Main=Channels Auto | Handlers Handler1, handler2
 
 ; Then HandlerName would be
 HandlerName=Handler1
@@ -56,8 +47,8 @@ HandlerName=Handler2
 But if there is a HandlerName that is present in 2 processes Like this:
 
 ```ini
-Processing-ProcessA=Channels Auto | Handlers SameHandlerName
-Processing-ProcessB=Channels Auto | Handlers SameHandlerName
+ProcessingUnits-UnitA=Channels Auto | Handlers SameHandlerName | ...
+ProcessingUnits-UnitB=Channels Auto | Handlers SameHandlerName | ...
 ```
 
 Then you have to specify [Processing](#processing) option.
@@ -70,25 +61,25 @@ Name of the process that have the handler specified in `HandlerName` option.
 
 ?>This option is optional. If you don't specify it, the plugin will automatically try to find the process with the specified `HandlerName`.
 
-Child measure retrieve data from a specific handler. Usually it's enough to specify `HandlerHame` option to find that handler. However, it's possible to have same handler name in several processes. Like this:
+Child measure retrieve data from a specific handler. Usually it's enough to specify `HandlerHame` option to find that handler. However, it's possible to have same handler name in several processes. For example:
 
 ```ini
-Processing-ProcessA=Channels Auto | Handlers SameHandlerName
-Processing-ProcessB=Channels Auto | Handlers SameHandlerName
+ProcessingUnits-UnitA=Channels Auto | Handlers SameHandlerName | ...
+ProcessingUnits-UnitB=Channels Auto | Handlers SameHandlerName | ...
 ```
 
-In such case, it's not clear which handler this Child measure should use.
+In such case, it's not clear which handler this Child measure should use.<br/>
 Here is where `Processing` option comes in, it allows you to specify exactly from which Process you want this handler. Like so:
 
 ```ini
 ; If you have this in parent measure, 2 proesses has same hander name
-Processing-ProcessA=Channels Auto | Handlers SameHandlerName
-Processing-ProcessB=Channels Auto | Handlers SameHandlerName
+ProcessingUnits-UnitA=Channels Auto | Handlers SameHandlerName | ...
+ProcessingUnits-UnitB=Channels Auto | Handlers SameHandlerName | ...
 
-; Then you can specify which process handler you want this child measure to read values from
-Processing=ProcessA
+; Then you can specify from which process you want the handler
+Processing=UnitA
 ; Or
-Processing=ProcessB
+Processing=UnitB
 ```
 
 ---
@@ -101,16 +92,18 @@ Channel to get data from.
 
 Possible Channels (with optional name aliases):
 
-- `Auto` &emsp; &emsp; &emsp; &nbsp; &nbsp; &nbsp; (No alias available)
-- `FrontLeft` &emsp; &nbsp; &nbsp; &nbsp; (`Left` or `FL`)
-- `FrontRight` &emsp; &nbsp; &nbsp; (`Right` or `FR`)
-- `Center` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (`C`)
-- `CenterBack` &emsp; &nbsp; &nbsp; (`CB`)
-- `LowFrequency` &emsp; (`LFE`)
-- `BackLeft` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; (`BL`)
-- `BackRight` &emsp; &nbsp; &nbsp; &nbsp; (`BR`)
-- `SideLeft` &emsp; &nbsp; &nbsp; &nbsp; &nbsp; (`SL`)
-- `SideRight` &emsp; &nbsp; &nbsp; &nbsp; (`SR`)
+<ul class="channel-list">
+  <li><code>Auto</code><span>(No alias available)</span></li>
+  <li><code>FrontLeft</code><span>(<code>Left</code> or <code>FL</code>)</span></li>
+  <li><code>FrontRight</code><span>(<code>Right</code> or <code>FR</code>)</span></li>
+  <li><code>Center</code><span>(<code>C</code>)</span></li>
+  <li><code>CenterBack</code><span>(<code>CB</code>)</span></li>
+  <li><code>LowFrequency</code><span>(<code>LFE</code>)</span></li>
+  <li><code>BackLeft</code><span>(<code>BL</code>)</span></li>
+  <li><code>BackRight</code><span>(<code>BR</code>)</span></li>
+  <li><code>SideLeft</code><span>(<code>SL</code>)</span></li>
+  <li><code>SideRight</code><span>(<code>SR</code>)</span></li>
+</ul>
 
 _Examples:_
 
@@ -137,30 +130,32 @@ Channel=FL, Right
 Index of value in handler.
 
 Many handlers produce arrays of data, and the `Index` option specifies the index of value in that array.
-For example:
-Generally, only handlers that transform data from FFT produce arrays of data (Like, if you have handler chain FFT → BandResampler → ValueTransformer → TimeResampler, then all four of these will make data arrays). Independent handlers (like Loudness) usually produce only one value, so any index except for 0 will be invalid.
+
+For example: Generally, only handlers that transform data from FFT produce arrays of data (Like, if you have this handler chain: `FFT` → `BandResampler` → `ValueTransformer` → `TimeResampler`, then all four of these will make data arrays).
+
+Independent handlers (like Loudness) usually produce only one value, so any index except for 0 will be invalid.
 
 _Examples:_
 
 ```ini
 ; Lets say you have the following in Parent Measure:
-Handler-Mainfft=Type fft | BinWidth 5 | OverlapBoost 10 | CascadesCount 3
-Handler-MainResampler=Type BandResampler | Source Mainfft | Bands log 5 20 4000
+Unit-Main=Channels ... | Handlers MainFFT, MainResampler(MainFFT) | ...
+Handler-MainFFT=Type FFT | BinWidth 5 | OverlapBoost 10 | CascadesCount 3
+Handler-MainResampler=Type BandResampler | Bands Log(Count 5, Min 20, Max 4000)
 
-; Then index can be any where from 0 to the Bands parameter specified MainResampler Handler
+; Then index can be any where from 0 to the BandsCount - 1
 Index=0
 ; Or
-Index=13
+Index=4
 ```
 
-?>In case you have `HandlerName=SomeHandler`, and the type of that `SomeHandler` is `Type Loudness` or Any Other than `Type fft`, setting index option to other than 0 will make this Child measure provide 0 as a value.
-
-_Examples:_
+?>In case you have `HandlerName=SomeHandler`, and the type of that `SomeHandler` is `Type Loudness` or **any other** than `Type fft`, setting index option to other than 0 will make this Child measure provide 0 as a value. For example:
 
 ```ini
 ; Lets say you have the following in Parent Measure:
-Handler-loudness=type loudness | transform db
-Handler-lodnessPercent=type ValueTransformer | source loudness | transform map[from -50 : 0] clamp
+Unit-Main=Channels ... | Handlers Loudness, LoudnessPercent(Loudness) | ...
+Handler-Loudness=Type Loudness | Transform dB
+Handler-LoudnessPercent=Type ValueTransformer | Transform Map(From -50 : 0), Clamp
 
 ; Setting Index to other than 0
 Index=7
@@ -171,20 +166,16 @@ Index=7
 
 <p id="transform" class="p-title"><b>Transform</b><b>Default: </b></p>
 
-> Specify a transformation to be applied to numerical values of this Child measure.<br/>
-> See [Transformations]() discussion for full list of possible values.
->
-> _Examples:_
->
-> ```ini
-> ; Lets say you are getting a value in range [0 to 1] from a handler
-> Transform=map[0, 100] clamp
-> ; Will convert it to range from 0 to 100
-> ```
->
-> _Does this option follows the same syntax as the one in ValueTransformer >handler type?_ >_Is the syntax correct? or we should discuss that after writing transformation docs?_
+Specify a transformation to be applied to numerical values of this Child measure.<br/>
+See [Transforms](/docs/discussions/transforms.md) discussion for full list of possible values.
 
-_WIP._
+_Examples:_
+
+```ini
+; Lets say you are getting a value in range 0 to 1 from a handler
+Transform=Map(From 0 : 1, to 0 : 50), Clamp(Min 0, Max 50)
+; Will convert it to range from 0 to 50
+```
 
 ---
 
@@ -192,10 +183,10 @@ _WIP._
 
 Determines what kind of value this child measure will provide.
 
-> - `Number`: Will make this Child measure provide the retrieved String values of handler as a numerical value.(Correct?)
-> - `Info`: [InfoRequest](#info-request) option will determine what string value this Child measure will provide.
+- `Number`: Child measure will provide the retrieved values from handler.
+- `Info`: [InfoRequest](#info-request) option will determine what string value this Child measure will provide.
 
-_Todo: a rewrite._
+?>When setting `Info`, no need to specify `HandlerName` or other options, since you are going to use this child measure to retrieve infos only.
 
 _Examples:_
 
@@ -220,7 +211,7 @@ InfoRequest=Current Device, Name
 
 When [StringValue](#string-value) is set to `Info`, this option will determine what infos this measure will provide.
 
-?>This is similar to [Section Variables]() in Parent measure, but without a function call.
+?>This is similar to using [Section Variables](/docs/section-vars.md), but without a function call.
 
 _Examples:_
 
@@ -235,8 +226,8 @@ InfoRequest=Current Device, Name
 That will make This Child measure provide the infos we requested.
 
 ```ini
-[!log [&ChildMeasure]]
-; Will output: Realtek High Definition Audio
+[!log "[ChildMeasure]"]
+; Will log: Realtek High Definition Audio
 ```
 
-?> A complete list of possible arguments can be found [here](/docs/section-vars.md)
+?> A complete list of possible arguments can be found [here](/docs/section-vars.md).
