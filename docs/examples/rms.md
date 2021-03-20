@@ -1,6 +1,6 @@
 ## RMS
 
-<div><video src="\resources\rms.mp4" autoplay loop muted title="RMS"></video></div>
+<div><video src="\docs\examples\resources\rms.mp4" autoplay loop muted title="RMS"></video></div>
 
 Similar to AudioLevel, RMS is a way of calculating the average of values over a period of time, using the mathematical algorithm Root Mean Square.
 
