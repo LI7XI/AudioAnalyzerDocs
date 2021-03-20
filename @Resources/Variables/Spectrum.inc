@@ -2,7 +2,7 @@
 Fps=60
 UpdateRate=(1000 / #Fps#)
 ; ------------
-BarWidth=5
+BarWidth=3
 BarsGab=0.2
 ; ------------
 MaxHeight=100
@@ -12,11 +12,11 @@ Color=210,210,230,230
 ; ------------
 FreqMin=20
 FreqMax=2000
-Bands=60
+Bands=160
 ; ------------
 Sensitivity=51
-Attack=30
-Decay=80
+Attack=20
+Decay=50
 ; ------------
 ; AudioLevel Specfic
 ; ------------
