@@ -1,6 +1,6 @@
 ## Loudness meter
 
-<img src="/docs/examples/resources/loudness.PNG" title="Loudness" />
+<img src="docs/examples/resources/loudness.PNG" title="Loudness" />
 
 Digital loudness is always measured in decibels relative to full scale, or dBFS. Simply, this means that 0 dB is the loudest possible sound, -20 dB is something quieter, and -70 dB is something almost inaudible.
 

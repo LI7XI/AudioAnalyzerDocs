@@ -1,6 +1,6 @@
 ## Curve Tester
 
-<div><video src="/docs/examples/resources/curve-tester.mp4" autoplay loop muted title="Curve Tester"></div>
+<div><video src="docs/examples/resources/curve-tester.mp4" autoplay loop muted title="Curve Tester"></div>
 
 A simple tester to show you how different handler chains affect values.
 

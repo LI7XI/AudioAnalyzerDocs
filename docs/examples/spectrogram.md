@@ -1,6 +1,6 @@
 ## Spectrogram
 
-<div><video src="/docs/examples/resources/spectrogram.mp4" autoplay loop muted title="spectrogram"></video></div>
+<div><video src="docs/examples/resources/spectrogram.mp4" autoplay loop muted title="spectrogram"></video></div>
 
 This plugin can draw fancy spectrograms (don't get confused with [Spectrum](/docs/examples/spectrum.md) meters).<br/>
 Spectrogram is an image of how spectrum of the sound has changes over a period of time.
