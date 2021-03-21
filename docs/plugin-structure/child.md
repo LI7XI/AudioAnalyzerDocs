@@ -125,7 +125,7 @@ Index=7
 
 ---
 
-<p id="transform" class="p-title"><b>Transform</b><b>Default: </b></p>
+<p id="transform" class="p-title"><b>Transform</b><b>Default: None</b></p>
 
 Specify a transformation to be applied to numerical values of this Child measure.<br/>
 See [Transforms](/docs/discussions/transforms.md) discussion for full list of possible values.
@@ -153,7 +153,7 @@ _Examples:_
 
 ```ini
 StringValue=Number
-; makes this Child measure provide a numerical value based on what it receives from the handler: 0.3, 0.78, etc..
+; Makes this Child measure provide a numerical value based on what it receives from the handler: 0.3, 0.78, etc..
 ```
 
 Or
