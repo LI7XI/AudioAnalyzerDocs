@@ -7,7 +7,6 @@ We will show you how to retrieve both [numerical and string](#string-value) valu
 
 - [Parent](#parent).
 - [HandlerName](#handler-name).
-- [Processing](#processing).
 - [Channel](#channel).
 - [Index](#index).
 - [Transform](#transfrom).
@@ -44,51 +43,13 @@ HandlerName=Handler1
 HandlerName=Handler2
 ```
 
-But if there is a HandlerName that is present in 2 processes Like this:
-
-```ini
-ProcessingUnits-UnitA=Channels Auto | Handlers SameHandlerName | ...
-ProcessingUnits-UnitB=Channels Auto | Handlers SameHandlerName | ...
-```
-
-Then you have to specify [Processing](#processing) option.
-
----
-
-<p id="processing" class="p-title"><b>Processing</b><b>Default: None</b></p>
-
-Name of the process that have the handler specified in `HandlerName` option.
-
-?>This option is optional. If you don't specify it, the plugin will automatically try to find the process with the specified `HandlerName`.
-
-Child measure retrieve data from a specific handler. Usually it's enough to specify `HandlerHame` option to find that handler. However, it's possible to have same handler name in several processes. For example:
-
-```ini
-ProcessingUnits-UnitA=Channels Auto | Handlers SameHandlerName | ...
-ProcessingUnits-UnitB=Channels Auto | Handlers SameHandlerName | ...
-```
-
-In such case, it's not clear which handler this Child measure should use.<br/>
-Here is where `Processing` option comes in, it allows you to specify exactly from which Process you want this handler. Like so:
-
-```ini
-; If you have this in parent measure, 2 proesses has same hander name
-ProcessingUnits-UnitA=Channels Auto | Handlers SameHandlerName | ...
-ProcessingUnits-UnitB=Channels Auto | Handlers SameHandlerName | ...
-
-; Then you can specify from which process you want the handler
-Processing=UnitA
-; Or
-Processing=UnitB
-```
-
 ---
 
 <p id="channel" class="p-title"><b>Channel</b><b>Default: Auto</b></p>
 
 Channel to get data from.
 
-?>This option accepts same Channels specified in [Channels](/docs/plugin-structure/parent?id=parent-channel-para) parameter in Processing option of the Parent.
+?>This option accepts same Channels specified in [Channels](/docs/plugin-structure/parent?id=parent-channel-para) parameter in Processing Units option of the Parent.
 
 Possible Channels (with optional name aliases):
 
