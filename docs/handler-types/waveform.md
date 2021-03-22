@@ -2,7 +2,7 @@
 
 Draws a waveform picture. That is: shows min and max values of the sound wave over some past time.
 
-Generates BMP image on disk. Name of the file is unspecified. To get it, you can follow this way:
+This handler will generate an image and write it to disk, to use it in your skin, you can do the following:
 
 Lets say this is your image meter:
 
@@ -29,29 +29,28 @@ Meter=Image
 MeasureName=ChildMeasure
 ```
 
-## Waveform type Properties
+## Waveform Parameters
 
 ### Jump list
 
-- [Type](#type).
-- [Folder](#folder).
-- [Width](#width).
-- [Height](#Height).
-- [Resolution](#resolution).
-- [Stationary](#stationary).
-- [Connected](#connected).
-- [BackgroundColor](#background-color).
-- [WaveColor](#wave-color).
-- [LineColor](#line-color).
-- [BorderSize](#border-size).
-- [BorderColor](#border-color).
-- [FadingRatio](#fading-ratio).
-- [LineDrawingPolicy](#line-drawing-policy).
-- [Transform](#transform).
-- [SilenceThreshold](#silence-threshold).
-- [Handler Info](#handler-info).
-- [Usage Examples](#Usage-Examples).
-- [Documentation Questions](#q).
+- [Type](#type)
+- [Folder](#folder)
+- [Width](#width)
+- [Height](#Height)
+- [Resolution](#resolution)
+- [Stationary](#stationary)
+- [Connected](#connected)
+- [BackgroundColor](#background-color)
+- [WaveColor](#wave-color)
+- [LineColor](#line-color)
+- [BorderSize](#border-size)
+- [BorderColor](#border-color)
+- [FadingRatio](#fading-ratio)
+- [LineDrawingPolicy](#line-drawing-policy)
+- [Transform](#transform)
+- [SilenceThreshold](#silence-threshold)
+- [Handler Info](#handler-info)
+- [Usage](#Usage)
 
 ---
 
@@ -96,7 +95,7 @@ Handler-HandlerName=Type Waveform | Width 160
 
 <p id="height" class="p-title"><b>Height</b><b>Default: 100</b></p>
 
-Same as [Width](#width), but for Height.
+Similar to [Width](#width), but for Height.
 
 _Examples:_
 
@@ -272,10 +271,10 @@ Waveform always shows values in range [-1.0, 1.0]. If transform makes values out
 
 When writing transform for waveform you may assume that all values are >= 0, and you also should produce values >= 0. Negative values will be calculated the same way, with automatic sign correction.
 
-_Examples:_<small id="i1">[1](#q)</small>
+_Examples:_
 
 ```ini
-Handler-HandlerName=Type Waveform |
+Handler-HandlerName=Type Waveform | Transform
 ```
 
 ---
@@ -301,21 +300,14 @@ Handler-HandlerName=Type Waveform | SilenceThreshold -50
 - `File`: Path of the file in which image is written.
 - `Block size`: Size of the block that represents one pixel in image, in audio points.
 
-_Examples:_<small id="i2">[2](#q)</small>
+_Examples:_
 
 ```ini
-[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | HandlerName WaveformHandler | Data File)]]
+[!Log "[&ParentMeasure:Resolve(HandlerInfo, Channel Auto | Handler WaveformHandler | Data File)]"]
 ; Or
-[!Log [&ParentMeasure:Resolve(HandlerInfo, Channel Auto | HandlerName WaveformHandler | Data Block Size)]]
+[!Log "[&ParentMeasure:Resolve(HandlerInfo, Channel Auto | Handler WaveformHandler | Data Block Size)]"]
 ```
 
-## Usage Examples
+## Usage
 
-_WIP_.
-
-## Documentation Questions <i id="q">
-
-[Q1](#i1): In some handler types (i guess `RMS`, `Peak` and `loudness`), i said that `Transform` is "Required", is that true?<br/>
-[Q2](#i2): Is the `Block Size` example correct?<br/>
-
-</i>
+Check out [this](/docs/usage-examples/waveform.md) example to see how this handler is used.
