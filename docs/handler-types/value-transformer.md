@@ -2,13 +2,13 @@
 
 Allows you to make various changes to values using transform semantics.
 
-## ValueTransformer type Properties
+## ValueTransformer Parameters
 
 ### Jump list
 
-- [Type](#type).
-- [Source](#source).
-- [Transform](#transform).
+- [Type](#type)
+- [Transform](#transform)
+- [Usage](#usage)
 
 ---
 
@@ -24,25 +24,17 @@ Handler-HandlerName=Type ValueTransformer
 
 ---
 
-<p id="source" class="p-title"><b>Source</b><b>Required</b></p>
-
-Name of source handler.
-
-_Examples:_
-
-```ini
-Handler-HandlerName=Type ValueTransformer | Source SourceHandler
-```
-
----
-
 <p id="transform" class="p-title"><b>Transform</b><b>Default: None</b></p>
 
 Description of transforms that are applied to values.<br/>
-See [Transforms]() discussion for full list of possible values.
+See [Transforms](/docs/discussions/transforms.md) discussion for full list of possible values.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type ValueTransformer | Source SourceHandler | Transform dB Map[-70, 0] Clamp
+Handler-HandlerName=Type ValueTransformer | Transform dB, Map(From -70 : 0), Clamp
 ```
+
+## Usage
+
+Check out [this](/docs/usage-examples/loudness.md) example to see how this handler is used.

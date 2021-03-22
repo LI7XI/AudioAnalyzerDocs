@@ -6,16 +6,16 @@ If your update rate is too low, the handler will extrapolate values so that they
 
 If your update rate is too high, the handler will smooth the values out so that they don't look too sharp and you don't lose data by just throwing excessive values away.
 
-## TimeResampler type Properties
+## TimeResampler Parameters
 
 ### Jump list
 
-- [Type](#type).
-- [Source](#source).
-- [Granularity](#granularity).
-- [Attack](#attack).
-- [Decay](#decay).
-- [Transform](#transform).
+- [Type](#type)
+- [Granularity](#granularity)
+- [Attack](#attack)
+- [Decay](#decay)
+- [Transform](#transform)
+- [Usage](#usage)
 
 <p id="type" class="p-title"><b>Type</b><b>TimeResampler</b></p>
 
@@ -25,18 +25,6 @@ _Examples:_
 
 ```ini
 Handler-HandlerName=Type TimeResampler
-```
-
----
-
-<p id="source" class="p-title"><b>Source</b><b>Required</b></p>
-
-Name of source handler.
-
-_Examples:_
-
-```ini
-Handler-HandlerName=Type TimeResampler | Source SourceHandler
 ```
 
 ---
@@ -53,7 +41,7 @@ See [Tips]() discussion.
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type TimeResampler | Source SourceHandler | Granularity 33.2
+Handler-HandlerName=Type TimeResampler | Granularity 33.2
 ```
 
 ---
@@ -61,20 +49,19 @@ Handler-HandlerName=Type TimeResampler | Source SourceHandler | Granularity 33.2
 <p id="attack" class="p-title"><b>Attack</b><b>Default: 0</b></p>
 
 A float number that is bigger than `0`.<br>
-A parameter for filter that smooths values.
 
-This is the same parameter as `FFTAttack` in AudioLevel plugin, except AudioLevel don't smooth values when they are updating very rarely.
+This is the same parameter as `FFTAttack` in AudioLevel plugin, except AudioLevel don't smooth values when they are updating very rarely.<br/>
 Attack only affects how values are smoothed when they are increasing.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type TimeResampler | Source SourceHandler | Attack 40
+Handler-HandlerName=Type TimeResampler | Attack 40
 ```
 
 ---
 
-<p id="decay" class="p-title"><b>Decay</b><b>Default: <code>Value of Attack parameter</code></b></p>
+<p id="decay" class="p-title"><b>Decay</b><b>Default: <code>Value of Attack</code></b></p>
 
 A float number that is bigger than `0`.<br>
 Same as `Attack` but only affects how values are decreasing.
@@ -82,7 +69,14 @@ Same as `Attack` but only affects how values are decreasing.
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type TimeResampler | Source SourceHandler | Decay 110
+Handler-HandlerName=Type TimeResampler | Decay 110
+```
+
+?>When `Decay` is not specified, but `Attack` is specified, `Decay` will be equal to `Attack`
+
+```ini
+Handler-HandlerName=Type TimeResampler | Attack 40
+; Here Decay will equal to 40 as well.
 ```
 
 ---
@@ -90,10 +84,14 @@ Handler-HandlerName=Type TimeResampler | Source SourceHandler | Decay 110
 <p id="transform" class="p-title"><b>Transform</b><b>Default: None</b></p>
 
 Description of transforms that are applied to values after filtering.<br/>
-See [Transforms]() discussion for full list of possible values.
+See [Transforms](/docs/discussions/transforms.md) discussion for full list of possible values.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type TimeResampler | Source SourceHandler | Transform dB Map[-70, 0] Clamp
+Handler-HandlerName=Type TimeResampler | Transform dB, Map(-70 : 0), Clamp
 ```
+
+## Usage
+
+Check out [this](/docs/usage-examples/fft-spectrum.md) example to see how this handler is used.
