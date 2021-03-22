@@ -8,13 +8,13 @@ Fourier Transform is a mathematical formula that decomposes an audio signal and 
 
 ### Jump list
 
-- [Type](#type).
-- [BinWidth](#bin-width).
-- [OverlapBoost](#overlap-boost).
-- [CascadesCount](#cascades-count).
-- [WindowFunction](#window-function).
-- [Handler Info](#handler-info).
-- [Usage](#usage).
+- [Type](#type)
+- [BinWidth](#bin-width)
+- [OverlapBoost](#overlap-boost)
+- [CascadesCount](#cascades-count)
+- [WindowFunction](#window-function)
+- [Handler Info](#handler-info)
+- [Usage](#usage)
 
 ---
 

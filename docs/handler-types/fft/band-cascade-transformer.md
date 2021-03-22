@@ -2,16 +2,18 @@
 
 Allows you to combine several cascades into one set of final values.
 
-## BandCascadeTransformer type Properties
+!>The source of this handler must be of [FFT](/docs/handler-types/fft/fft.md) handler chain.
+
+## BandCascadeTransformer Parameters
 
 ### Jump list
 
-- [Type](#type).
-- [Source](#source).
-- [MixFunction](#mix-function).
-- [MinWeight](#min-weight).
-- [TargetWeight](#target-weight).
-- [ZeroLevelMultiplier](#zero-level-multiplier).
+- [Type](#type)
+- [MixFunction](#mix-function)
+- [MinWeight](#min-weight)
+- [TargetWeight](#target-weight)
+- [ZeroLevelMultiplier](#zero-level-multiplier)
+- [Usage](#usage)
 
 ---
 
@@ -27,40 +29,18 @@ Handler-HandlerName=Type BandCascadeTransformer
 
 ---
 
-<p id="source" class="p-title"><b>Source</b><b>Required</b></p>
-
-Name of source handler.
-
-!>Should be name of [BandResampler](/docs/handler-types/fft/band-resampler.md) type handler.
-
-_Examples:_
-
-```ini
-Handler-HandlerName=Type BandCascadeTransformer | Source BandResamplerHandler
-```
-
----
-
 <p id="mix-function" class="p-title"><b>MixFunction</b><b>Default: Product</b></p>
 
 Determines how different cascades are mixed.
 
-When Product: result = `(c1 * c2 * ...) ^ (1 / N)`.<br/>
-When Average: result = `(c1 + c2 + ...) / N`.
+When using `Product`: Results = `(c1 * c2 * ...) ^ (1 / N)`.<br/>
+When using `Average`: Results = `(c1 + c2 + ...) / N`.
 
 _Examples:_
 
 ```ini
 Handler-HandlerName=Type BandCascadeTransformer | MixFunction Product
 ```
-
-MixFunction `Product`
-
-<img src="docs\handler-types\examples\fft\mix-function-product.PNG" />
-
-MixFunction `Average`
-
-<img src="docs\handler-types\examples\fft\mix-function-average.PNG" />
 
 ---
 
@@ -76,7 +56,7 @@ If band frequency width is half the width of FFT bin, then band weight is 0.5.
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type BandCascadeTransformer | MinWeight 1
+Handler-HandlerName=Type BandCascadeTransformer | MinWeight 0
 ```
 
 ---
@@ -91,7 +71,7 @@ Cascades are summed (and averaged at the end) until sum of their weights is less
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type BandCascadeTransformer | TargetWeight 3
+Handler-HandlerName=Type BandCascadeTransformer | TargetWeight 10
 ```
 
 ---
@@ -105,5 +85,9 @@ Some FFT cascades may be updated very slowly. When there were a silence and then
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type BandCascadeTransformer | ZeroLevelMultiplier 2
+Handler-HandlerName=Type BandCascadeTransformer | ZeroLevelMultiplier 1
 ```
+
+## Usage
+
+Check out [this](/docs/usage-examples/fft-spectrum.md) example to see how this handler is used.
