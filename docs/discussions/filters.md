@@ -2,9 +2,6 @@
 
 !>Note: this is intended for advanced usage and it's absolutely optional. Feel free to skip it unless you know about signal filtering.
 
-Signal filtering is a complex topic, that can't be described and taught shortly, so details on how filters work and recommendations on when and why use which filters is out of scope of this documentation.<br/>
-If you want to use filters but don't know where to start, you are advised to do a research in google. However, using filters in this plugin is simple.
-
 Audio filters is something, that alters audio stream. Filters usually affect certain frequencies. For example, filters that remove low frequencies, are usually called high pass filters.<br/>
 You can look [here](http://jaggedplanet.com/iir/iir-explorer.asp) or [here](https://www.earlevel.com/main/2013/10/13/biquad-calculator-v2/) to see how different filters affect frequencies of the sound.
 
@@ -35,14 +32,16 @@ Unit-UnitName=Channels ... | Handlers ... | Filter Custom <FilterName>(<ArgName1
 - bwBandStop: `bwBandStop(Order <Value>, FreqLow <Value>, FreqHigh <Value>)`.
 
 Allowed range of `Order` argument is limited to [1, 5] due to possible issues with precision.<br/>
-You can use several filters in sequence if you want stronger effect that high orders could provide ([see examples below](#examples)).
+You can use several filters in sequence if you want stronger effect that high orders could provide (see [examples](#examples) below).
 
 ---
 
 Besides filter-specific parameters, each filter can have a `ForcedGain` parameter (specified in decibels) that controls upper level of the filter.
 
 Traditionally filters like `bqPeak(Q 0.5, Freq 100, Gain 5)` would make frequencies near 100 Hz 5 db stronger.<br/>
-However, the plugin alters this behavior: upper level is kept at 0 db no matter the parameters. However, forcedGain is not compensated for, so if you write bqPeak[Q 0.5, freq 100, gain 5, forcedGain 5] then this filter would behave like traditional Biquad peak filter.
+However, the plugin alters this behavior: upper level is kept at 0 db no matter the parameters.
+
+Although, forcedGain is not compensated for, so if you write `bqPeak[Q 0.5, freq 100, gain 5, forcedGain 5]` then this filter would behave like traditional Biquad peak filter.
 
 ## Examples
 

@@ -53,4 +53,4 @@ If one singe FFT has size N and complexity O(FFT), and you are using T cascades,
 4. Average complexity less than `2 * O(FFT)`.
 5. Worst case complexity `T * O(FFT)`.
 
-FFT cascades introduce some artifacts on the image caused by slowly updating cascades in low frequencies, but I would say that it still looks much better than a simple classic FFT.
+Check out [this](/docs/usage-examples/fft-spectrum.md) example to see how fft cascades are used.

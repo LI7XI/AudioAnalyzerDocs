@@ -1,6 +1,6 @@
 ## Transforms
 
-AudioLevel plugin has mysterious gain, sensitivity options. You set them to something, and it works. In some way.
+AudioLevel plugin has a mysterious gain and sensitivity options. You set them to something, and it works. In some way.
 
 But they don't really give you a fine control, and if something doesn't work as you expect, then you can do nothing about it. Transformations solve this problem!
 
@@ -50,5 +50,3 @@ Handler-HandlerName= ... | Transform dB, Clamp, Map(From 0: 10)
 It will work in a completely different way. For example:<br/>
 
 First It will transform all values that are smaller than 0 into 0 and all values that are bigger than 1 into 1, and then multiply the values by 0.1, resulting in [0, 0.1] range.
-
-_More examples are WIP, also idk how decibels work so i will read about them before making examples._
