@@ -6,24 +6,28 @@ Loudness is a way to measure audio levels based on the way humans perceive sound
 
 ### How it works
 
-Signal energy is calculated for blocks of size each (1000/[UpdatesPerSecond](#updates-per-second)<small>[1](#q)</small>) milliseconds. Blocks are averaged across [TimeWindow](#time-window) milliseconds.
+Signal energy is calculated for blocks of size each (1000/[UpdatesPerSecond](#updates-per-second)) milliseconds. Blocks are averaged across [TimeWindow](#time-window) milliseconds.
 
-However, not all blocks are used, blocks that are almost silent are discarded. But at most [GatingLimit](#gating-limit)\*100% <small>[6](#q)</small> blocks can be discarded.<br/>
-This is similar to how EBU R 128 describes loudness metering.<small>[2](#q)</small>
+However, not all blocks are used, blocks that are almost silent are discarded. You can determine the amount of discarded blocks using [GatingLimit](#gating-limit) option.<br/>
+This is similar to how [EBU R 128](https://en.wikipedia.org/wiki/EBU_R_128#EBU_Mode_metering) describes loudness metering.
 
-## Loudness type Properties
+Worth noting that `UpdatesPerSecond` is independent from how often the handler updates.<br/>
+Handler value will be updated at the same rate as all other handlers, but blocks inside it are updated at independent rate.
+
+If handlers are updated at lower rate than `UpdatesPerSecond`, then you obviously won't be able to receive value for each block, but the calculations inside handler will be as accurate as specified in `UpdatesPerSecond`.
+
+## Loudness Parameters
 
 ### Jump list
 
-- [Type](#type).
-- [Transform](#transform).
-- [UpdatesPerSecond](#updates-per-second).
-- [GatingLimit](#gating-limit).
-- [TimeWindow](#time-window).
-- [GatingDB](#gating-db).
-- [IgnoreGatingForSilence](#ignore-gating-for-silence).
-- [Usage Examples](#usage-examples).
-- [Reference](#reference).
+- [Type](#type)
+- [Transform](#transform)
+- [UpdatesPerSecond](#updates-per-second)
+- [GatingLimit](#gating-limit)
+- [TimeWindow](#time-window)
+- [GatingDB](#gating-db)
+- [IgnoreGatingForSilence](#ignore-gating-for-silence)
+- [Usage](#usage)
 
 ---
 
@@ -39,10 +43,10 @@ Handler-HandlerName=Type Loudness
 
 ---
 
-<p id="transform" class="p-title"><b>Transform</b><b>Required</b></p>
+<p id="transform" class="p-title"><b>Transform</b><b>Default: None</b></p>
 
-Description on how to transform values before outputting them. <small>[3](#q)</small><br/>
-See [Transformations]() discussion.
+Description on how to transform values before outputting them. When using this handler it's recommended to transform values to decibels to have the expected results.<br/>
+See [Transforms](/docs/discussions/transforms.md) discussion.
 
 _Examples:_
 
@@ -55,10 +59,10 @@ Handler-HandlerName=Type Loudness | Transform db
 <p id="updates-per-second" class="p-title"><b>UpdatesPerSecond</b><b>Default: 20</b></p>
 
 A Float number in range from `0.01` to `60`.<br/>
-Speed at which handler is updating its values.<small>[4](#q)</small>
+Speed at which handler is updating its values.
 
-UpdatesPerSecond 10 would mean that every 100ms value will be updated.<small>[5](#q)</small><br/>
-UpdatesPerSecond 1 would mean that value will only be updated once per second.<small>[5](#q)</small><br/>
+UpdatesPerSecond 10 would mean that every 100ms value will be updated.
+UpdatesPerSecond 1 would mean that value will only be updated once per second.
 Higher update rate does not necessary correspond to more accurate perceived loudness. Don't set it too high.
 
 _Examples:_
@@ -74,10 +78,14 @@ Handler-HandlerName=Type Loudness | Transform db | UpdatesPerSecond 30
 A Float number in range from `0` to `1`.<br/>
 Specifies the maximum percentage of discarded blocks.
 
+If `GatingLimit` is 0.0, then all blocks will always be used.
+If `GatingLimit` is 0.5, then half the blocks can be discarded because of gating.
+If `GatingLimit` is 1.0, then in some cases handler will only look at one value to describe the loudness.
+
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Loudness | Transform db | GatingLimit 0.5
+Handler-HandlerName=Type Loudness | Transform db | GatingLimit 0.3
 ```
 
 ---
@@ -90,7 +98,7 @@ Specifies size of the block in which loudness is calculated.
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Loudness | Transform db | TimeWindow 1000
+Handler-HandlerName=Type Loudness | Transform db | TimeWindow 500
 ```
 
 ---
@@ -98,7 +106,7 @@ Handler-HandlerName=Type Loudness | Transform db | TimeWindow 1000
 <p id="gating-db" class="p-title"><b>GatingDB</b><b>Default: -20</b></p>
 
 A Float number in range from `-70` to `0`.<br>
-Values that are in decibels less than GatingDB than an average of a block are considered silent and discarded.
+Values in decibels that are less than GatingDB then an average of a block is considered silent and discarded.
 
 _Examples:_
 
@@ -120,28 +128,6 @@ _Examples:_
 Handler-HandlerName=Type Loudness | Transform db | IgnoreGatingForSilence True
 ```
 
-## Usage Examples
+## Usage
 
-```ini
-Handler-HandlerName=Type Loudness | Transform db
-```
-
-Or
-
-```ini
-Handler-HandlerName=Type Loudness | Transform db | UpdatesPerSecond 20 | GatingLimit 0.5 | TimeWindow 1000 | GatingDB -20 | IgnoreGatingForSilence True
-```
-
-## Documentation Questions <i id="q">
-
-Q1: Skin updates per second? or when the plugin is running on a separate thread?<br/>
-Q2: I don't know a whole lot about audio topics, so this analogy seems vague to me. Where did you learned about these topics?<br/>
-Q3: outputting/providing them to child measure? looks a bit long sentence.<br/>
-Q4: Is this related to `Threading` option? What if `Threading=Policy UiThread` and skin `Update=32`?<br/>
-Q5: wut? i mean how to calculated this? 60 is the equivalent of skin `Update=16`?<br/>
-Q6: sorcery formula. I mean i'm not good at math, i can't read it.
-</i>
-
-## Reference
-
-- [What is Loudness meter](https://iconcollective.edu/loudness-meters/)
+Check out [this](/docs/usage-examples/loudness.md) example to see how this handler is used.

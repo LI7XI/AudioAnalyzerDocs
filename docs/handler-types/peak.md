@@ -3,16 +3,16 @@
 Maximum of an "absolute" value of the signal a over period of time.<br/>
 Use when you need to know if there was any sound on not, or when detecting possible clipping.
 
-## Peak type Properties
+## Peak Parameters
 
 ### Jump list
 
-- [Type](#type).
-- [Transform](#transform).
-- [UpdateInterval](#update-interval).
-- [Attack](#attack).
-- [Decay](#decay).
-- [Usage Examples](#usage-examples).
+- [Type](#type)
+- [Transform](#transform)
+- [UpdateInterval](#update-interval)
+- [Attack](#attack)
+- [Decay](#decay)
+- [Usage](#usage)
 
 ---
 
@@ -23,15 +23,15 @@ Specifies the type of the handler
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type
+Handler-HandlerName=Type Peak
 ```
 
 ---
 
-<p id="transform" class="p-title"><b>Transform</b><b>Required</b></p>
+<p id="transform" class="p-title"><b>Transform</b><b>Defaults: None</b></p>
 
-Description on how to transform values before outputting them.<br/>
-See [Transformations]() discussion.
+Description on how to transform values before outputting them. When using this handler it's recommended to transform values to decibels to have the expected results.<br/>
+See [Transforms](/docs/discussions/transforms.md) discussion.
 
 _Examples:_
 
@@ -59,7 +59,7 @@ Handler-HandlerName=Type Peak | Transform db | UpdateInterval 5
 Time in milliseconds. A float number that is greater than `0`.<br/>
 
 When not zero, smooths the result in such a way that it takes roughly Attack milliseconds to raise from one stable level to another. Very roughly.<br/>
-It may be useful when values are updating too quickly.
+It may be useful when values are updating too quickly. This parameter is similar to AudioLevel `PeakAttack`.
 
 _Examples:_
 
@@ -73,8 +73,8 @@ Handler-HandlerName=Type Peak | Transform db | Attack 10
 
 Time in milliseconds. A float number that is greater than `0`.<br/>
 
-When not zero, smooths the result in such a way that it takes roughly Decay milliseconds to fall from one stable level to another. Very roughly.<br/>
-It may be useful when values are updating too quickly.
+When not zero, smooths the result in such a way that it takes roughly `Decay` milliseconds to fall from one stable level to another. Very roughly.<br/>
+It may be useful when values are updating too quickly. This parameter is similar to AudioLevel `PeakDecay`.
 
 _Examples:_
 
@@ -89,14 +89,6 @@ Handler-HandlerName=Type Peak | Transform db | Attack 10
 ; Here Decay will equal to 40 as well.
 ```
 
-## Usage Examples
+## Usage
 
-```ini
-Handler-HandlerName=Type Peak | Transform db
-```
-
-Or
-
-```ini
-Handler-HandlerName=Type Peak | Transform db | UpdateInterval 5 | Attack 10 | Decay 30
-```
+Check out [this](/docs/usage-examples/peak.md) example to see how this handler is used.
