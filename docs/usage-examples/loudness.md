@@ -36,6 +36,8 @@ We will make 2 handlers, and set the first handler as a source for the second ha
 - `LoudnessdB` will process the audio signal and give us loudness levels in decibel.
 - `LoudnessPercent` Will convert decibel to `[0, 1]` range to be used in meters.
 
+Also we are going to use `like-a` filter, without it, the results will look totally different.
+
 ```ini
 Unit-Main=Channels Auto | Handlers LoudnessdB, LoudnessPerecnt(LoudnessdB) | Filter like-a
 ```
