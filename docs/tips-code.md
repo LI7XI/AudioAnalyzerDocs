@@ -210,6 +210,8 @@ Since a user may have more than one audio device, we need a way to let them choo
 
 ?>To keep it short, we are going to explain the code part only, but the full example and a tutorial on how we made it is available [here](/docs/usage-examples/settings-skin.md)
 
+?>Code used here is inspired by [@marcopixel](https://github.com/marcopixel) and [@alatsombath](https://github.com/alatsombath), a special thanks for them.
+
 We will do everything inside `Initialize` function since it will run once the skin is loaded.
 
 ```lua
@@ -399,6 +401,4 @@ Which means, the sounds is not visualized exactly as it is, what gets visualized
 
 ## Helpful Websites
 
-[Here]() is a cool website that can generate frequencies, it can be very helpful when you are making a spectrum. Just keep in mind to keep the volume under 90%, above that it will create some noise in frequencies.
-
-Here is another helpful website to help you visualize ...
+[Here](https://www.szynalski.com/tone-generator/) is a cool website that can generate frequencies, it can be very helpful when you are making a spectrum. Just keep in mind to keep the volume under 90%, above that it will create some noise in frequencies.
