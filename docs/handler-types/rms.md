@@ -11,7 +11,7 @@ But now there is a better dedicated [Loudness](/docs/handler-types/signal-proces
 
 - [Type](#type)
 - [Transform](#transform)
-- [UpdateInterval](#update-interval)
+- [UpdateRate](#update-rate)
 - [Attack](#attack)
 - [Decay](#decay)
 - [Usage](#usage)
@@ -43,7 +43,7 @@ Handler-HandlerName=Type RMS | Transform db
 
 ---
 
-<p id="update-interval" class="p-title"><b>UpdateInterval</b><b>Default: 10</b></p>
+<p id="update-rate" class="p-title"><b>UpdateRate</b><b>Default: 10</b></p>
 
 A float number that is greater than `0`.<br/>
 Time in milliseconds of block in which maximum is found.
@@ -51,7 +51,7 @@ Time in milliseconds of block in which maximum is found.
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type RMS | Transform db | UpdateInterval 5
+Handler-HandlerName=Type RMS | Transform db | UpdateRate 5
 ```
 
 ---
