@@ -36,7 +36,7 @@ Time in milliseconds of one block that the handler will produce.
 
 No matter how fast source handler is updated, this handler will always consistently produce one data block in Granularity milliseconds.
 
-See [Tips]() discussion.
+See [Tips](/docs/tips-code?id=handlers-arrangement) discussion.
 
 _Examples:_
 

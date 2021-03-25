@@ -31,7 +31,7 @@ For example, you can write `(5*10^2 + 10)*0.7` instead of `357`.
 
 If you want your skin to react to audio device properties, this plugin provides you with some information.
 
-For example, there is a section variable called `Device List Output` that will give you a list of available audio devices, that you can parse with a Lua script, and then somehow show user a list of devices to choose from. We will go through that in [Tips](/tips-code.md) discussion.
+For example, there is a section variable called `Device List Output` that will give you a list of available audio devices, that you can parse with a Lua script, and then somehow show user a list of devices to choose from. We will go through that in [Tips](/docs/tips-code?id=audio-devices-list) discussion.
 
 Of course there is a `Current Device` or `Channels` section variable that will give you a list of available audio channels.
 

@@ -10,7 +10,7 @@ Feedback and feature suggestions are also welcomed.
 
 ## Table of Content
 
-- [Home](/home.md)
+- [Home](/)
   - [Introduction](/docs/introduction.md)
   - [Why using AudioAnalyzer](/docs/why.md)
 - [Showcase](/docs/showcase.md)
@@ -41,6 +41,17 @@ Feedback and feature suggestions are also welcomed.
 - [Performance](/docs/performance.md)
 - [Tips and Code snippets](/docs/tips-code.md)
 - [Usage Examples](/docs/usage-examples/usage-examples.md)
+  - [Combine Types](/docs/usage-examples/combine-types/combine-types.md)
+    - [Spectrogram Waveform](/docs/usage-examples/combine-types/spectrogram-waveform.md)
+    - [FFT Spectrogram Waveform](/docs/usage-examples/combine-types/fft-spectrogram-waveform.md)
+  - [FFT Spectrum](/docs/usage-examples/fft-spectrum.md)
+  - [RMS](/docs/usage-examples/rms.md)
+  - [Peak](/docs/usage-examples/peak.md)
+  - [Loudness](/docs/usage-examples/loudness.md)
+  - [WaveForm](/docs/usage-examples/waveform.md)
+  - [Spectrogram](/docs/usage-examples/spectrogram.md)
+  - [Curve Tester](/docs/usage-examples/curve-tester.md)
+  - [Settings Skin](/docs/usage-examples/settings-skin.md)
 
 ---
 

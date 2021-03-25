@@ -52,7 +52,7 @@ First we write the option name, followed by the parameter name then a colon:
 Source=ID:
 ```
 
-Then we write the obtained ID from the [Section Variables]():
+Then we write the obtained ID from the [Section Variables](/docs/section-vars.md):
 
 ```ini
 Source=ID: {0.0.0.00000000}.{134d7830-179e-4748-9861-37967e8bda9e}
@@ -60,7 +60,7 @@ Source=ID: {0.0.0.00000000}.{134d7830-179e-4748-9861-37967e8bda9e}
 
 !> If you are distributing your skin, don't just set Source to some exact device ID, because other computers will have different devices with different IDs. So you should let the user choose the audio device.
 
-See [Tips and Code Snippets]() discussion for how to achieve this using Lua and Rainmeter `[#Variables]`.
+See [Tips and Code Snippets](/docs/tips-code?id=audio-devices-list) discussion for how to achieve this using Lua and Rainmeter `[#Variables]`.
 
 _Examples:_
 
@@ -150,7 +150,7 @@ Parameters:
 
   So if your audio device sample rate is 48000 and TargetRate is 44100, then nothing will happen. If you sampling rate is less than TargetRate then nothing will happen.<br/>
   Setting `TargetRate` to 0 disables down-sampling completely.<br/>
-  See [Performance]() discussion.
+  See [Performance](/docs/performance?id=target-rate) discussion.
 
 - `Filter`(Optional): Performs signal filtering on the audio using the specified Filter. <span class="d">Default: None</span><br/>
 
@@ -221,7 +221,7 @@ A boolean value, specify whether the plugin should log error messages in Rainmet
 
 - `false`: Disables error logs.
 
-  See [Tips]() discussion.
+  See [Tips](/docs/tips-code?id=unused-parameters) discussion.
 
 _Examples:_
 
@@ -269,7 +269,7 @@ Parameters:
   When processing time exceeds WarnTime, a warning message in the log will be generated. You can use it to check how much of a CPU time the plugin consumes with your settings.<br/>
   Negative values disables logging.
 
-See [Performance]() discussion.
+See [Tips](/docs/tips-code?id=plugin-updaterate) discussion.
 
 _Examples:_
 

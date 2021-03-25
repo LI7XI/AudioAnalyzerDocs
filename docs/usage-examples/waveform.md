@@ -51,7 +51,7 @@ To do that, we can set `StringValue` option to `Info` and use `InfoRequest` opti
 In `InfoRequest` option specify the following:
 
 - `HandlerInfo` argument is used when getting infos from handlers.
-- `Channels` parameter to specify the channel. <!-- Q -->
+- `Channels` parameter to specify the channel.
 - `Handler` parameter to specify the handler we want to get infos from.
 - `Data` parameter to specify what type of data we want this child measure to provide.
 

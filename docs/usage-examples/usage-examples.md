@@ -22,3 +22,4 @@ All examples we done here are available in the [.rmskin]() file.
 - [WaveForm](/docs/usage-examples/waveform.md)
 - [Spectrogram](/docs/usage-examples/spectrogram.md)
 - [Curve Tester](/docs/usage-examples/curve-tester.md)
+- [Settings Skin](/docs/usage-examples/settings-skin.md)
