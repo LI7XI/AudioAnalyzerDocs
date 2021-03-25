@@ -106,12 +106,31 @@ Resolution: `15`
 
 <p id="folder" class="p-title"><b>DefaultColorSpace</b><b>Default: sRGB</b></p>
 
-Default Color Space
+You can set a default color space to be used in all parameters that uses colors. But of course you can override it in any parameter.
+
+Available color spaces are:
+
+- `sRGB`
+- `sRGB255`
+- `Hex`
+- `Hsl`
+- `Hsv`
+- `YCbCr`
+
+See [Colors](/docs/discussions/colors.md) discussion.
 
 _Examples:_
 
 ```ini
 Handler-HandlerName=Type Spectrogram | DefaultColorSpace sRGB255
+; Or
+Handler-HandlerName=Type Spectrogram | DefaultColorSpace Hsl
+```
+
+?>You can override the default color space in any parameter that uses colors. Just use `@` symbol before the color space.
+
+```ini
+Handler-HandlerName=Type Spectrogram | DefaultColorSpace sRGB255 | BaseColor @Hsv 166,0.5,0.9
 ```
 
 ---

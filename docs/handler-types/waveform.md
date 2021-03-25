@@ -161,6 +161,37 @@ Handler-HandlerName=Type Waveform | Connected true
 
 ---
 
+<p id="folder" class="p-title"><b>DefaultColorSpace</b><b>Default: sRGB</b></p>
+
+You can set a default color space to be used in all parameters that uses colors. But of course you can override it in any parameter.
+
+Available color spaces are:
+
+- `sRGB`
+- `sRGB255`
+- `Hex`
+- `Hsl`
+- `Hsv`
+- `YCbCr`
+
+See [Colors](/docs/discussions/colors.md) discussion.
+
+_Examples:_
+
+```ini
+Handler-HandlerName=Type Spectrogram | DefaultColorSpace sRGB255
+; Or
+Handler-HandlerName=Type Spectrogram | DefaultColorSpace Hsl
+```
+
+?>You can override the default color space in any parameter that uses colors.
+
+```ini
+Handler-HandlerName=Type Spectrogram | DefaultColorSpace sRGB255 | Background @Hsv 166,0.5,0.9
+```
+
+---
+
 <p id="background-color" class="p-title"><b>BackgroundColor</b><b>Default: 0,0,0</b></p>
 
 Color of the space where wave is not drawn.
