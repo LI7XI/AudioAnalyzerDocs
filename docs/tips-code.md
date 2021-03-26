@@ -145,7 +145,7 @@ Then it would be different, since in first case, TimeResampler applies the trans
 
 ---
 
-Btw, it's not nessary to use any of these handlers with Loudness, Peak, or RMS handler types, since they already have these functionalities (`Attack`, `Decay`, `Transform`). But of course you can use them if you want to achieve something specific.
+Btw, it's not necessary to use any of these handlers with Loudness, Peak, or RMS handler types, since they already have these functionalities (`Attack`, `Decay`, `Transform`). But of course you can use them if you want to achieve something specific.
 
 ## Handlers Order
 
@@ -320,7 +320,7 @@ end
 
 ## Unused Parameters
 
-When experemnitning with the plugin, you don't need to remove and readd the parameter to see what it does. Instead, you can just change it's name, for example add another character or a number to it so that the plugin wouldn't requnize it.
+When experemnitning with the plugin, you don't need to remove and readd the parameter to see what it does. Instead, you can just change it's name, for example add another character or a number to it so that the plugin wouldn't recognize it.
 
 For example:
 

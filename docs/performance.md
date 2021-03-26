@@ -64,6 +64,18 @@ The extra 10% (`* 1.1`) is there to make some room for any possible distortion.
 But what about other handlers like Loudness or Waveform?<br/>
 They will only react to `#FreqMax#` frequency range, if you want them to react to all human hearable frequencies, you could make a new processing unit for them then specify a different `TargeRate`.
 
+## Image meters CPU Usage
+
+This plugin is very light weight, but when using handlers like Spectrogram and Waveform, the CPU usage increases. It's not because this plugin, it's because how rainmeter handles them.
+
+We talked about this earlier in Spectrogram and waveform examples, just to rewind, rainmeter doesn't support in-memory image-transfer, which means it can't read images from Ram.
+
+The only way to display images in image meters is first, writing the image to disk, then making rainmeter read it from there to display it.
+
+You see where is the problem, your disk lifespan will be shortened, and your skin will use higher CPU usage. All due to reading/writing to disk.
+
+There is a temporary solution, which is making a Ram-disk, then making the plugin output the image there, and make the meters read it from there.
+
 ## Processing Units
 
 No need to create many processing units, except for using a different filters or a different Target rate.
