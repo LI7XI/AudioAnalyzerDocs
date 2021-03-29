@@ -4,7 +4,7 @@ Here are simple examples and [.rmskin file]() of what this plugin can do:
 
 ### [Spectrum](/docs/examples/spectrum.md)
 
-<video src="docs/examples/resources/fft-spectrum.mp4" autoplay loop muted title="Spectrum"></video>
+[<video src="docs/examples/resources/fft-spectrum.mp4" autoplay loop muted title="Spectrum"></video>](/docs/examples/spectrum.md)
 
 ### [Loudness](/docs/examples/loudness.md)
 
