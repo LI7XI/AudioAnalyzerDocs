@@ -110,7 +110,7 @@ Index=0
 Index=4
 ```
 
-?>In case you have `HandlerName=SomeHandler`, and the type of that `SomeHandler` is `Type Loudness` or **any other** than `Type fft`, setting index option to other than 0 will make this Child measure provide 0 as a value. For example:
+?>In case you have `HandlerName=SomeHandler`, and the type of that `SomeHandler` is `Type Loudness` or **any other** than `Type fft`, setting index option to other than 0 will cause plugin to stop working until the skin is refreshed. For example:
 
 ```ini
 ; Lets say you have the following in Parent Measure:
@@ -120,7 +120,8 @@ Handler-LoudnessPercent=Type ValueTransformer | Transform Map(From -50 : 0), Cla
 
 ; Setting Index to other than 0
 Index=7
-; Will make this Child measure provide 0 as a value
+; Will make the plugin stop working
+; So you have to fix it then refresh the skin
 ```
 
 ---
@@ -134,7 +135,7 @@ _Examples:_
 
 ```ini
 ; Lets say you are getting a value in range 0 to 1 from a handler
-Transform=Map(From 0 : 1, to 0 : 50), Clamp(Min 0, Max 50)
+Transform=Map(From 0 : 1, to 0 : 50), Clamp(to 0 : Max 50)
 ; Will convert it to range from 0 to 50
 ```
 

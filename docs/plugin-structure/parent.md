@@ -5,7 +5,6 @@ Reference used to illustrate the options are linked at the [bottom](#Reference) 
 
 ## Jump list
 
-- [MagicNumber](#magic-number).
 - [Source](#source).
 - [ProcessingUnits](#processing-units).
 - [Unit-UnitName](#unit-unitname).
@@ -14,27 +13,10 @@ Reference used to illustrate the options are linked at the [bottom](#Reference) 
 - [LogUnusedOptions](#log-unused-options).
 - [LockCaptureVolumeOnMax](#lock-capture-volume-on-max).
 - [Callback-OnDeviceChange](#callback-ondevicechange).
-- [OnDeviceDisconnected](#ondevice-disconnected).
-- [OnDeviceListChange](#ondevice-listchange).
+- [Callback-OnDeviceDisconnected](#ondevice-disconnected).
+- [Callback-OnDeviceListChange](#ondevice-listchange).
 
 ## Available Options
-
-<p id="magic-number" class="p-title"><b>MagicNumber</b><b>Default: 0</b></p>
-
-This plugin has an old version which is partially compatible with the new one. To avoid breaking changes while still delivering improved experience to old skin users, option MagicNumber was introduced. It is used to determine whether plugin should run in the new or in the legacy mode.
-
-Always set MagicNumber to `104`, or else plugin will run in legacy mode which have many default values different from what is described in this documentation.
-
-- `0`: Legacy Mode.
-- `104`: Makes the plugin use the newest features.
-
-_Examples:_
-
-```ini
-MagicNumber=104
-```
-
----
 
 <p id="source" class="p-title"><b>Source</b><b>Default: DefaultOutput</b></p>
 
@@ -141,12 +123,12 @@ Parameters:
   First, what is Sample Rate?<br/>
   The sample rate, in a nutshell, is the number of samples per second in a piece of audio. It is measured in Hertz (Hz) or Kilohertz (kHz).
 
-  <img class="img" src="resources\sample_rate.png" title="Sample Rate">
+  <img class="img" src="docs\examples\resources\sample_rate.png" title="Sample Rate">
 
   Very high sample rates aren't very helpful, because humans only hear sounds below 22 KHz, and 44.1 KHz sample rate is enough to describe any wave with frequencies below 22.05 KHz.
 
   Also high sample rates significantly increase CPU demands, so it makes sense to down-sample sound wave. That's why `TargetRate` option is used.<br/>
-  Typical modern PC is capable of running 192 KHz, which is totally redundant. Final rate is always >= than TargetRate.
+  Typical modern PC is capable of running 192 KHz, which is totally redundant for visualization. Final rate is always >= than TargetRate.
 
   So if your audio device sample rate is 48000 and TargetRate is 44100, then nothing will happen. If you sampling rate is less than TargetRate then nothing will happen.<br/>
   Setting `TargetRate` to 0 disables down-sampling completely.<br/>
@@ -154,7 +136,7 @@ Parameters:
 
 - `Filter`(Optional): Performs signal filtering on the audio using the specified Filter. <span class="d">Default: None</span><br/>
 
-  !>This is an advanced option and it's not necessary to use at all, use it only if you have something specific in mind.<br/>
+  !>Except predefined filters (`like-a`, `like-d`), custom filters are intended for advanced usage, use them only if you have something specific in mind.<br/>
 
   See [Filters](/docs/discussions/filters.md) discussion.
 
@@ -185,7 +167,7 @@ _Examples:_
 ```ini
 Unit-Main=Channels Auto | Handlers MainFFT, MainResampler(MainFFT), MainTransform(MainResampler), MainFilter(MainTransform), MainMapper(MainFilter) | Filter like-a
 
-Handler-MainFFT=Type FFT | BinWidth 5 | OverlapBoost 5 | CascadesCount 3
+Handler-MainFFT=Type FFT | BinWidth 30 | OverlapBoost 2 | CascadesCount 3
 Handler-MainResampler=Type BandResampler | Bands log(Count 5, Min 20, Max 4000)
 Handler-MainTransform=Type BandCascadeTransformer | MinWeight 0 | TargetWeight 100
 Handler-MainFilter=Type TimeResampler | Attack 100
@@ -335,7 +317,7 @@ Callback-OnDeviceChange=[!Log "Audio Device is changed"]
 
 ---
 
-<p id="ondevice-disconnected" class="p-title"><b>OnDeviceDisconnected</b><b>Default: None</b></p>
+<p id="ondevice-disconnected" class="p-title"><b>Callback-OnDeviceDisconnected</b><b>Default: None</b></p>
 
 Specify a bang to be called every time device has been disconnected.
 
@@ -347,7 +329,7 @@ There are several ways this can happen:
   But then, if you also pull speakers jack, there will be no audio devices available, and `onDeviceDisconnected` will be called.
 
 - You were capturing data from some specific device, but this device is no longer available.
-- Device that was being captured is not in [exclusive mode](https://answers.microsoft.com/en-us/windows/forum/windows_7-pictures/what-is-exclusive-mode-and-what-does-it-do/26922597-f6c8-4080-a675-199e37f37a0b).<span id="exclusive-mode"></span><br/>
+- Device that was being captured is now in [exclusive mode](https://answers.microsoft.com/en-us/windows/forum/windows_7-pictures/what-is-exclusive-mode-and-what-does-it-do/26922597-f6c8-4080-a675-199e37f37a0b).<span id="exclusive-mode"></span><br/>
 
   ?>Exclusive mode is when some application gets an exclusive ownership of the audio device. When device is in exclusive mode, no other application can connect to this device.
 
@@ -356,12 +338,12 @@ There are several ways this can happen:
 _Examples:_
 
 ```ini
-OnDeviceDisconnected=[!Log "An Audio Device has been disconnected"]
+Callback-OnDeviceDisconnected=[!Log "An Audio Device has been disconnected"]
 ```
 
 ---
 
-<p id="ondevice-listchange" class="p-title"><b>OnDeviceListChange</b><b>Default: None</b></p>
+<p id="ondevice-listchange" class="p-title"><b>Callback-OnDeviceListChange</b><b>Default: None</b></p>
 
 Specify a bang to be called every time something happens to any audio device in the system.
 
@@ -380,19 +362,19 @@ When OnDeviceDisconnected is called, then OnDeviceListChange is also likely to b
 _Examples:_
 
 ```ini
-OnDeviceListChange=[!Log "New audio device is connected!"]
+Callback-OnDeviceListChange=[!Log "New audio device is connected!"]
 ```
 
 Or
 
 ```ini
-OnDeviceListChange=[!Log "Audio device settings are changed"]
+Callback-OnDeviceListChange=[!Log "Audio device settings are changed"]
 ```
 
 Or
 
 ```ini
-OnDeviceListChange=[!Log "Audio Device was disabled or disconnected"]
+Callback-OnDeviceListChange=[!Log "Audio Device was disabled or disconnected"]
 ```
 
 ---
