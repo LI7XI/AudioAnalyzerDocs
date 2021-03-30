@@ -59,12 +59,14 @@ But with section variables: `(1 + [&ParentMeasure:Resolve(Value, Handler Handler
 
 You can technically make a variable and set it to that long line `Value=[&ParentMeasure:Resolve(Value, Handler HandlerName | Channel Auto)]` then use that in your calculation: `(1 + #Value#)`. But why going through all that?
 
-Section variables were mainly made to retrieve infos. Even though child measures can retrieve infos as well, it's recommended to use section variables for infos, and child measures to retrieve values. But of course choose what fits your needs the most.
+Section variables are intended to be used in logging and Lua scripts. Even though child measures can retrieve infos as well, it's recommended to use section variables for infos, and child measures to retrieve values.
+
+Except when using Spectrogram or Waveform handlers, you should use a child measure to retrieve the path infos about the image they generate. But of course choose what fits your needs the most.
 
 Now, performance wise, what's the difference?<br/>
 They have almost identical performance. Child measures performance depends on how rainmeter handles them. Section variables performance depends on how the plugin handles them.
 
-Most of the performance is taken in drawing the meters, not in calculating the values. So you wouldn't notice any performance difference between child measures and sections variables.
+Most of the performance is taken in drawing the meters, not in retrieving values. So you wouldn't notice any performance difference between child measures and sections variables.
 
 ## Handlers Arrangement
 
@@ -77,7 +79,7 @@ Unit-Main=Channels ... | Handlers FFT
 Handler-FFT=Type FFT
 ```
 
-Don't use it as a source for any handler than BandResampler:
+Don't use it as a source for any other handler than BandResampler:
 
 ```ini
 Unit-Main=Channels ... | Handlers FFT, Resampler(FFT)
@@ -85,7 +87,7 @@ Handler-FFT=Type FFT
 Handler-Resampler=Type BandResampler
 ```
 
-The reason is not recommended to do something like this (even thought you can):
+The reason you can't do something like this:
 
 ```ini
 Unit-Main=Channels ... | Handlers FFT, AnotherHandler(FFT) Resampler(AnotherHandler)
@@ -107,7 +109,7 @@ Handler-Resampler=Type BandResampler
 Handler-Transformer=Type BandCascadeTransformer
 ```
 
-It's recommended to use TimeResampler after them, not between them, because high and low frequencies don't update at same speed, and TimeResampler helps in providing a consistent output.
+It's recommended to use TimeResampler after them, not between them (doing so will cause an error), because high and low frequencies don't update at same speed, and TimeResampler helps in providing a consistent output.
 
 After that you can add other handlers like UniformBlur or Spectrogram.
 
@@ -141,11 +143,13 @@ Handler-VT=Type ValueTransformer | Transform ...
 Handler-TR=Type TimeResampler
 ```
 
-Then it would be different, since in first case, TimeResampler applies the transforms at the end, whereas now the transformations are applied before the filtering. The difference is not very noticeable, but it worth mentioning.
+Then it would be different, since in first case, TimeResampler applies the transforms at the end, whereas now the transformations are applied before the filtering. In some cases, the difference can be very noticeable.
 
 ---
 
 Btw, it's not necessary to use any of these handlers with Loudness, Peak, or RMS handler types, since they already have these functionalities (`Attack`, `Decay`, `Transform`). But of course you can use them if you want to achieve something specific.
+
+?>Loudness handler doesn't have `Attack` and `Decay` parameters, so you could use TimeResampler if needed, but it's not necessary since Loudness has its own way of smoothing values.
 
 ## Handlers Order
 
@@ -169,7 +173,7 @@ Then it won't work because the plugin is expecting to find `HandlerB` before `Ha
 
 ## Parameters Order
 
-In any handler type, you could arrange the parameters in any way you like.
+In any handler type, you can arrange the parameters in any way you like.
 
 ```ini
 Handler-HandlerName=Type ... | ParaA ... | ParaB ... | ParaC ...
@@ -186,7 +190,7 @@ Handler-HandlerName=Type ... | ParaC ... | ParaA ... | ParaB ...
 In some cases (TimeResampler handler as example) we mentioned that it does filtering, we don't mean the same filtering that `Filter` parameter in `Unit` option does.
 
 What Filter parameter does is it affects certain frequencies of the audio, like you could remove high frequencies, or make low frequencies more noticeable.<br/>
-What ValueTransformer or TimeResampler does (in case of using transform parameter) is that it affects audio levels, not a specific frequencies.
+What ValueTransformer or TimeResampler does (in case of using transform parameter) is that it affects audio levels, not specific frequencies.
 
 For example: `dB, Map(From -70 : 0), Clamp` will show quieter sounds, whereas `dB, Map(From -20 : 0), Clamp` will show the loud sounds only.
 
@@ -200,7 +204,7 @@ You have few options:
 
 - Using [RainForms]() plugin to make a user interface.
 - Using [AutoIt]() to make a user interface.
-- Creating the skin from scratch.
+- Creating the user interface from scratch.
 
 We will go with the last one since it's the easiest for now, Check out [this](/docs/usage-examples/settings-skin.md) examples to see how we made it.
 
@@ -211,6 +215,8 @@ Since a user may have more than one audio device, we need a way to let them choo
 ?>To keep it short, we are going to explain the code part only, but the full example and a tutorial on how we made it is available [here](/docs/usage-examples/settings-skin.md)
 
 ?>Code used here is inspired by [@marcopixel](https://github.com/marcopixel) and [@alatsombath](https://github.com/alatsombath), a special thanks for them.
+
+<details>
 
 We will do everything inside `Initialize` function since it will run once the skin is loaded.
 
@@ -318,6 +324,8 @@ function Initialize()
 end
 ```
 
+</details>
+
 ## Unused Parameters
 
 When experemnitning with the plugin, you don't need to remove and readd the parameter to see what it does. Instead, you can just change it's name, for example add another character or a number to it so that the plugin wouldn't recognize it.
@@ -346,7 +354,7 @@ Most of the time, increasing `UpdateRate` parameter above lets say.. 60 wouldn't
 
 But when using FFT with a lot of measures running in the skin, increasing `UpdateRate` further may help.
 
-Remember the Fps variable we made earlier? we can use it to specify the `UpdateRate`. Simply do this:
+Remember the [Fps variable](/docs/tips-code?id=fps-variable) we made earlier? we can use it to specify the `UpdateRate`. Simply do this:
 
 ```ini
 Threading=Policy SeparateThread | UpdateRate ([#Fps]*3)
@@ -372,10 +380,10 @@ Channel=Auto, R
 Channel=FL, R
 ```
 
-Second, the channel name in `Channel` option should be exactly as specified in the process description:
+Second, channels are just values, so the name of the channel won't make any difference:
 
 ```ini
-; This is valid
+; This is fine
 [ParentMeasure]
 Unit-Main=Channels FL, R | Handlers Loudness | Filter like-a
 
@@ -384,7 +392,7 @@ Channel=FL
 ; Or
 Channel=R
 
-; This is invalid
+; This is also fine
 [ParentMeasure]
 Unit-Main=Channels FL, R | Handlers Loudness | Filter like-a
 
@@ -401,4 +409,4 @@ Which means, the sounds is not visualized exactly as it is, what gets visualized
 
 ## Helpful Websites
 
-[Here](https://www.szynalski.com/tone-generator/) is a cool website that can generate frequencies, it can be very helpful when you are making a spectrum. Just keep in mind to keep the volume under 90%, above that it will create some noise in frequencies.
+[Here](https://www.szynalski.com/tone-generator/) is a cool website that can generate frequencies, it can be very helpful when you are making a spectrum. Just remember to keep the volume under 90%, above that it will create some noise in frequencies.
