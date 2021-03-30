@@ -2,7 +2,7 @@
 
 Allows you to combine several cascades into one set of final values.
 
-!>The source of this handler must be of [FFT](/docs/handler-types/fft/fft.md) handler chain.
+!>The source of this handler must be of type [BandResampler](/docs/handler-types/fft/band-resampler.md).
 
 ## BandCascadeTransformer Parameters
 
@@ -12,7 +12,6 @@ Allows you to combine several cascades into one set of final values.
 - [MixFunction](#mix-function)
 - [MinWeight](#min-weight)
 - [TargetWeight](#target-weight)
-- [ZeroLevelMultiplier](#zero-level-multiplier)
 - [Usage](#usage)
 
 ---
@@ -71,22 +70,10 @@ Cascades are summed (and averaged at the end) until sum of their weights is less
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type BandCascadeTransformer | TargetWeight 10
+Handler-HandlerName=Type BandCascadeTransformer | TargetWeight 2
 ```
 
 ---
-
-<p id="zero-level-multiplier" class="p-title"><b>ZeroLevelMultiplier</b><b>Default: 1</b></p>
-
-A float number that is bigger or equal to `0`.<br>
-
-Some FFT cascades may be updated very slowly. When there were a silence and then suddenly some sound, then some cascades may have already be updated while some are still zero. ZeroLevelMultiplier allows you to discard such old values to make transitions from silence to sound look smoother.
-
-_Examples:_
-
-```ini
-Handler-HandlerName=Type BandCascadeTransformer | ZeroLevelMultiplier 1
-```
 
 ## Usage
 
