@@ -17,9 +17,9 @@ Simple skin with low update rate (`Update=32` = 30Fps). Low update rate is neede
 
 This is how you setup the plugin:
 
-?>Note: all option names and parameters here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using Upper Case letter of each word just for convention.
+?>Note: all option names and parameters here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using [CamelCase](https://en.wikipedia.org/wiki/Camel_case) easier reading.
 
-!>But any options you can specify its name (e.g. a Process or a Handler name) **Should only** contain Characters, Numbers and/or Underscores.
+!>Processing Unit names and Handler names can **only** contain Characters, Numbers and/or Underscores.
 
 For example:
 
@@ -41,13 +41,7 @@ Plugin=AudioAnalyzer
 Type=Parent
 ```
 
-Then we specify the [MagicNumber](/docs/plugin-structure/parent?id=magic-number).
-
-```ini
-MagicNumber=104
-```
-
-Then we make a [Process](/docs/plugin-structure/parent?id=processing-units). Lets call it `Main`.
+Then we make a [Processing Unit](/docs/plugin-structure/parent?id=processing-units). Lets call it `Main`.
 
 ```ini
 ProcessingUnits=Main
@@ -113,7 +107,7 @@ Unit-Main=Channels Auto | Handlers MainHandler1, MainHandler2(MainHandler1) | Fi
 To make a finer output, we can chain more handlers together.
 
 !> Don't forget to add there names in the Process [Handlers](#parent-handler-para) list.<br/>
-If you forgot to add them, The plugin will output a warning in Rainmeter log window and the process will not work.
+If you forgot to add them, the plugin will stop working after outputting an error in Rainmeter log window.
 
 Also Lets rename them to keep things more descriptive.
 
@@ -150,7 +144,7 @@ Channel=Auto
 
 Then we specify the Index.
 
-Since we used `FFT` Type then a `BandResampler`, it will provides an Index range starting from `0` to `Bands-1`. (Bands here means the `BandsCount` we specified in [`MainFFT` handler parameter](/docs/handler-types/fft/band-resampler?id=bands)).
+Since we used `FFT` Type then a `BandResampler`, it will provides an Index range starting from `0` to `Bands-1`. (Bands here means the `BandsCount` we specified in [`MainResampler` handler parameter](/docs/handler-types/fft/band-resampler?id=bands)).
 
 ```ini
 Index=0
