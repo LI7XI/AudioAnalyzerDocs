@@ -10,7 +10,6 @@ Allows you to blur values between bands.
 
 - [Type](#type)
 - [Radius](#radius)
-- [RadiusAdaptation](#radius-adaptation)
 - [Usage](#usage)
 
 ---
@@ -32,7 +31,7 @@ Handler-HandlerName=Type UniformBlur
 A float number that is bigger or equal to `0`.<br>
 Radius of blur for the first cascade.
 
-?>Note that this parameter is relative to the amount of `Bands` you have in `BandsResampler`, remember to increase it when increasing the `Bands` count, and vice versa.
+?>This parameter is relative to the amount of `Bands` you have in `BandsResampler`, remember to increase it when increasing the `Bands` count, and vice versa.
 
 _Examples:_
 
@@ -41,17 +40,6 @@ Handler-HandlerName=Type UniformBlur | Radius 5
 ```
 
 ---
-
-<p id="radius-adaptation" class="p-title"><b>RadiusAdaptation</b><b>Default: 1</b></p>
-
-A float number that is bigger or equal to `0`.<br>
-Radius for cascade N is: `Radius * RadiusAdaptation^N`.
-
-_Examples:_
-
-```ini
-Handler-HandlerName=Type UniformBlur | RadiusAdaptation 1
-```
 
 ## Usage
 
