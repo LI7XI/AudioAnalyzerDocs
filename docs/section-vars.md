@@ -24,6 +24,16 @@ OnRefreshAction=[!Delay 1500][!Log "[&MeasureAudio:Resolve(Current Device, Name)
 
 The example above will log the Audio device name in [Rainmeter Logs window](https://docs.rainmeter.net/manual-beta/user-interface/about/#LogTab) every time you load or refresh the skin.
 
+?>Alternatively, you can use [OnDeviceChange](/docs/plugin-structure/parent?id=callback-ondevicechange) callback, it won't require any `Delay`, because `OnDeviceChange` will only be called when the plugin has connected to the audio device.
+
+For example:
+
+```ini
+; In parent measure
+Callback-OnDeviceChange=[!Log "[&MeasureAudio:Resolve(Current Device, Name)]"]
+; Delay is not needed
+```
+
 The Resolve Function takes 1 or 2 arguments:
 
 - `FirstArgument`: Specifies the Type of information you want to get. Like: `Current Device`, `Device List`, `Value` (of a handler), `HandlerInfo` (infos about the handler proprieties).
@@ -40,6 +50,8 @@ The Resolve Function takes 1 or 2 arguments:
 You will use these arguments like like so: `[&ParentMeasure:Resolve(ArgumentA, ArgumentB)]`
 
 !>Note that `Resolve` function is case-sensitive, which means if you wrote other than `Resolve` or `resolve`, it will not work.
+
+!>When `ArgumentA` is `Value` or `HandlerName`, `ArgumentB` will have a different syntax, it would be a list of pipe-separated parameters.
 
 ---
 
