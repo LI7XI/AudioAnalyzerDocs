@@ -1,6 +1,6 @@
 ## Colors
 
-Colors may be defined in several color spaces: `sRGB`, `sRGB255`, `HSV`, `HSL`, `YCbCr`.
+Colors may be defined in several color spaces: `sRGB`, `sRGB255`, `Hex`, `HSV`, `HSL`, `YCbCr`.
 
 The way you use `Colors` parameter in [Spectrogram](/docs/handler-types/spectrogram?id=colors) is the following:<br/>
 `Colors <Position>: @<ColorSpace> <Value>, <Value>, <Value>, <Alpha>; ...`<br/>
@@ -26,6 +26,7 @@ You can read more about the difference between color spaces [here](https://www.p
 
 - [sRGB](#rgb)
 - [sRGB255](#srgb255)
+- [HEX](#hex)
 - [HSV](#hsv)
 - [HSL](#hsl)
 - [YCbCr](#ycbcr)
@@ -38,17 +39,9 @@ You can read more about the difference between color spaces [here](https://www.p
 A classic color space, used almost everywhere.
 
 Syntax: `@sRGB <R>, <G>, <B>`.<br/>
-Example: `0.0, 1.0, 1.0` for cyan color.
+Example: `@sRGB 0.0, 1.0, 1.0` for cyan color.
 
 ?>You can use `Alpha` at the end, for example: `@sRGB <R>, <G>, <B>, <A>`.
-
-?>Alternatively, you can define colors in hex, like in most places in rainmeter.
-
-Syntax: `@hex RRGGBB`.<br/>
-Example: `@hex 00FFFF`
-
-Where `<RR>` is a Red component, `<GG>` is Green, `<BB>` is Blue.<br/>
-In case you need Alpha component, then it also uses this notation: `RRGGBBAA`, where `AA` represents Alpha component.
 
 ---
 
@@ -56,10 +49,22 @@ In case you need Alpha component, then it also uses this notation: `RRGGBBAA`, w
 
 Similar to `sRGB`, but instead of being in [0, 1] range, it's in [0, 255] range.
 
-Syntax: `@sRGB <R>, <G>, <B>`.<br/>
-Example: `130, 190, 200`.
+Syntax: `@sRGB255 <R>, <G>, <B>`.<br/>
+Example: `@sRGB255 130, 190, 200`.
 
-?>You can use `Alpha` at the end, for example: `@sRGB255 <R>, <G>, <B>, <A>`.
+?>You can use `Alpha` at the end, for example: `@sRGB255 <R>, <G>, <B>, <A>`.<br/>Alpha is in [0, 255] range as well.
+
+---
+
+<h3 id="hex">HEX</h3>
+
+You can specify colors in Hex format.
+
+Syntax: `@hex RRGGBB`.<br/>
+Example: `@hex 00FFFF`
+
+Where `<RR>` is a Red component, `<GG>` is Green, `<BB>` is Blue.<br/>
+In case you need Alpha component, then use this notation: `RRGGBBAA`, where `AA` represents Alpha component.
 
 ---
 
@@ -68,7 +73,7 @@ Example: `130, 190, 200`.
 Stands for `Hue`, `Saturation`, `Value`.<br/>
 Unlike most other values in colors, `Hue` is defined in range from `0` to `360`.
 
-Syntax: `@hsv <H>, <S>, <V>`.
+Syntax: `@hsv <H>, <S>, <V>`.<br/>
 Example: `@hsv 52.0, 0.0, 0.102`.
 
 ?>You can use `Alpha` at the end, for example: `@hsv <H>, <S>, <V>, <A>`.
@@ -99,7 +104,7 @@ Example: `@YCbCr 0.5, 1.0, 0.75`.
 In Spectrogram handler. Examples:
 
 [Colors](/docs/handler-types/spectrogram?id=colors) Parameter: `Colors 0.0: @sRGB 0.1,0.1,0.1; 1.0: @hsv 150,0.85,0.5; ...`<br/>
-[BaseColor](/docs/handler-types/spectrogram?id=base-color) Parameter: `BaseColor @SRGB255 170,140,190`<br/>
+[BaseColor](/docs/handler-types/spectrogram?id=base-color) Parameter: `BaseColor @sRGB255 170,140,190`<br/>
 [BorderColor](/docs/handler-types/spectrogram?id=border-color) Parameter: `BorderColor @hsl 90,0.8,0.4`<br/>
 
 And same for other parameters.

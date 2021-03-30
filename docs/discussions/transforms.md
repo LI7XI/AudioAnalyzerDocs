@@ -14,7 +14,7 @@ Available operations and syntax:
 
   !>`From` parameter is required, `to` parameter is optional. If `to` is not present, then source range is transformed in [0, 1] range.
 
-- Limiting value to some range: `Clamp(Min <MinValue>, Max <MaxValue>)`.<br/>
+- Limiting value to some range: `Clamp(to <MinValue> : <MaxValue>)`.<br/>
   Parameters are optional. Default `MinValue` is 0, default `MaxValue` is 1.
 
 Transformations are defined as chains. Transformation chain is a sequence of operations separated by a comma.
@@ -25,7 +25,7 @@ Transformations are defined as chains. Transformation chain is a sequence of ope
 ; Example 1
 Handler-HandlerName= ... | Transform dB, Map(From -70 : 0), Clamp
 ; Example 2
-Handler-HandlerName= ... | Transform dB, Map(From -50 : 0, to 5 : 100), Clamp(Min 5, Max 100)
+Handler-HandlerName= ... | Transform dB, Map(From -50 : 0, to 5 : 100), Clamp(to 5 : 100)
 ```
 
 Example 1 is something that audio Peak or Loudness meter could be using.
