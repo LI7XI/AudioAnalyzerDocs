@@ -17,7 +17,7 @@ Simple skin with low update rate (`Update=32` = 30Fps). Low update rate is neede
 
 This is how you setup the plugin:
 
-?>Note: all option names and parameters here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using [CamelCase](https://en.wikipedia.org/wiki/Camel_case) easier reading.
+?>Note: all option names and parameters here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using [CamelCase](https://en.wikipedia.org/wiki/Camel_case) for easier reading.
 
 !>Processing Unit names and Handler names can **only** contain Characters, Numbers and/or Underscores.
 
