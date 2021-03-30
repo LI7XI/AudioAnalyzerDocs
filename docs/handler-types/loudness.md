@@ -6,15 +6,15 @@ Loudness is a way to measure audio levels based on the way humans perceive sound
 
 ### How it works
 
-Signal energy is calculated for blocks of size each (1000/[UpdatesPerSecond](#updates-per-second)) milliseconds. Blocks are averaged across [TimeWindow](#time-window) milliseconds.
+Signal energy is calculated for blocks of size each (1000/[UpdateRate](#update-rate)) milliseconds. Blocks are averaged across [TimeWindow](#time-window) milliseconds.
 
 However, not all blocks are used, blocks that are almost silent are discarded. You can determine the amount of discarded blocks using [GatingLimit](#gating-limit) option.<br/>
 This is similar to how [EBU R 128](https://en.wikipedia.org/wiki/EBU_R_128#EBU_Mode_metering) describes loudness metering.
 
-Worth noting that `UpdatesPerSecond` is independent from how often the handler updates.<br/>
+Worth noting that `UpdateRate` is independent from how often the handler updates.<br/>
 Handler value will be updated at the same rate as all other handlers, but blocks inside it are updated at independent rate.
 
-If handlers are updated at lower rate than `UpdatesPerSecond`, then you obviously won't be able to receive value for each block, but the calculations inside handler will be as accurate as specified in `UpdatesPerSecond`.
+If handlers are updated at lower rate than `UpdateRate`, then you obviously won't be able to receive value for each block, but the calculations inside handler will be as accurate as specified in `UpdateRate`.
 
 ## Loudness Parameters
 
@@ -22,7 +22,7 @@ If handlers are updated at lower rate than `UpdatesPerSecond`, then you obviousl
 
 - [Type](#type)
 - [Transform](#transform)
-- [UpdatesPerSecond](#updates-per-second)
+- [UpdateRate](#update-rate)
 - [GatingLimit](#gating-limit)
 - [TimeWindow](#time-window)
 - [GatingDB](#gating-db)
@@ -56,19 +56,19 @@ Handler-HandlerName=Type Loudness | Transform db
 
 ---
 
-<p id="updates-per-second" class="p-title"><b>UpdatesPerSecond</b><b>Default: 20</b></p>
+<p id="update-rate" class="p-title"><b>UpdateRate</b><b>Default: 20</b></p>
 
 A Float number in range from `0.01` to `60`.<br/>
 Speed at which handler is updating its values.
 
-UpdatesPerSecond 10 would mean that every 100ms value will be updated.
-UpdatesPerSecond 1 would mean that value will only be updated once per second.
+UpdateRate 10 would mean that every 100ms value will be updated.
+UpdateRate 1 would mean that value will only be updated once per second.
 Higher update rate does not necessary correspond to more accurate perceived loudness. Don't set it too high.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Loudness | Transform db | UpdatesPerSecond 30
+Handler-HandlerName=Type Loudness | Transform db | UpdateRate 30
 ```
 
 ---

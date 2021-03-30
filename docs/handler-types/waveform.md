@@ -187,7 +187,7 @@ Handler-HandlerName=Type Spectrogram | DefaultColorSpace Hsl
 ?>You can override the default color space in any parameter that uses colors.
 
 ```ini
-Handler-HandlerName=Type Spectrogram | DefaultColorSpace sRGB255 | Background @Hsv 166,0.5,0.9
+Handler-HandlerName=Type Spectrogram | DefaultColorSpace sRGB255 | BackgroundColor @Hsv 166,0.5,0.9
 ```
 
 ---

@@ -72,9 +72,11 @@ Fast Fourier Transformation is a mathematical formula that samples an audio sign
 
 ?>Note this is the only handler type that provides an [index](/docs/plugin-structure/child?id=index) range for the child measures to use, which mean any handler that is using it as a source will have an index range as well.
 
+?>This handler type provides an array of values, which you can specify the value index using [index](/docs/plugin-structure/child?id=index) option in child measures.<br/> Any handler that is using this handler as a source will have an array of values as well.
+
 #### BandResampler
 
-Handler of type `FFT` is not very useful on it's own, while you still can retrieve values from it, its recommended to use a `BandResampler` after it, and retrieve values from that instead.
+Handler of type `FFT` is not very useful on it's own, while you still can retrieve values from it, you **should** use a `BandResampler` after it, and retrieve values from that instead.
 
 It will give you a better control of which frequency bands you want to retrieve and the results will look much better.
 
@@ -112,7 +114,7 @@ At first, these 3 handlers will look similar to each other, but they have few di
 
 - `RMS`: Sum squares of values over X ms, find average, get root of result.
 - `Peak`: Find maximum value over X ms. If there was a silence and just 1 sound sample near maximum, then result will be near maximum.
-- `Loudness`: Sum squares of values over X ms (but separated into smaller blocks), throw out too quiet blocks, find average of remaining blocks. Unlike RMS, it doesn't get root of result, but in case of using decibels this changes a little.
+- `Loudness`: Sum squares of values over X ms (but separated into smaller blocks), throw out too quiet blocks, find average of remaining blocks. Unlike RMS, it doesn't get root of result, but in case of using decibels this changes little.
 
 ?>Unless you have a specific need for `RMS` or `Peak` handler types, it's recommended to use `Loudness`.
 

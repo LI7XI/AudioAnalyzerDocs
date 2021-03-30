@@ -11,7 +11,7 @@ If your update rate is too high, the handler will smooth the values out so that 
 ### Jump list
 
 - [Type](#type)
-- [Granularity](#granularity)
+- [UpdateRate](#update-rate)
 - [Attack](#attack)
 - [Decay](#decay)
 - [Transform](#transform)
@@ -29,19 +29,19 @@ Handler-HandlerName=Type TimeResampler
 
 ---
 
-<p id="granularity" class="p-title"><b>Granularity</b><b>Default: 16.667</b></p>
+<p id="update-rate" class="p-title"><b>UpdateRate</b><b>Default: 16.667</b></p>
 
 A float number that is bigger than `0`.<br>
 Time in milliseconds of one block that the handler will produce.
 
-No matter how fast source handler is updated, this handler will always consistently produce one data block in Granularity milliseconds.
+No matter how fast source handler is updated, this handler will always consistently produce one data block in `UpdateRate` milliseconds.
 
 See [Tips](/docs/tips-code?id=handlers-arrangement) discussion.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type TimeResampler | Granularity 33.2
+Handler-HandlerName=Type TimeResampler | UpdateRate 33.2
 ```
 
 ---
@@ -50,7 +50,7 @@ Handler-HandlerName=Type TimeResampler | Granularity 33.2
 
 A float number that is bigger than `0`.<br>
 
-This is the same parameter as `FFTAttack` in AudioLevel plugin, except AudioLevel don't smooth values when they are updating very rarely.<br/>
+This parameter is similar to `FFTAttack` in AudioLevel plugin, except AudioLevel don't smooth values when they are updating very rarely.<br/>
 Attack only affects how values are smoothed when they are increasing.
 
 _Examples:_
