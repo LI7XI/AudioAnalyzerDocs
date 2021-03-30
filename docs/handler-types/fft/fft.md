@@ -13,7 +13,6 @@ Fourier Transform is a mathematical formula that decomposes an audio signal and 
 - [OverlapBoost](#overlap-boost)
 - [CascadesCount](#cascades-count)
 - [WindowFunction](#window-function)
-- [Handler Info](#handler-info)
 - [Usage](#usage)
 
 ---
@@ -34,7 +33,7 @@ Handler-HandlerName=Type FFT
 
 A float number that is bigger than `0`.<br>
 
-Width of one FFT result bin, it's similar to AudioLevel `FFTSize`.<br/>
+Width of one FFT result bin, it serves similar purpose as AudioLevel `FFTSize`.<br/>
 Also corresponds to the rate at which FFT is natively updated (before taking into account [OverlapBoost](#overlap-boost)). FFT with `BinWidth 10` and `OverlapBoost 1` will update 10 times per second.
 
 The less this option is, the more detailed result you get, but the less frequently values change.<br/>
@@ -51,7 +50,7 @@ Handler-HandlerName=Type FFT | BinWidth 6
 <p id="overlap-boost" class="p-title"><b>OverlapBoost</b><b>Default: 2</b></p>
 
 A float number that is bigger or equal to `1`.<br>
-Similar to AudioLevel `FFTOverlap`. Increases FFT update rate at the expense of increased CPU load.
+It serves similar purpose as AudioLevel `FFTOverlap`. Increases FFT update rate at the expense of increased CPU load.
 
 _Examples:_
 
@@ -68,7 +67,7 @@ The plugin can increase resolution in low frequencies by using cascades of FFT.
 
 !>You wouldn't see the effect of this parameter unless you used a [BandCascadeTransformer](/docs/handler-types/fft/band-cascade-transformer.md).
 
-Think of this parameter as a `BinWidth` divider. If you have `BinWidth 8` and `CascadesCount 2` then the BinWidth in low frequencies would be `4`, but it will still be `10` in high frequencies.
+Think of this parameter as a `BinWidth` divider. If you have `BinWidth 8` and `CascadesCount 2` then the BinWidth in low frequencies would effectively be `4`, but it will still be `8` in high frequencies.
 
 See [FFT Cascades](/docs/discussions/fft-cascades.md) discussion.
 
@@ -87,7 +86,6 @@ Window functions make FFT results better. They make results look cleaner. But di
 The syntax: Window function is defined as a type string optionally followed by arguments in parentheses.<br/>
 Like this: `SomeType(10)`.
 
-!>Note that the parentheses are connected to the type (`SomeType(10)`) and not separated (`SomeType (10)`).
 
 Possible types:
 
@@ -117,28 +115,6 @@ Or
 
 ```ini
 Handler-HandlerName=Type FFT | WindowFunction kaiser(7)
-```
-
----
-
-### Handler Info
-
-- `Size`: Size of the FFT.
-- `Cascades Count`: Value of [CascadesCount](#cascades-count) parameter.
-- `Overlap`: Value of [OverlapBoost](#overlap-boost) parameter.
-- `Nyquist Frequency`: Nyquist frequency of first cascade.
-- `Nyquist Frequency <Index>`: Nyquist frequency of Nth cascade.
-- `DC`: DC value of first cascade.
-- `DC <Index>`: DC value of Nth cascade
-- `BinWidth`: Actual BinWidth of first cascade.
-- `BinWidth <Index>`: Actual BinWidth of Nth cascade.
-
-_Examples:_
-
-```ini
-[!Log "[&ParentMeasure:Resolve(HandlerInfo, Channel Auto | Handler FFTHandler | Size)]"]
-; Or
-[!Log "[&ParentMeasure:Resolve(HandlerInfo, Channel Auto | Handler FFTHandler | Nyquist Frequency 5)]"]
 ```
 
 ## Usage
