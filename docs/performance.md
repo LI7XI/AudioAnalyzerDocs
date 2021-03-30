@@ -64,6 +64,14 @@ The extra 10% (`* 1.1`) is there to make some room for any possible distortion.
 But what about other handlers like Loudness or Waveform?<br/>
 They will only react to `#FreqMax#` frequency range, if you want them to react to all human hearable frequencies, you could make a new processing unit for them then specify a different `TargeRate`.
 
+For example, loudness is supposed to approximate what you hear, and you hear frequencies up to ~20-22 kHz, so it doesn't make sense to set target rate below 44100, as the results will be incorrect.
+
+Loudness is intended to be used with an appropriate filter (built-in like-a and like-d or similar custom filter), and these filters already cut frequencies above 20 kHz, so setting target rate above 44100 also doesn't make sense.
+
+For Waveform, altering sample rate isn't very helpful, because the main reason to do this is to reduce CPU load, and waveform isn't heavy on the CPU, unlike FFT, the main load is from [drawing an image](#image-meters-cpu-usage), and more CPU load comes from writing this image on disk.
+
+If you want to limit frequencies for waveform you should use a custom filter, because TargetRate option doesn't guarantee much: you can't rely on it to change the shape of the audio wave.
+
 ## Image meters CPU Usage
 
 This plugin is very light weight, but when using handlers like Spectrogram and Waveform, the CPU usage increases. It's not because this plugin, it's because how rainmeter handles them.
@@ -76,8 +84,8 @@ You see where is the problem, your disk lifespan will be shortened, and your ski
 
 There is a temporary solution, which is making a Ram-disk, then making the plugin output the image there, and make the meters read it from there.
 
+Even though this solution kinda solves the drive lifespan issue, it doesn't quite solve the excessive CPU usage issue.
+
 ## Processing Units
 
-No need to create many processing units, except for using a different filters or a different Target rate.
-
-Instead, you could do everything in one unit. You just need to be clever about arranging your handlers.
+No need to create many processing units, except for using a different filters or a different Target rate. Instead, you could do everything in one unit.
