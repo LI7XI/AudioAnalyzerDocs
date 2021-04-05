@@ -11,23 +11,29 @@ Color=210,210,230,230
 ; Common settings
 ; ------------
 FreqMin=20
-FreqMax=2000
+FreqMax=6000
 Bands=160
-; ------------
-Sensitivity=51
-Attack=20
-Decay=50
 ; ------------
 ; AudioLevel Specfic
 ; ------------
 FFTSize=4096*4
-FFTOverlap=((4096*4)/2)
+FFTOverlap=((#FFTSize#)/2)
+; ------------
+FFTAttack=120
+FFTDecay=200
+; ------------
+Sensitivity=45
 ; ------------
 ; AudioAnalyzer Specfic
 ; ------------
-BinWidth=10
-OverlapBoost=10
-CascadesCount=3
+BinWidth=3.2
+OverlapBoost=5
+CascadesCount=1  
+; ------------
+Attack=60
+Decay=45
+; ------------
+MindB=40
+MaxdB=5
 ; ------------
 BlurRadius=1
-RadiusAdaptation=1

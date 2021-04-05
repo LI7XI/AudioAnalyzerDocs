@@ -3,3 +3,5 @@
 @Resources/Plugins
 HotKeys/
 .github/
+@Resources/Meters/Spectrum/AudioLevel.inc
+@Resources/Measures/AudioLevelBands.inc
