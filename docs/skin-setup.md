@@ -19,7 +19,7 @@ This is how you setup the plugin:
 
 ?>Note: all option names and parameters here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using [CamelCase](https://en.wikipedia.org/wiki/Camel_case) for easier reading.
 
-!>Processing Unit names and Handler names can **only** contain Characters, Numbers and/or Underscores.
+!>Processing Unit names and handler names can contain only [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and/or underscores.
 
 For example:
 
@@ -67,7 +67,7 @@ A parameter may have more than one value, we can write multiple comma-separated 
 Unit-Main=Channels Left, Right | Handlers MainHandler1, MainHandler2 | Filter Like-a
 ```
 
-Now lets specify what handlers do. <br/>
+Now lets specify what handlers do.<br/>
 We write Handler, followed by a hyphen, then the handler name.
 
 ```ini
@@ -85,7 +85,7 @@ Handler-MainHandler1=Type FFT
 After we set the type, we need to specify its parameters.
 
 ```ini
-Handler-MainHandler1=Type FFT | BinWidth 5 | OverlapBoost 5 | CascadesCount 1
+Handler-MainHandler1=Type FFT | BinWidth 30 | OverlapBoost 2 | CascadesCount 3
 ```
 
 Handler of type FFT is not very useful on its own.<br/>
@@ -94,8 +94,8 @@ So handlers can be chained to modify how the signal is outputted.
 We do that by specifying a second handler, then we specify its parameters like any other type.
 
 ```ini
-Handler-MainHandler1=Type FFT | BinWidth 5 | OverlapBoost 5 | CascadesCount 1
-Handler-MainHandler2=Type BandResampler | Bands Log(Count 5, Min 20, Max 4000)
+Handler-MainHandler1=Type FFT | BinWidth 30 | OverlapBoost 2 | CascadesCount 3
+Handler-MainHandler2=Type BandResampler | Bands log(Count 10, FreqMin 20, FreqMax 4000)
 ```
 
 And then we set the first handler as its source. To do that, we go back to the process description, and right after the name of the handler we want to set its source, we open parentheses and inside them we specify the name of source handler.
@@ -104,19 +104,20 @@ And then we set the first handler as its source. To do that, we go back to the p
 Unit-Main=Channels Auto | Handlers MainHandler1, MainHandler2(MainHandler1) | Filter Like-a
 ```
 
-To make a finer output, we can chain more handlers together.
+We can chain more handlers together:
 
-!> Don't forget to add there names in the Process [Handlers](#parent-handler-para) list.<br/>
-If you forgot to add them, the plugin will stop working after outputting an error in Rainmeter log window.
+- `BandCascadeTransformer` can be used to make low frequencies have higher resolution instead of increasing `BinWidth`.
+- `TimeResampler` to make values transition smoother.
+- `ValueTransformer` to transform the audio signal.
 
-Also Lets rename them to keep things more descriptive.
+Also Lets rename all handlers to keep things more descriptive.
 
 ```ini
 Unit-Main=Channels Auto | Handlers MainFFT, MainResampler(MainFFT), MainTransform(MainResampler), MainFilter(MainTransform), MainMapper(MainFilter) | Filter like-a
 
 Handler-MainFFT=Type FFT | BinWidth 5 | OverlapBoost 5 | CascadesCount 3
-Handler-MainResampler=Type BandResampler | Bands log(Count 5, Min 20, Max 4000)
-Handler-MainTransform=Type BandCascadeTransformer | MinWeight 0 | TargetWeight 100
+Handler-MainResampler=Type BandResampler | Bands log(Count 10, Min 20, Max 4000)
+Handler-MainTransform=Type BandCascadeTransformer | MinWeight 0.01 | TargetWeight 2
 Handler-MainFilter=Type TimeResampler | Attack 100
 Handler-MainMapper=Type ValueTransformer | Transform dB, Map(From -50 : -0), Clamp
 ```
@@ -187,9 +188,9 @@ MagicNumber=104
 ProcessingUnits=Main
 Unit-Main=Channels Auto | Handlers MainFFT, MainResampler(MainFFT), MainTransform(MainResampler), MainFilter(MainTransform), MainMapper(MainFilter) | Filter like-a
 
-Handler-MainFFT=Type FFT | BinWidth 5 | OverlapBoost 5 | CascadesCount 3
-Handler-MainResampler=Type BandResampler | Bands log(Count 5, Min 20, Max 4000)
-Handler-MainTransform=Type BandCascadeTransformer | MinWeight 0 | TargetWeight 100
+Handler-MainFFT=Type FFT | BinWidth 30 | OverlapBoost 2 | CascadesCount 3
+Handler-MainResampler=Type BandResampler | Bands log(Count 10, FreqMin 20, FreqMax 4000)
+Handler-MainTransform=Type BandCascadeTransformer | MinWeight 0.01 | TargetWeight 2
 Handler-MainFilter=Type TimeResampler | Attack 100
 Handler-MainMapper=Type ValueTransformer | Transform dB, Map(From -50 : -0), Clamp
 
@@ -238,6 +239,51 @@ Channel=Auto
 Index=4
 HandlerName=MainMapper
 
+[MeasureBand5]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Child
+Parent=MeasureAudio
+Channel=Auto
+Index=5
+HandlerName=MainMapper
+
+[MeasureBand6]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Child
+Parent=MeasureAudio
+Channel=Auto
+Index=6
+HandlerName=MainMapper
+
+[MeasureBand7]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Child
+Parent=MeasureAudio
+Channel=Auto
+Index=7
+HandlerName=MainMapper
+
+[MeasureBand8]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Child
+Parent=MeasureAudio
+Channel=Auto
+Index=8
+HandlerName=MainMapper
+
+[MeasureBand9]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Child
+Parent=MeasureAudio
+Channel=Auto
+Index=9
+HandlerName=MainMapper
+
 [MeterStyles]
 X=15r
 Y=0
@@ -275,6 +321,31 @@ MeasureName=MeasureBand3
 Meter=Bar
 MeterStyle=MeterStyles
 MeasureName=MeasureBand4
+
+[MeterBand5]
+Meter=Bar
+MeterStyle=MeterStyles
+MeasureName=MeasureBand5
+
+[MeterBand6]
+Meter=Bar
+MeterStyle=MeterStyles
+MeasureName=MeasureBand6
+
+[MeterBand7]
+Meter=Bar
+MeterStyle=MeterStyles
+MeasureName=MeasureBand7
+
+[MeterBand8]
+Meter=Bar
+MeterStyle=MeterStyles
+MeasureName=MeasureBand8
+
+[MeterBand9]
+Meter=Bar
+MeterStyle=MeterStyles
+MeasureName=MeasureBand9
 ```
 
 ## Results
