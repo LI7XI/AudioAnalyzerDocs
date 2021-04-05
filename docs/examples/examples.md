@@ -18,6 +18,10 @@ Here are simple examples and [.rmskin file]() of what this plugin can do:
 
 [<video src="docs/examples/resources/peak.mp4" autoplay loop muted title="Peak"></video>](/docs/examples/peak.md)
 
+### [RMS, Peak and Loudness](/docs/examples/rms-peak-loudness.md)
+
+[<video src="docs/examples/resources/rms-peak-loudness.mp4" autoplay loop muted title="RMS, Peak and Loudness"></video>](/docs/examples/rms-peak-loudness.md)
+
 ### [Curve Tester](/docs/examples/curve-tester.md)
 
 [<video src="docs/examples/resources/curve-tester.mp4" autoplay loop muted title="Curve Tester"></video>](/docs/examples/curve-tester.md)
