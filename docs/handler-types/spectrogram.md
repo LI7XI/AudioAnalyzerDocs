@@ -41,7 +41,7 @@ Width of the image is determined by [Length](#lenth) parameter, height of the im
 
 - [Type](#type).
 - [Length](#length).
-- [Resolution](#resolution).
+- [UpdateRate](#update-rate).
 - [Folder](#folder).
 - [Colors](#colors).
 - [BaseColor](#base-color).
@@ -83,24 +83,24 @@ Handler-HandlerName=Type Spectrogram | Length 320
 
 ---
 
-<p id="resolution" class="p-title"><b>Resolution</b><b>Default: 50</b></p>
+<p id="update-rate" class="p-title"><b>UpdateRate</b><b>Default: 20</b></p>
 
-A float number that is bigger than `0`.<br>
-Time in milliseconds of block that represents one pixel width in image.
+A float number in range from `1` to `20000`.<br>
+Image will have `UpdateRate` amount of new lines that represents one pixel width in image each second.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Spectrogram | Resolution 50
+Handler-HandlerName=Type Spectrogram | UpdateRate 50
 ```
 
-Resolution: `2`
+UpdateRate: `500`
 
-<img src="docs\handler-types\examples\spectrogram\res2.PNG" title="Resolution 2" />
+<img src="docs\handler-types\examples\spectrogram\res2.PNG" title="UpdateRate 500" />
 
-Resolution: `15`
+UpdateRate: `66.6`
 
-<img src="docs\handler-types\examples\spectrogram\res15.PNG" title="Resolution 15" />
+<img src="docs\handler-types\examples\spectrogram\res15.PNG" title="UpdateRate 66.6" />
 
 ---
 
@@ -206,10 +206,6 @@ MaxColor `1,1,1`
 
 <img src="docs\handler-types\examples\spectrogram\maxcolor1.PNG" title="MaxColor 1,1,1" />
 
-MaxColor `0,0,1`
-
-<img src="docs\handler-types\examples\spectrogram\maxcolor2.PNG" title="MaxColor 0,0,1" />
-
 ---
 
 <p id="mix-mode" class="p-title"><b>MixMode</b><b>Default: <code>Value of DefaultColorSpace</code></b></p>
@@ -307,7 +303,7 @@ Peak value threshold specified in decibels.
 
 If sound wave is below SilenceThreshold then it is considered silence. Else image is updated. If you set it too high image will not be updating even when it should be.
 
-The main usage for this parameter is to synchronize several images, if you have them in one skin. If two images have the same Resolution, SilenceThreshold and image width, and they are in the same parent measure, then they will perfectly synchronized.
+The main usage for this parameter is to synchronize several images, if you have them in one skin. If two images have the same UpdateRate, SilenceThreshold and image width, and they are in the same parent measure, then they will perfectly synchronized.
 
 _Examples:_
 

@@ -37,7 +37,7 @@ MeasureName=ChildMeasure
 - [Folder](#folder)
 - [Width](#width)
 - [Height](#Height)
-- [Resolution](#resolution)
+- [UpdateRate](#update-rate)
 - [Stationary](#stationary)
 - [Connected](#connected)
 - [BackgroundColor](#background-color)
@@ -105,24 +105,24 @@ Handler-HandlerName=Type Waveform | Height 110
 
 ---
 
-<p id="resolution" class="p-title"><b>Resolution</b><b>Default: 50</b></p>
+<p id="update-rate" class="p-title"><b>UpdateRate</b><b>Default: 20</b></p>
 
-A float number that is bigger than `0`.<br>
-Time in milliseconds of block that represents one pixel width in image.
+A float number in range from `0` to `20000`.<br>
+Image will have `UpdateRate` amount of new lines that represents one pixel width in image each second.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type Waveform | Resolution 1
+Handler-HandlerName=Type Waveform | UpdateRate 50
 ```
 
-Resolution: `0.8`
+UpdateRate: `1250`
 
-<img src="docs\handler-types\examples\waveform\res08.PNG" title="Resolution 0.8" />
+<img src="docs\handler-types\examples\waveform\res08.PNG" title="UpdateRate 1250" />
 
-Resolution: `40`
+UpdateRate: `25`
 
-<img src="docs\handler-types\examples\waveform\res40.PNG" title="Resolution 40" />
+<img src="docs\handler-types\examples\waveform\res40.PNG" title="UpdateRate 25" />
 
 ---
 
@@ -316,7 +316,7 @@ Peak value threshold specified in decibels.
 
 If sound wave is below SilenceThreshold then it is considered silence. Else image is updated. If you set it too high image will not be updating even when it should be.
 
-The main usage for this property is to synchronize several images, if you have them in one skin. If two images have the same Resolution, SilenceThreshold and image width, and they are in the same parent measure, then they will perfectly synchronized.
+The main usage for this property is to synchronize several images, if you have them in one skin. If two images have the same UpdateRate, SilenceThreshold and image width, and they are in the same parent measure, then they will perfectly synchronized.
 
 _Examples:_
 
