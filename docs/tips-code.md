@@ -87,7 +87,7 @@ Handler-FFT=Type FFT
 Handler-Resampler=Type BandResampler
 ```
 
-The reason you can't do something like this:
+If you did the following the plugin will log an error and stops working:
 
 ```ini
 Unit-Main=Channels ... | Handlers FFT, AnotherHandler(FFT) Resampler(AnotherHandler)
@@ -95,8 +95,6 @@ Handler-FFT=Type FFT
 Handler-AnotherHandler=Type ValueTransformer
 Handler-Resampler=Type BandResampler
 ```
-
-Is because now that "AnotherHandler" have to process all the values FFT type provides, even thought we are not going to use any of it. And that's a waste of performance.
 
 ---
 
@@ -120,16 +118,16 @@ Both of these handlers can apply transformations on the source value. But TimeRe
 Now here is the thing, let's say you have this:
 
 ```ini
-Unit-UnitName=Channels ... | Handlers SourceHandler, TR(SourceHandler), VT(TR)
+Unit-UnitName=Channels ... | Handlers SourceHandler -> TR -> VT
 Handler-SourceHandler=Type ...
 Handler-TR=Type TimeResampler
 Handler-VT=Type ValueTransformer | Transform ...
 ```
 
-In this case ValueTransformer is not needed, Since you could use the apply the transforms in TimeResampler.
+In this case ValueTransformer is not needed, Since you could use the transforms in TimeResampler.
 
 ```ini
-Unit-UnitName=Channels ... | Handlers SourceHandler, TR(SourceHandler), VT(TR)
+Unit-UnitName=Channels ... | Handlers SourceHandler -> TR
 Handler-SourceHandler=Type ...
 Handler-TR=Type TimeResampler | Transform ...
 ```
@@ -137,19 +135,13 @@ Handler-TR=Type TimeResampler | Transform ...
 But if you have this:
 
 ```ini
-Unit-UnitName=Channels ... | Handlers SourceHandler, VT(SourceHandler), TR(VT)
+Unit-UnitName=Channels ... | Handlers SourceHandler -> VT -> TR
 Handler-SourceHandler=Type ...
 Handler-VT=Type ValueTransformer | Transform ...
 Handler-TR=Type TimeResampler
 ```
 
 Then it would be different, since in first case, TimeResampler applies the transforms at the end, whereas now the transformations are applied before the filtering. In some cases, the difference can be very noticeable.
-
----
-
-Btw, it's not necessary to use any of these handlers with Loudness, Peak, or RMS handler types, since they already have these functionalities (`Attack`, `Decay`, `Transform`). But of course you can use them if you want to achieve something specific.
-
-?>Loudness handler doesn't have `Attack` and `Decay` parameters, so you could use TimeResampler if needed, but it's not necessary since Loudness has its own way of smoothing values.
 
 ## Handlers Order
 
@@ -202,15 +194,17 @@ Instead of that, you could make a skin for settings, this is needed to create a 
 
 You have few options:
 
-- Using [RainForms]() plugin to make a user interface.
-- Using [AutoIt]() to make a user interface.
+- Using [RainForms](https://forum.rainmeter.net/viewtopic.php?t=34276) plugin to make a user interface.
+- Using [AutoIt](https://www.youtube.com/playlist?list=PL4Jcq5zn02jKpjX0nqI1_fS7mEEb5tw6z) to make a user interface.
 - Creating the user interface from scratch.
 
 We will go with the last one since it's the easiest for now, Check out [this](/docs/usage-examples/settings-skin.md) examples to see how we made it.
 
 ## Audio Devices List
 
-Since a user may have more than one audio device, we need a way to let them choose the one they want. Luckily, the plugin will provide you with a list of connected audio devices, but you need to parse them with a lua script first, and that's what we are going to do:
+_WIP_
+
+<!-- Since a user may have more than one audio device, we need a way to let them choose the one they want. Luckily, the plugin will provide you with a list of connected audio devices, but you need to parse them with a lua script first, and that's what we are going to do:
 
 ?>To keep it short, we are going to explain the code part only, but the full example and a tutorial on how we made it is available [here](/docs/usage-examples/settings-skin.md)
 
@@ -324,7 +318,7 @@ function Initialize()
 end
 ```
 
-</details>
+</details> -->
 
 ## Unused Parameters
 
@@ -333,13 +327,13 @@ When experemnitning with the plugin, you don't need to remove and readd the para
 For example:
 
 ```ini
-Unit-UnitName=Channels ... | Handlers ... | TargetRate 44100 | Filter None
+Unit-UnitName=Channels ... | Handlers ... | TargetRate 44100 | Filter like-a
 ```
 
 You don't need to remove `TargetRate` nor `Filter` parameters to see the difference they make. Simply change there names a bit:
 
 ```ini
-Unit-UnitName=Channels ... | Handlers ... | Target Rate 44100 | Filter1 None
+Unit-UnitName=Channels ... | Handlers ... | Target Rate 44100 | Filter1 like-a
 ```
 
 Now the plugin will use the default value of these parameters, and will send a log message about unused parameters `Target` and `Filter1`. If you want to use them again just fix there names.
@@ -349,6 +343,17 @@ Now the plugin will use the default value of these parameters, and will send a l
 ## Plugin UpdateRate
 
 In `Threading` option, there is a parameter called `Policy`, when using `SeparateThread`, you can specify at which update rate the plugin updates it's values.
+
+We mentioned that `UpdateRate 60` in threading means that 60 times per second plugin will try to fetch new data from windows and then transfer that data to handlers for them to update.
+
+Handlers can be updated several times per one update request (update request here is determined by `Threading` update rate), and they will keep their data as if there were more updates.
+
+_"Effectively"_ handlers update at infinite speed, because they don't lose any intermediate values when you update them rarely, you just sample their values at your own not-so-high rate (determined by update rate in threading and update rate of the skin).
+
+`UpdataRate 1000` in a handler (for example, in waveform) will mean that 1000 times per second handler will draw a new line on the image.<br/>
+If threading have `UpdateRate 60`, then there will be 60 requests for update, during most of which handler will draw 17 lines.
+
+---
 
 Most of the time, increasing `UpdateRate` parameter above lets say.. 60 wouldn't make much difference.
 
@@ -361,6 +366,10 @@ Threading=Policy SeparateThread | UpdateRate ([#Fps]*3)
 ```
 
 About `*3`, we know that Fps variable won't be more than 60, also `UpdateRate` parameter only accepts from 1 to 200. Lets say Fps actually equals 60, that would make the `UpdateRate` 180. In some cases, this will give a bit better results in heavy skins.
+
+---
+
+Some handlers have UpdateRate parameter, don't confuse between that and the `Threading` UpdateRate.
 
 ## Channels in child measures
 
@@ -385,7 +394,7 @@ Second, channels are just values, so the name of the channel won't make any diff
 ```ini
 ; This is fine
 [ParentMeasure]
-Unit-Main=Channels FL, R | Handlers Loudness | Filter like-a
+Unit-Main=Channels FL, R | Handlers ... | Filter ...
 
 [ChildMeasure]
 Channel=FL
@@ -394,10 +403,10 @@ Channel=R
 
 ; This is also fine
 [ParentMeasure]
-Unit-Main=Channels FL, R | Handlers Loudness | Filter like-a
+Unit-Main=Channels FL, R | Handlers ... | Filter ...
 
 [ChildMeasure]
-Channel=L
+Channel=Left
 ; Or
 Channel=Right
 ```
@@ -406,6 +415,14 @@ Channel=Right
 
 If you are using a sound equalizer, for example, to adjust the bass levels in your speakers, you should know that these changes affect visualization as well.<br>
 Which means, the sounds is not visualized exactly as it is, what gets visualized the the sounds you actually hear.
+
+For example, this is when using sound equalizer:
+
+<img src="docs/examples/resources/eq-on.png">
+
+And this is when it's disabled:
+
+<img src="docs/examples/resources/eq-off.png">
 
 ## Helpful Websites
 
