@@ -43,7 +43,7 @@ Handler-HandlerName=Type BandCascadeTransformer | MixFunction Product
 
 ---
 
-<p id="min-weight" class="p-title"><b>MinWeight</b><b>Default: 0.1</b></p>
+<p id="min-weight" class="p-title"><b>MinWeight</b><b>Default: 0</b></p>
 
 A float number that is bigger or equal to `0`.<br>
 Values with weight below MinWeight are thrown away.

@@ -28,7 +28,7 @@ Handler-HandlerName=Type UniformBlur
 
 <p id="radius" class="p-title"><b>Radius</b><b>Default: 1</b></p>
 
-A float number that is bigger or equal to `0`.<br>
+A float number that is bigger or equal to `1`.<br>
 Radius of blur for the first cascade.
 
 ?>This parameter is relative to the amount of `Bands` you have in `BandsResampler`, remember to increase it when increasing the `Bands` count, and vice versa.
@@ -36,7 +36,7 @@ Radius of blur for the first cascade.
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type UniformBlur | Radius 5
+Handler-HandlerName=Type UniformBlur | Radius 2.5
 ```
 
 ---
