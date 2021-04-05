@@ -20,16 +20,16 @@ There are a ton of optimizations, improvements and other features AudioAnalyzer 
 Here is a small example of a simple skin using AudioLevel vs using AudioAnalyzer:<br/>
 <small><i>Tested on i3-2312m (2c 4t 2.10GHz) CPU with all skins disabled except this one.</i></small>
 
-AudioLevel: `FreqMin 20` `FreqMax 2000` `Bands 160` `FFTSize 32768` `FFTOverlap 16256`
+AudioLevel: `FreqMin 20` `FreqMax 2000` `Bands 160` `FFTSize 32768` `FFTOverlap 16384` `FFTAttack 120` `FFTDecay 200` `Sensitivity 45`
 
-<video src="docs/examples/resources/test-audiolevel.mp4" autoplay loop muted title="Using AudioLevel"></video>
+<div style="height: 147px; overflow: hidden;"><video src="docs/examples/resources/al-vs-aa.mp4" autoplay loop muted title="Using AudioLevel"></video></div>
 
-AudioAnalyzer: `FreqMin 20` `FreqMax 2000` `Bands 160` `BinWidth 10` `OverlapBoost 10` `CascadesCount 3`
+AudioAnalyzer: `FreqMin 20` `FreqMax 2000` `Bands 160` `BinWidth 3.2` `OverlapBoost 5` `CascadesCount 1` `Attack 60` `Decay 45` `MindB -40` `MaxdB -5`
 
-<video src="docs/examples/resources/test-audioanalyzer.mp4" autoplay loop muted title="Using AudioAnalyzer"></video>
+<div style="height: 147px; overflow: hidden;"><video style="transform: translateY(-140px)" src="docs/examples/resources/al-vs-aa.mp4" autoplay loop muted title="Using AudioAnalyzer"></video></div>
 
 ?>The comparison here for demonstration only, and the settings used here don't exactly match AudioLevel settings.<br/><br/>Don't worry if you don't understand the options used here, all of them are explained in this documentation.
 
 As you can see, AudioLevel is kinda struggling when using a lot of bands and a high FFT size. While AudioAnalyzer is handling it easily.
 
-The visual difference comes to the fact that AudioLevel stretches frequencies logarithmically, AudioAnalyzer can do that as well, but it can also display frequencies linearly, which is what you saw above.
+You may notice that `FFTAttack` and `FFTDecay` in AudioLevel don't match `Attack` and `Decay` in AudioAnalyzer, that's because AudioLevel calculates them differently than AudioAnalyzer.
