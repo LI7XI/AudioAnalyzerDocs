@@ -28,7 +28,7 @@ Then, handlers will generate a value from the processed audio signal that can be
 Any handler you specify, has a set of parameters, For example:
 
 ```ini
-Handler-MainBR=Type BandResampler | Bands Log(Count [#Bands], Min 20, Max 2000) | CubicInterpolation | | SomeRandomParameter with value
+Handler-MainBR=Type BandResampler | Bands Log(Count [#Bands], FreqMin 20, FreqMax 2000) | CubicInterpolation | | SomeRandomParameter with value
 ```
 
 In the line above:
@@ -36,7 +36,7 @@ In the line above:
 - Rainmeter option name is: `Handler-MainBR`
 - Handler name is: `MainBR`
 - Handler type is: `BandResampler`
-- `Bands` parameter is: `Log(Count [#Bands], Min 20, Max 2000)`<br>
+- `Bands` parameter is: `Log(Count [#Bands], FreqMin 20, FreqMax 2000)`<br>
   `[#Bands]`, which is a standard Rainmeter way to dereference a variable. Like all rainmeter variables, it is defined somewhere in the `[Variables]` section of the skin.
 - `CubicInterpolation` parameter is empty, which means it uses default value. Just as If it wasn't specified.
 - `SomeRandomParameter` is: with value<br/>
@@ -45,11 +45,27 @@ In the line above:
 
 ## Handler Source
 
-Some handlers can be chained together, to do that, we go to unit description, then we specify the name of the source handler inside parentheses
+Some handlers can be chained together, to do that, we go to unit description, then we specify the name of the source handler inside parentheses:
 
 ```ini
-Unit-Main=Channels ... | Handlers HandlerA, HandlerB(HandlerA) | ...
+Unit-Main=Channels ... | Handlers HandlerA, HandlerB(HandlerA), HandlerC(HandlerB) | ...
 ```
+
+Alternatively there is another syntax (`->`) for specifying handler source:
+
+```ini
+Unit-Main=Channels ... | Handlers HandlerA -> HandlerB -> HandlerC | ...
+```
+
+The above is equivalent to `Handlers HandlerA, HandlerB(HandlerA), HandlerC(HandlerB)`.
+
+You can mix both syntaxes:
+
+```ini
+Unit-Main=Channels ... | Handlers HandlerA -> HandlerB, HandlerC(HandlerB) | ...
+```
+
+---
 
 Although not all handler types can be used as a source or they accept taking a source.
 
@@ -114,7 +130,19 @@ At first, these 3 handlers will look similar to each other, but they have few di
 
 - `RMS`: Sum squares of values over X ms, find average, get root of result.
 - `Peak`: Find maximum value over X ms. If there was a silence and just 1 sound sample near maximum, then result will be near maximum.
-- `Loudness`: Sum squares of values over X ms (but separated into smaller blocks), throw out too quiet blocks, find average of remaining blocks. Unlike RMS, it doesn't get root of result, but in case of using decibels this changes little.
+- `Loudness`: Sum squares of values over X ms (but separated into smaller blocks), throw out too quiet blocks, find average of remaining blocks.
+
+  Unlike RMS, Loudness doesn't get root of result, but in case of using decibels this changes little.<br/>
+  Decibel value of a root of some value is 2 times less than a decibels of this value without root.
+
+  For example, let `x=0.1`, then `x^2`, it will equal `0.01` which is 10 times less.<br/>
+  But when using decibels: `dB(x)=-10dB`, then `dB(x^2)`, it will equal `-20dB`, the difference is only 2 times, not 10.
+
+  If you use `x=5`, then `x^2`, normally `x^2` will be 5 times more than x, but `dB(x^2)` will still be just 2 times more than dB(x).
+
+  So, when you are using linear values, the difference between RMS and Loudness handlers will be drastic, but when converted to decibels, it will be quite hard to spot the difference.
+
+  See [Transforms](/docs/discussions/transforms.md) discussion to know more about decibels.
 
 ?>Unless you have a specific need for `RMS` or `Peak` handler types, it's recommended to use `Loudness`.
 
