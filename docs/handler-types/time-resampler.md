@@ -29,19 +29,19 @@ Handler-HandlerName=Type TimeResampler
 
 ---
 
-<p id="update-rate" class="p-title"><b>UpdateRate</b><b>Default: 16.667</b></p>
+<p id="update-rate" class="p-title"><b>UpdateRate</b><b>Default: 20</b></p>
 
-A float number that is bigger than `0`.<br>
-Time in milliseconds of one block that the handler will produce.
+A float number in range from `1` to `2000`.<br>
+This handler will produce `UpdateRate` amount of values each second.
 
-No matter how fast source handler is updated, this handler will always consistently produce one data block in `UpdateRate` milliseconds.
+No matter how fast source handler is updated, this handler will always consistently produce `UpdateRate` data blocks every second.
 
 See [Tips](/docs/tips-code?id=handlers-arrangement) discussion.
 
 _Examples:_
 
 ```ini
-Handler-HandlerName=Type TimeResampler | UpdateRate 33.2
+Handler-HandlerName=Type TimeResampler | UpdateRate 60
 ```
 
 ---
