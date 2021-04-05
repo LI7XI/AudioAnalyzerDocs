@@ -62,7 +62,7 @@ Source=ID: {0.0.0.00000000}.{134d7830-179e-4748-9861-37967e8bda9e}
 
 Specify one or a list of processing units separated by a comma.
 
-!>Names in this list must be unique, and **Should only** contain Characters, Numbers and/or Underscores.
+!>Names in this list must be unique, and can **only contain** [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and/or underscores.
 
 _Examples:_
 
@@ -110,7 +110,7 @@ Parameters:
 
 - `Handlers`**(Required)**: A list of handlers that this process must call in the specified order.<i id="parent-handler-para"></i><br/>
 
-  !>Names in this list must be unique, and **Should only** contain Characters, Numbers and/or Underscores.
+  !>Names in this list must be unique, and can **only contain** [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and/or underscores.
 
   See [Handlers](/docs/handler-types/handler-types.md) discussion.
 
@@ -246,12 +246,12 @@ Parameters:
 - `UpdateRate`: A number in range from 1 to 200.<span class="d">Default: 60</span>
   <br/>Specify how many times per second plugin will update its values when running separate thread.
 
+  "UpdateRate 60" means that 60 times per second plugin will try to fetch new data from windows and then transfer that data to handlers for them to update. See [Tips](/docs/tips-code?id=plugin-updaterate) discussion.
+
 - `WarnTime`: Time specified in milliseconds.<span class="d">Default: -1</span>
 
   When processing time exceeds WarnTime, a warning message in the log will be generated. You can use it to check how much of a CPU time the plugin consumes with your settings.<br/>
   Negative values disables logging.
-
-See [Tips](/docs/tips-code?id=plugin-updaterate) discussion.
 
 _Examples:_
 
