@@ -16,7 +16,7 @@ Unit-UnitName=Channels ... | Handlers ... | Filter Custom <FilterName>(<ArgName1
 
 - bqHighPass: `bqHighPass(Q <Value>, Freq <Value>)`.
 - bqLowPass: `bqLowPass(Q <Value>, Freq <Value>)`.
-- bqHighShelf: `bqHighPass(Q <Value>, Freq <Value>, Gain <Value>)`.
+- bqHighShelf: `bqHighShelf(Q <Value>, Freq <Value>, Gain <Value>)`.
 - bqLowShelf: `bqLowShelf(Q <Value>, Freq <Value>, Gain <Value>)`.
 - bqPeak: `bqPeak(Q <Value>, Freq <Value>, Gain <Value>)`.
 
@@ -38,10 +38,10 @@ You can use several filters in sequence if you want stronger effect that high or
 
 Besides filter-specific parameters, each filter can have a `ForcedGain` parameter (specified in decibels) that controls upper level of the filter.
 
-Traditionally filters like `bqPeak(Q 0.5, Freq 100, Gain 5)` would make frequencies near 100 Hz 5 db stronger.<br/>
-However, the plugin alters this behavior: upper level is kept at 0 db no matter the parameters.
+Traditionally filters like `bqPeak(Q 0.5, Freq 100, Gain 5)` would make frequencies near 100 Hz 5 dB stronger.<br/>
+However, the plugin alters this behavior: upper level is kept at 0 dB no matter the parameters.
 
-Although, forcedGain is not compensated for, so if you write `bqPeak[Q 0.5, freq 100, gain 5, forcedGain 5]` then this filter would behave like traditional Biquad peak filter.
+Although, forcedGain is not compensated for, so if you write `bqPeak(Q 0.5, freq 100, gain 5, forcedGain 5)` then this filter would behave like traditional Biquad peak filter.
 
 ## Examples
 

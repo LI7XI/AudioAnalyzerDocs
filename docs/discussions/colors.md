@@ -20,6 +20,16 @@ If you define color in some other space, then automatic conversion from that col
 
 !>This may significantly alter resulting colors, so keep this in mind. You can define color in HSV or HSL spaces, so that all values are explicitly defined by you, to prevent color interpolation artifacts.
 
+For example, these settings will give the following results:
+
+`DefaultColorSpace sRGB255` `MixMode sRGB` `BorderColor 255, 171, 92` `Colors 0.0: @hsl 217,0.38,0.11 ; 1: @hsl 29, 0.96, 0.62`
+
+<img src="docs/handler-types/examples/spectrogram/mixmode-srgb.png"/>
+
+But when setting `MixMode` to `hsv`:
+
+<img src="docs/handler-types/examples/spectrogram/mixmode-hsv.png"/>
+
 You can read more about the difference between color spaces [here](https://www.programmersought.com/article/51822376187/).
 
 ## Jump list
@@ -41,7 +51,7 @@ A classic color space, used almost everywhere.
 Syntax: `@sRGB <R>, <G>, <B>`.<br/>
 Example: `@sRGB 0.0, 1.0, 1.0` for cyan color.
 
-?>You can use `Alpha` at the end, for example: `@sRGB <R>, <G>, <B>, <A>`.
+You can use `Alpha` at the end, for example: `@sRGB <R>, <G>, <B>, <A>`.
 
 ---
 
@@ -52,7 +62,9 @@ Similar to `sRGB`, but instead of being in [0, 1] range, it's in [0, 255] range.
 Syntax: `@sRGB255 <R>, <G>, <B>`.<br/>
 Example: `@sRGB255 130, 190, 200`.
 
-?>You can use `Alpha` at the end, for example: `@sRGB255 <R>, <G>, <B>, <A>`.<br/>Alpha is in [0, 255] range as well.
+You can use `Alpha` at the end, for example: `@sRGB255 <R>, <G>, <B>, <A>`.
+
+?>Alpha is in [0, 255] range as well.
 
 ---
 
@@ -76,7 +88,7 @@ Unlike most other values in colors, `Hue` is defined in range from `0` to `360`.
 Syntax: `@hsv <H>, <S>, <V>`.<br/>
 Example: `@hsv 52.0, 0.0, 0.102`.
 
-?>You can use `Alpha` at the end, for example: `@hsv <H>, <S>, <V>, <A>`.
+You can use `Alpha` at the end, for example: `@hsv <H>, <S>, <V>, <A>`.
 
 ---
 
@@ -88,7 +100,7 @@ Unlike most other values in colors, `Hue` is defined in range from `0` to `360`.
 Syntax: `@hsl <H>, <S>, <L>`.<br/>
 Example: `@hsl 52.0, 0.0, 0.305`.
 
-?>You can use `Alpha` at the end, for example: `@hsl <H>, <S>, <L>, <A>`.
+You can use `Alpha` at the end, for example: `@hsl <H>, <S>, <L>, <A>`.
 
 ---
 
@@ -97,7 +109,7 @@ Example: `@hsl 52.0, 0.0, 0.305`.
 Syntax: `@YCbCr <Y>, <Cb>, <Cr>`.<br/>
 Example: `@YCbCr 0.5, 1.0, 0.75`.
 
-?>You can use `Alpha` at the end, for example: `@YCbCr <Y>, <Cb>, <Cr>, <A>`.
+You can use `Alpha` at the end, for example: `@YCbCr <Y>, <Cb>, <Cr>, <A>`.
 
 ## Usage
 
