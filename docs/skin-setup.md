@@ -19,7 +19,7 @@ This is how you setup the plugin:
 
 ?>Note: all option names and parameters here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using [CamelCase](https://en.wikipedia.org/wiki/Camel_case) for easier reading.
 
-!>Processing Unit names and handler names can contain only [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and/or underscores.
+!>Processing Unit names and handler names can contain only [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and underscores.
 
 For example:
 
@@ -27,7 +27,7 @@ For example:
 ; This is valid:
 MainHandler1, Main_Handler_1, mAin_HAnDlER1
 ; This is invalid:
-M@in$h^&le-r
+M@in$h^&le-r1.0
 ```
 
 With that out of the way, Lets start!

@@ -138,7 +138,7 @@ At first, these 3 handlers will look similar to each other, but they have few di
   For example, let `x=0.1`, then `x^2`, it will equal `0.01` which is 10 times less.<br/>
   But when using decibels: `dB(x)=-10dB`, then `dB(x^2)`, it will equal `-20dB`, the difference is only 2 times, not 10.
 
-  If you use `x=5`, then `x^2`, normally `x^2` will be 5 times more than x, but `dB(x^2)` will still be just 2 times more than dB(x).
+  If you use `x=5`, then `x^2`, normally `x^2` will be 5 times more than x, but `dB(x^2)` will still be just 2 times more than `dB(x)`.
 
   So, when you are using linear values, the difference between RMS and Loudness handlers will be drastic, but when converted to decibels, it will be quite hard to spot the difference.
 
