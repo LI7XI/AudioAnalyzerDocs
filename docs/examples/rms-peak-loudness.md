@@ -9,3 +9,5 @@ This example is used to show you the difference between RMS, Peak and loudness.
 <span style="color: #54c0ea;" >Blue</span> line is RMS.
 
 You may notice that Loudness looks so different, that's because it's using a `Like-a` filter.
+
+Check out how this skin was made [here](/docs/usage-examples/combine-types/rms-peak-loudness.md)

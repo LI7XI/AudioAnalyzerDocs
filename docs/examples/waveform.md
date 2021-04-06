@@ -13,3 +13,5 @@ For example instead of reading/writing to disk, rainmeter could read and display
 A temporary solution would be to create a small RAM-drive (in case you have an SSD), and then making the plugin use that location to output the image using [Folder](/docs/handler-types/waveform?id=folder) parameter. It's not ideal, but this is what we have until rainmeter api start supporting in-memory image-transfer.
 
 If you are a C++ developer and you are familiar with rainmeter API maybe you can look into this issue and discuss how to fix it with rainmeter team.
+
+Check out how this skin was made [here](/docs/usage-examples/waveform.md)

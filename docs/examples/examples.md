@@ -2,6 +2,8 @@
 
 Here are simple examples and [.rmskin file]() of what this plugin can do:
 
+?>At the end of every example page, you will find a link to how the skin is made.<br/>Make sure to read the docs before diving into the skin implementation.
+
 ### [Spectrum](/docs/examples/spectrum.md)
 
 [<video src="docs/examples/resources/fft-spectrum.mp4" autoplay loop muted title="Spectrum"></video>](/docs/examples/spectrum.md)

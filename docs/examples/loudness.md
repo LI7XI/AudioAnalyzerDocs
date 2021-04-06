@@ -19,3 +19,5 @@ There is also a peak meter in the [.rmskin]() file. It acts similar to loudness 
 In sound industry, peak meters are usually used to detect possible clipping. It just a showcase that you can detect sound peaks, don't use it when you need loudness.
 
 Note that for peak calculations there is a no `Filter` parameter specified, which means that there is no filtering done on sound wave. If you were to specify some filter, then it wouldn't measure actual sound peaks anymore. It would measure peaks on some filtered values instead, which is probably not what you want.
+
+Check out how this skin was made [here](/docs/usage-examples/loudness.md)

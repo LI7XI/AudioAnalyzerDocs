@@ -9,3 +9,5 @@ Most sounds are made up of a complicated mixture of vibrations. If you are readi
 A sound spectrum is a representation of a sound – usually a short sample of a sound – in terms of the amount of vibration at each individual frequency. It is usually presented as a graph of either power or pressure as a function of frequency. The power or pressure is usually measured in decibels and the frequency is measured in vibrations per second (or hertz, abbreviation Hz) or thousands of vibrations per second (kilohertz, abbreviation kHz). You can think of the sound spectrum as a sound recipe: take this amount of that frequency, add this amount of that frequency etc until you have put together the whole, complicated sound.
 
 [Reference.](http://newt.phys.unsw.edu.au/jw/sound.spectrum.html)
+
+Check out how this skin was made [here](/docs/usage-examples/fft-spectrum.md)
