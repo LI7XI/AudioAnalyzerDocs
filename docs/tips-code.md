@@ -186,6 +186,24 @@ What ValueTransformer or TimeResampler does (in case of using transform paramete
 
 For example: `dB, Map(From -70 : 0), Clamp` will show quieter sounds, whereas `dB, Map(From -20 : 0), Clamp` will show the loud sounds only.
 
+## Using Filters
+
+In some cases you may want to adjust sound frequencies, you can use `Filters` parameter in `Unit` option to specify the filters.
+
+But there are few notes when using filters:
+
+When you are using a loudness handler, you should always use a `like-a` filter preset, otherwise the value you will see would be very different from perceived loudness.
+
+When using waveform, most likely you shouldn't use filters. At least, `like-a` and `like-d` presets will probably not give you good results.
+
+If you are using waveform **beside** other handlers, and you want to apply custom filters on the waveform, it's better to make a new processing unit for the waveform handler, and use filters in that process.
+
+When using peak, it must not use any filters.
+
+For spectrum and spectrogram, it's recommended to use filters that mimics human hearing.
+
+Using filters depends on what you want to visualize, and it's totally optional. But in some cases it's necessary to use filters.
+
 ## Settings Skin
 
 It's not convenient to use variables to change settings since sometimes, the measures and meters are generated dynamically, so at least you need to refresh the skin twice to see the effect.

@@ -110,7 +110,7 @@ Parameters:
 
 - `Handlers`**(Required)**: A list of handlers that this process must call in the specified order.<i id="parent-handler-para"></i><br/>
 
-  !>Names in this list must be unique, and can **only contain** [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and/or underscores.
+  !>Names in this list must be unique, and can **only contain** [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and underscores.
 
   See [Handlers](/docs/handler-types/handler-types.md) discussion.
 
@@ -138,7 +138,7 @@ Parameters:
 
   !>Except predefined filters (`like-a`, `like-d`), custom filters are intended for advanced usage, use them only if you have something specific in mind.<br/>
 
-  See [Filters](/docs/discussions/filters.md) discussion.
+  See [Filters](/docs/discussions/filters.md) and [Tips](/docs/tips-code?id=using-filters) discussion.
 
 _Examples:_
 
