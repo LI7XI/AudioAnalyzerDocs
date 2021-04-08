@@ -6,7 +6,7 @@
 function Initialize()
   ContextIndex = 1
 
-  for i in string.gmatch(SKIN:ReplaceVariables('[&GetAudioDevices:Resolve(Device List Output)]'), "[^\n]+") do
+  for i in string.gmatch(SKIN:ReplaceVariables('[&GetAudioDevices:Resolve(DeviceList)]'), "[^/]+") do
     ContextIndex = ContextIndex + 1
     AudioDeviceInfos = {}
 
