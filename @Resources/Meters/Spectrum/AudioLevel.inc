@@ -123,4 +123,204 @@ Shape59=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand58]/1 * (#MaxHe
 ; ---------------------------------------------------------------------------------------------
 Shape60=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand59]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*59),(#BarYR#)
 ; ---------------------------------------------------------------------------------------------
+Shape61=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand60]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*60),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape62=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand61]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*61),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape63=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand62]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*62),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape64=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand63]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*63),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape65=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand64]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*64),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape66=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand65]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*65),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape67=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand66]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*66),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape68=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand67]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*67),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape69=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand68]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*68),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape70=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand69]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*69),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape71=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand70]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*70),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape72=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand71]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*71),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape73=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand72]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*72),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape74=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand73]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*73),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape75=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand74]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*74),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape76=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand75]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*75),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape77=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand76]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*76),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape78=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand77]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*77),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape79=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand78]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*78),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape80=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand79]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*79),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape81=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand80]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*80),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape82=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand81]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*81),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape83=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand82]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*82),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape84=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand83]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*83),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape85=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand84]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*84),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape86=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand85]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*85),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape87=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand86]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*86),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape88=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand87]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*87),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape89=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand88]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*88),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape90=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand89]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*89),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape91=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand90]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*90),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape92=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand91]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*91),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape93=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand92]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*92),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape94=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand93]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*93),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape95=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand94]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*94),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape96=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand95]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*95),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape97=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand96]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*96),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape98=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand97]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*97),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape99=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand98]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*98),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape100=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand99]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*99),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape101=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand100]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*100),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape102=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand101]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*101),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape103=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand102]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*102),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape104=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand103]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*103),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape105=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand104]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*104),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape106=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand105]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*105),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape107=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand106]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*106),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape108=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand107]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*107),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape109=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand108]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*108),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape110=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand109]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*109),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape111=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand110]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*110),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape112=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand111]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*111),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape113=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand112]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*112),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape114=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand113]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*113),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape115=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand114]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*114),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape116=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand115]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*115),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape117=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand116]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*116),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape118=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand117]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*117),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape119=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand118]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*118),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape120=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand119]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*119),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape121=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand120]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*120),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape122=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand121]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*121),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape123=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand122]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*122),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape124=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand123]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*123),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape125=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand124]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*124),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape126=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand125]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*125),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape127=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand126]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*126),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape128=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand127]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*127),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape129=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand128]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*128),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape130=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand129]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*129),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape131=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand130]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*130),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape132=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand131]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*131),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape133=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand132]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*132),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape134=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand133]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*133),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape135=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand134]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*134),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape136=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand135]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*135),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape137=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand136]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*136),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape138=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand137]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*137),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape139=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand138]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*138),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape140=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand139]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*139),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape141=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand140]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*140),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape142=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand141]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*141),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape143=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand142]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*142),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape144=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand143]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*143),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape145=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand144]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*144),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape146=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand145]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*145),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape147=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand146]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*146),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape148=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand147]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*147),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape149=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand148]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*148),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape150=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand149]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*149),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape151=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand150]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*150),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape152=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand151]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*151),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape153=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand152]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*152),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape154=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand153]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*153),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape155=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand154]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*154),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape156=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand155]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*155),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape157=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand156]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*156),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape158=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand157]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*157),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape159=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand158]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*158),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
+Shape160=Rectangle #BarX#,#MaxHeight#,#BarWidth#,(Neg([MeasureBand159]/1 * (#MaxHeight#-#MinHeight#) + #MinHeight#)),#Radius# | #Fill# | #Stroke# | Offset (#BarXR#*159),(#BarYR#)
+; ---------------------------------------------------------------------------------------------
 DynamicVariables=1
