@@ -22,13 +22,17 @@ If you define color in some other space, then automatic conversion from that col
 
 For example, these settings will give the following results:
 
-`DefaultColorSpace sRGB255` `MixMode sRGB` `BorderColor 255, 171, 92` `Colors 0.0: @hsl 217,0.38,0.11 ; 1: @hsl 29, 0.96, 0.62`
+`DefaultColorSpace sRGB255` `MixMode sRGB` `BorderColor 255, 171, 92` `Colors 0.0: @srgb 0.1,0.1,0.1 ; 1: @srgb 0.9, 0.9, 0.5`
 
 <img src="docs/handler-types/examples/spectrogram/mixmode-srgb.png"/>
 
 But when setting `MixMode` to `hsv`:
 
 <img src="docs/handler-types/examples/spectrogram/mixmode-hsv.png"/>
+
+Or `hsl`:
+
+<img src="docs/handler-types/examples/spectrogram/mixmode-hsl.png"/>
 
 You can read more about the difference between color spaces [here](https://www.programmersought.com/article/51822376187/).
 
@@ -115,7 +119,7 @@ You can use `Alpha` at the end, for example: `@YCbCr <Y>, <Cb>, <Cr>, <A>`.
 
 In Spectrogram handler. Examples:
 
-[Colors](/docs/handler-types/spectrogram?id=colors) Parameter: `Colors 0.0: @sRGB 0.1,0.1,0.1; 1.0: @hsv 150,0.85,0.5; ...`<br/>
+[Colors](/docs/handler-types/spectrogram?id=colors) Parameter: `Colors 0.0: @sRGB 0.1,0.1,0.1; 0.78: @hsv 150,0.85,0.5; ...`<br/>
 [BaseColor](/docs/handler-types/spectrogram?id=base-color) Parameter: `BaseColor @sRGB255 170,140,190`<br/>
 [BorderColor](/docs/handler-types/spectrogram?id=border-color) Parameter: `BorderColor @hsl 90,0.8,0.4`<br/>
 
