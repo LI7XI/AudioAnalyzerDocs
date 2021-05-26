@@ -17,16 +17,16 @@ On top of that, among other features, newer versions of AudioAnalyzer (1.1.5 and
 
 There are a ton of optimizations, improvements and other features AudioAnalyzer have, but these are the highlights.
 
-Here is a small example of a simple skin using AudioLevel vs using AudioAnalyzer:<br/>
+Here is a small comparison between AudioLevel and AudioAnalyzer:<br/>
 <small><i>Tested on i3-2312m (2c 4t 2.10GHz) CPU with all skins disabled except this one.</i></small>
 
-AudioLevel: `FreqMin 20` `FreqMax 2000` `Bands 160` `FFTSize 32768` `FFTOverlap 16384` `FFTAttack 120` `FFTDecay 200` `Sensitivity 45`
+AudioLevel: `FreqMin 20` `FreqMax 20000` `Bands 160` `FFTSize 32768` `FFTOverlap 16384` `FFTAttack 120` `FFTDecay 200` `Sensitivity 45`
 
-<div style="height: 147px; overflow: hidden;"><video src="docs/examples/resources/al-vs-aa.mp4" autoplay loop muted title="Using AudioLevel"></video></div>
+<div style="height: 147px; overflow: hidden;"><video style="transform: translateY(-153px);" src="docs/examples/resources/al-vs-aa.mp4" autoplay loop muted title="Using AudioLevel"></video></div>
 
-AudioAnalyzer: `FreqMin 20` `FreqMax 2000` `Bands 160` `BinWidth 3.2` `OverlapBoost 5` `CascadesCount 1` `Attack 60` `Decay 45` `MindB -40` `MaxdB -5`
+AudioAnalyzer: `FreqMin 20` `FreqMax 20000` `Bands 160` `BinWidth 4` `OverlapBoost 4` `CascadesCount 1` `Attack 60` `Decay 45` `MindB -40` `MaxdB -0`
 
-<div style="height: 147px; overflow: hidden;"><video style="transform: translateY(-140px)" src="docs/examples/resources/al-vs-aa.mp4" autoplay loop muted title="Using AudioAnalyzer"></video></div>
+<div style="height: 147px; overflow: hidden;"><video style="transform: translateY(-0px)" src="docs/examples/resources/al-vs-aa.mp4" autoplay loop muted title="Using AudioAnalyzer"></video></div>
 
 ?>The comparison here for demonstration only, and the settings used here don't exactly match AudioLevel settings.<br/><br/>Don't worry if you don't understand the options used here, all of them are explained in this documentation.
 
