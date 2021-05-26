@@ -373,20 +373,6 @@ If threading have `UpdateRate 60`, then there will be 60 requests for update, du
 
 ---
 
-Most of the time, increasing `UpdateRate` parameter above lets say.. 60 wouldn't make much difference.
-
-But when using FFT with a lot of measures running in the skin, increasing `UpdateRate` further may help.
-
-Remember the [Fps variable](/docs/tips-code?id=fps-variable) we made earlier? we can use it to specify the `UpdateRate`. Simply do this:
-
-```ini
-Threading=Policy SeparateThread | UpdateRate ([#Fps]*3)
-```
-
-About `*3`, we know that Fps variable won't be more than 60, also `UpdateRate` parameter only accepts from 1 to 200. Lets say Fps actually equals 60, that would make the `UpdateRate` 180. In some cases, this will give a bit better results in heavy skins.
-
----
-
 Some handlers have UpdateRate parameter, don't confuse between that and the `Threading` UpdateRate.
 
 ## Channels in child measures
