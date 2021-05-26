@@ -62,7 +62,7 @@ Source=ID: {0.0.0.00000000}.{134d7830-179e-4748-9861-37967e8bda9e}
 
 Specify one or a list of processing units separated by a comma.
 
-!>Names in this list must be unique, and can **only contain** [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and/or underscores.
+!>Names in this list must be unique, and can **only contain** [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, digits and underscores.
 
 _Examples:_
 
@@ -110,7 +110,7 @@ Parameters:
 
 - `Handlers`**(Required)**: A list of handlers that this process must call in the specified order.<i id="parent-handler-para"></i><br/>
 
-  !>Names in this list must be unique, and can **only contain** [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and underscores.
+  !>Names in this list must be unique, and can **only contain** [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, digits and underscores.
 
   See [Handlers](/docs/handler-types/handler-types.md) discussion.
 

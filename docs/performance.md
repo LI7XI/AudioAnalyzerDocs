@@ -24,16 +24,17 @@ Earlier we said that:
 
 Lets explain what that means.
 
-You have `sample rate` (as the input), `target rate` and `final rate`.<br/>
-You `final rate` will be as close to the `target rate` as possible with integer division, but it will always be at least as big as `target rate`.
+You have `SampleRate` (as the input), `TargetRate` and `FinalRate`.
 
-Example 1: `sample rate` is 44100 and your `target rate` is 4000. You `final rate` will be `44100 / 11 == 4009`, because `44100 / 12 == 3675`, and 3675 would be less than your target rate.
+Your `FinalRate` will be as close to the `TargetRate` as possible with integer division, but it will always be at least as big as `TargetRate`.
 
-Example 2: `sample rate` is 44100 and your `target rate` is 44100. You `final rate` will be 44100.
+Example 1: `SampleRate` is 44100 and your `TargetRate` is 4000. You `FinalRate` will be `44100 / 11 == 4009`, because `44100 / 12 == 3675`, and 3675 would be less than your target rate.
 
-Example 3: `sample rate` is 44100 and your `target rate` is 48000. You `final rate` will be 44100 (`target rate` will not increase your `sample rate`) .
+Example 2: `SampleRate` is 44100 and your `TargetRate` is 44100. You `FinalRate` will be 44100.
 
-Example 4: `sample rate` is 88200 and your `target rate` is 48000. You `final rate` will be 88200, because `88200 / 2 == 44100` would be less than your target rate.
+Example 3: `SampleRate` is 44100 and your `TargetRate` is 48000. You `FinalRate` will be 44100 (`TargetRate` will not increase your `SampleRate`) .
+
+Example 4: `SampleRate` is 88200 and your `TargetRate` is 48000. You `FinalRate` will be 88200, because `88200 / 2 == 44100` would be less than your target rate.
 
 The main takeaway from `TargetRate` parameter is to specify only the value that you need. If you need frequencies up to 20 kHz, then you don't have to specify something like 48000 to have some slack.
 
@@ -47,7 +48,7 @@ In most cases high sample rate is not needed, some times it takes more performan
 
 For example, when using FFT then BandResampler, you always specify a frequency range (`FreqMin`, `FreqMax`), which means any frequencies beyond `FreqMax` don't need to be captured.
 
-We can calculate the target rate rate from the frequency range, simply, 100Hz of frequency need at least 200Hz sample rate, 210Hz need at least 420Hz, and so on.
+We can calculate the target rate from the frequency range, simply, 100Hz of frequency need at least 200Hz sample rate, 210Hz need at least 420Hz, and so on.
 
 So we can make a variable for the `TargetRate`, and assuming we already have a variable for `FreqMax`, we can calculate the `TargetRate` as the following: `TargetRate=((#FreqMax# * 2) * 1.1)`
 
@@ -66,9 +67,9 @@ They will only react to `#FreqMax#` frequency range, if you want them to react t
 
 For example, loudness is supposed to approximate what you hear, and you hear frequencies up to ~20-22 kHz, so it doesn't make sense to set target rate below 44100, as the results will be incorrect.
 
-Loudness is intended to be used with an appropriate filter (built-in like-a and like-d or similar custom filter), and these filters already cut frequencies above 20 kHz, so setting target rate above 44100 also doesn't make sense.
+Loudness is intended to be used with an appropriate filter (using `like-a`, `like-d` presets, or similar custom filter), and these filters already cut frequencies above 20 kHz, so setting target rate above 44100 also doesn't make sense.
 
-For Waveform, altering sample rate isn't very helpful, because the main reason to do this is to reduce CPU load, and waveform isn't heavy on the CPU, unlike FFT, the main load is from [drawing an image](#image-meters-cpu-usage), and more CPU load comes from writing this image on disk.
+For Waveform, altering sample rate isn't very helpful, because the main reason to do this is to reduce CPU load, and waveform isn't heavy on the CPU, unlike FFT. The main load is from [drawing an image](#image-meters-cpu-usage), and more CPU load comes from writing this image on disk.
 
 If you want to limit frequencies for waveform you should use a custom filter, because TargetRate option doesn't guarantee much: you can't rely on it to change the shape of the audio wave.
 
@@ -85,7 +86,3 @@ You see where is the problem, your disk lifespan will be shortened, and your ski
 There is a temporary solution, which is making a Ram-disk, then making the plugin output the image there, and make the meters read it from there.
 
 Even though this solution kinda solves the drive lifespan issue, it doesn't quite solve the excessive CPU usage issue.
-
-## Processing Units
-
-No need to create many processing units, except for using a different filters or a different Target rate. Instead, you could do everything in one unit.

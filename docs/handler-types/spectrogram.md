@@ -39,20 +39,20 @@ Width of the image is determined by [Length](#lenth) parameter, height of the im
 
 ### Jump list
 
-- [Type](#type).
-- [Length](#length).
-- [UpdateRate](#update-rate).
-- [Folder](#folder).
-- [Colors](#colors).
-- [BaseColor](#base-color).
-- [MaxColor](#max-color).
-- [MixMode](#mix-mode).
-- [Stationary](#stationary).
-- [BorderSize](#border-size).
-- [BorderColor](#border-color).
-- [FadingRatio](#fading-ratio).
-- [SilenceThreshold](#silence-threshold).
-- [Usage](#usage).
+- [Type](#type)
+- [Length](#length)
+- [UpdateRate](#update-rate)
+- [Folder](#folder)
+- [Colors](#colors)
+- [BaseColor](#base-color)
+- [MaxColor](#max-color)
+- [MixMode](#mix-mode)
+- [Stationary](#stationary)
+- [BorderSize](#border-size)
+- [BorderColor](#border-color)
+- [FadingRatio](#fading-ratio)
+- [SilenceThreshold](#silence-threshold)
+- [Usage](#usage)
 
 ---
 
@@ -156,7 +156,7 @@ Position correspond to values from source handler.
 
 `<ColorDescription>` in the simplest case can be represented as a comma-separated list of 3 or 4 values in range [0.0, 1.0].
 
-See [Colors](/docs/discussions/colors.md) discussion for full list of color description possible values.
+See [Colors](/docs/discussions/colors.md) discussion.
 
 _Examples:_
 
@@ -221,6 +221,14 @@ _Examples:_
 ```ini
 Handler-HandlerName=Type Spectrogram | MixMode HSV | BaseColor 160,0.5,0.79
 ```
+
+`MixMode sRGB` with `Colors 0.0: @hsl 217,0.38,0.11 ; 1: @hsl 29, 0.96, 0.62`:
+
+<img src="docs/handler-types/examples/spectrogram/mixmode-srgb.png"/>
+
+`MixMode hsv` with same colors:
+
+<img src="docs/handler-types/examples/spectrogram/mixmode-hsv.png"/>
 
 ---
 

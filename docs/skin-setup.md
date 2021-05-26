@@ -19,7 +19,7 @@ This is how you setup the plugin:
 
 ?>Note: all option names and parameters here are case-insensitive. Which means `Option=Something` is equal to `oPTioN=soMThInG`. <br/> We will keep using [CamelCase](https://en.wikipedia.org/wiki/Camel_case) for easier reading.
 
-!>Processing Unit names and handler names can contain only [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, decimal numbers and underscores.
+!>Processing Unit names and handler names can contain only [ASCII](https://en.wikipedia.org/wiki/ASCII) characters, digits and underscores.
 
 For example:
 
@@ -125,8 +125,6 @@ Handler-MainMapper=Type ValueTransformer | Transform dB, Map(From -50 : -0), Cla
 Now the Parent measure is ready.:tada:
 
 Lets create the Child measures.<br/>
-Child measure grab processed data from Parent measure.
-
 We make a Child measure, and specify its Parent.
 
 ```ini
@@ -154,13 +152,12 @@ Index=0
 ?>Now notice the following.
 
 Even though we specified the Parent Measure, Child measures still need to know which value to retrieve.<br/>
-That's because a Parent measure may have more than one Process or multiple Handlers.
+That's because a Parent measure may have more than one processing unit or multiple handlers.
 
 So to tell the Child measure which data handler to read values from, we use an option called [HandlerName](/docs/plugin-structure/child?id=handler-name).
 
 In this option we specify which handler to read data from.<br/>
-It can be any handler, in our case we will use the last handler (`MainMapper`).
-Because it has the values we want to visualize.
+It can be any handler, in our case we will use the last handler (`MainMapper`), because it has the values we want to visualize.
 
 ```ini
 HandlerName=MainMapper
