@@ -4,7 +4,7 @@ Draws a spectrogram picture. That is: band's values changes in time.
 
 This handler will generate an image and write it to disk, to use it in your skin, you can do the following:
 
-Lets say this is your image meter:
+Let's say this is your image meter:
 
 ```ini
 [MeterSpectrogram]
@@ -200,7 +200,7 @@ _Examples:_
 Handler-HandlerName=Type Spectrogram | MaxColor 0.7,0.68,0.73
 ```
 
-Lets say `BaseColor 0,0,0`
+Let's say `BaseColor 0,0,0`
 
 MaxColor `1,1,1`
 

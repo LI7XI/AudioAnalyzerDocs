@@ -20,9 +20,9 @@ Unit-UnitName=Channels ... | Handlers FFT, Resampler1(FFT), Resampler2(FFT)
 
 Earlier we said that:
 
-> So if your audio device sample rate is 48000 and TargetRate is 44100, then nothing will happen. If you sampling rate is less than TargetRate then nothing will happen.
+> If your audio device sample rate is 48000 and TargetRate is 44100, then nothing will happen. If you sampling rate is less than TargetRate then nothing will happen.
 
-Lets explain what that means.
+Let's explain what that means.
 
 You have `SampleRate` (as the input), `TargetRate` and `FinalRate`.
 

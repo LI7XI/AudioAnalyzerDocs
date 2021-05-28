@@ -4,7 +4,7 @@ Draws a waveform picture. That is: shows min and max values of the sound wave ov
 
 This handler will generate an image and write it to disk, to use it in your skin, you can do the following:
 
-Lets say this is your image meter:
+Let's say this is your image meter:
 
 ```ini
 [MeterWaveform]

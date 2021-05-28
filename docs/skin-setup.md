@@ -3,7 +3,7 @@
 In this example, we will create a [Spectrum](/docs/examples/spectrum.md) Visualizer.<br/>
 To keep it short and simple, it won't be as fancy as the one in the [.rmskin]() examples. Later on, we will show you [how to create it](/docs/usage-examples/fft-spectrum).
 
-First of all, lets create a skin:
+First of all, let's create a skin:
 
 ```ini
 [Rainmeter]
@@ -30,7 +30,7 @@ MainHandler1, Main_Handler_1, mAin_HAnDlER1
 M@in$h^&le-r1.0
 ```
 
-With that out of the way, Lets start!
+With that out of the way, Let's start!
 
 We create a measure, and specify it as a [Parent](/docs/plugin-structure/plugin-structure?id=how-to-determine-the-measure-type).
 
@@ -41,7 +41,7 @@ Plugin=AudioAnalyzer
 Type=Parent
 ```
 
-Then we make a [Processing Unit](/docs/plugin-structure/parent?id=processing-units). Lets call it `Main`.
+Then we make a [Processing Unit](/docs/plugin-structure/parent?id=processing-units). Let's call it `Main`.
 
 ```ini
 ProcessingUnits=Main
@@ -67,7 +67,7 @@ A parameter may have more than one value, we can write multiple comma-separated 
 Unit-Main=Channels Left, Right | Handlers MainHandler1, MainHandler2 | Filter Like-a
 ```
 
-Now lets specify what handlers do.<br/>
+Now let's specify what handlers do.<br/>
 We write Handler, followed by a hyphen, then the handler name.
 
 ```ini
@@ -110,7 +110,7 @@ We can chain more handlers together:
 - `TimeResampler` to make values transition smoother.
 - `ValueTransformer` to transform the audio signal.
 
-Also Lets rename all handlers to keep things more descriptive.
+Also Let's rename all handlers to keep things more descriptive.
 
 ```ini
 Unit-Main=Channels Auto | Handlers MainFFT, MainResampler(MainFFT), MainTransform(MainResampler), MainFilter(MainTransform), MainMapper(MainFilter) | Filter like-a
@@ -124,7 +124,7 @@ Handler-MainMapper=Type ValueTransformer | Transform dB, Map(From -50 : -0), Cla
 
 Now the Parent measure is ready.:tada:
 
-Lets create the Child measures.<br/>
+Let's create the Child measures.<br/>
 We make a Child measure, and specify its Parent.
 
 ```ini

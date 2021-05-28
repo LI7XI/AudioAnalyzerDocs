@@ -102,7 +102,7 @@ There is a fundamental math issue in FFT algorithm, you can either have a very d
 
 The problem is that high frequencies (800Hz and up) mostly have higher resolution than low and mid frequencies (less than 800Hz) while still updating faster than mids and lows.
 
-This handler type lets you have high resolution in low frequencies based on an option called [CascadesCount](/docs/handler-types/fft/fft?id=cascades-count) in [FFT](/docs/handler-types/fft/fft.md) parameters, then it combines both of low and high frequencies together to have a detailed result through the entire frequencies range.
+This handler type let's you have high resolution in low frequencies based on an option called [CascadesCount](/docs/handler-types/fft/fft?id=cascades-count) in [FFT](/docs/handler-types/fft/fft.md) parameters, then it combines both of low and high frequencies together to have a detailed result through the entire frequencies range.
 
 See [FFT Cascades](/docs/discussions/fft-cascades.md) discussion.
 
@@ -159,8 +159,8 @@ See [this](/docs/usage-examples/fft-spectrum.md) example to know more.
 
 ### ValueTransformer
 
-[ValueTransformer](/docs/handler-types/value-transformer) lets you transform source values using the available operations.<br/>
-For example if the source value is in range [0, 1], this handler will let you transform it to lets say [10, 50].
+[ValueTransformer](/docs/handler-types/value-transformer) let's you transform source values using the available operations.<br/>
+For example if the source value is in range [0, 1], this handler will let you transform it to let's say [10, 50].
 
 See [Transforms](/docs/discussions/transforms.md) discussion.
 
@@ -172,7 +172,7 @@ Not all handler provide a numerical value, [Spectrogram](/docs/handler-types/spe
 
 ### Spectrogram
 
-This handler lets you visualize how the value of a band changes in time.<br/>
+This handler let's you visualize how the value of a band changes in time.<br/>
 The source of this handler must be from FFT transform chain, so that source handler has many values.
 
 ### Waveform

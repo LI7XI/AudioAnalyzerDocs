@@ -325,7 +325,7 @@ There are several ways this can happen:
 
 - Plugin was capturing a default device, and all devices of that type became unavailable.
 
-  For example, lets say you have speakers and headphones, and you have set `Source=DefaultOutput`, then if you pull the headphone jack from the PC, the plugin will automatically connect to speakers.<br/>
+  For example, let's say you have speakers and headphones, and you have set `Source=DefaultOutput`, then if you pull the headphone jack from the PC, the plugin will automatically connect to speakers.<br/>
   But then, if you also pull speakers jack, there will be no audio devices available, and `onDeviceDisconnected` will be called.
 
 - You were capturing data from some specific device, but this device is no longer available.

@@ -34,7 +34,7 @@ Name of the Handler in Parent measure that will provide values.
 _Example:_
 
 ```ini
-; Lets say you have this in parent measure
+; Let's say you have this in parent measure
 ProcessingUnits-Main=Channels Auto | Handlers Handler1, handler2
 
 ; Then HandlerName would be
@@ -99,7 +99,7 @@ Independent handlers (like Loudness) usually produce only one value, so any inde
 _Examples:_
 
 ```ini
-; Lets say you have the following in Parent Measure:
+; Let's say you have the following in Parent Measure:
 Unit-Main=Channels ... | Handlers MainFFT, MainResampler(MainFFT) | ...
 Handler-MainFFT=Type FFT | BinWidth 5 | OverlapBoost 10 | CascadesCount 3
 Handler-MainResampler=Type BandResampler | Bands Log(Count 5, Min 20, Max 4000)
@@ -113,7 +113,7 @@ Index=4
 ?>In case you have `HandlerName=SomeHandler`, and the type of that `SomeHandler` is `Type Loudness` or **any other** than `Type fft`, setting index option to other than 0 will cause plugin to stop working until the skin is refreshed. For example:
 
 ```ini
-; Lets say you have the following in Parent Measure:
+; Let's say you have the following in Parent Measure:
 Unit-Main=Channels ... | Handlers Loudness, LoudnessPercent(Loudness) | ...
 Handler-Loudness=Type Loudness | Transform dB
 Handler-LoudnessPercent=Type ValueTransformer | Transform Map(From -50 : 0), Clamp
@@ -134,7 +134,7 @@ See [Transforms](/docs/discussions/transforms.md) discussion for full list of po
 _Examples:_
 
 ```ini
-; Lets say you are getting a value in range 0 to 1 from a handler
+; Let's say you are getting a value in range 0 to 1 from a handler
 Transform=Map(From 0 : 1, to 0 : 50), Clamp(to 0 : Max 50)
 ; Will convert it to range from 0 to 50
 ```

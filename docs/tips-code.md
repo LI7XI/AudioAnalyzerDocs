@@ -72,7 +72,7 @@ Most of the performance is taken in drawing the meters, not in retrieving values
 
 In most cases this doesn't make much difference as long as you get the results you want. But there are few notes when using FFT handler type.
 
-Lets say you have FFT handler:
+Let's say you have FFT handler:
 
 ```ini
 Unit-Main=Channels ... | Handlers FFT
@@ -98,7 +98,7 @@ Handler-Resampler=Type BandResampler
 
 ---
 
-Another things, lets say you have this:
+Another things, let's say you have this:
 
 ```ini
 Unit-Main=Channels ... | Handlers FFT, Resampler(FFT), Transformer(Resampler)
@@ -145,7 +145,7 @@ Then it would be different, since in first case, TimeResampler applies the trans
 
 ## Handlers Order
 
-Lets say you want to make 3 handlers, and set the first one as a source for the second one, here is what you would do:
+Let's say you want to make 3 handlers, and set the first one as a source for the second one, here is what you would do:
 
 ```ini
 Unit-UnitName=Channels ... | Handlers HandlerA, HandlerB(HandlerA), HandlerC(HandlerB)
@@ -706,7 +706,7 @@ Some handlers have UpdateRate parameter, don't confuse between that and the `Thr
 
 ## Channels in child measures
 
-Lets take Loudness handler as an example.
+Let's take Loudness handler as an example.
 
 First, `Channel` option in child measure should only have one channel:
 
