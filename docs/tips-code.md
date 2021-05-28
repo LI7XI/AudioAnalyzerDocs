@@ -220,123 +220,452 @@ We will go with the last one since it's the easiest for now, Check out [this](/d
 
 ## Audio Devices List
 
-_WIP_
+Since a user may have more than one audio device, we need a way to let them choose the one they want.
 
-<!-- Since a user may have more than one audio device, we need a way to let them choose the one they want. Luckily, the plugin will provide you with a list of connected audio devices, but you need to parse them with a lua script first, and that's what we are going to do:
+Luckily, the plugin will provide you with a list of connected audio devices, but first, you need to parse them with a lua script, and that's what we are going to do here.
 
-?>To keep it short, we are going to explain the code part only, but the full example and a tutorial on how we made it is available [here](/docs/usage-examples/settings-skin.md)
-
-?>Code used here is inspired by [@marcopixel](https://github.com/marcopixel) and [@alatsombath](https://github.com/alatsombath), a special thanks for them.
+?>You can find the full script at the very end of this tutorial. It's available in the [.rmskin]() as well.
 
 <details>
 
-We will do everything inside `Initialize` function since it will run once the skin is loaded.
+`DeviceList` section variable will give us something like this:
+
+```
+{0.0.0.00000000}.{c73b9bf1-9f30-4a46-9786-c5d3d2c18aba};Realtek High Definition Audio;Speakers;Speakers;48000;fl,fr,;output;/<DeviceInfos2>/<DeviceInfos3>/...
+```
+
+We want to extract the DeviceID and DeviceName, but before we extract the name we need to unescape it.
+
+Let's say your device name contains one of the following symbols: `%` `/` `;` <br/>
+For example: `My%udio;DeviceN/me`
+
+This will cause problems when parsing, because `/` symbol is used to separate audio devices (`DeviceInfos1/DeviceInfos2/...`), and `;` symbol is used to separate device infos (`DeviceID;DeviceName;...`), and `%` is used in lua regex.
+
+To solve that problem, the plugin escapes these symbols as the following:
+
+`%` is replaced with `%percent`<br/>
+`;` is replaced with `%semicolon`<br/>
+`/` is replaced with `%forwardslash`
+
+So now your `DeviceName` is `My%percentudio%semicolonDeviceN%forwardslashme`
+
+To unescape the name, we will make a function that takes a string, replace the words (`%percent`, `%semicolon`, `%forwardslash`) with symbols, then it gives us a new string.
 
 ```lua
-function Initialize()
+function unescape(str)
+  return str:gsub('%%percent', '%'):gsub('%%semicolon', ';'):gsub('%%forwardslash', '/')
 end
 ```
 
-We will display them using a context menu, each context has an index, (`ContextTitle`, `ContextTitle2`, `ContextTitle3`, etc).
-
-When we request audio devices list from the plugin using section variables, the plugin will give us the infos of each device in a new line.
-
-We will use the first context as the default, and for each audio device we gonna increment a variable so we can use it as an index.
+Now let's start extracting the devices.<br/>
+We will create another function, this function takes `DeviceList` string, extract each device, store it inside an array, then returns that array:
 
 ```lua
-function Initialize()
-  ContextIndex = 1
-  -- This variable will be used for the context indices
+function CreateDevicesList(AudioDevices)
+  local DevicesList = {}
 
-  -- We will use section variables in parent measure to get a list of audio devices
-  -- The plugin will output each device infos in a new line
-  for i in string.gmatch(SKIN:ReplaceVariables('[&GetAudioDevices:Resolve(Device List Output)]'), "[^\n]+") do
-    -- For each line we gonna do the following
+  -- let's say the devices list looks like this:
+  -- DeviceInfos1/DeviceInfos2/...
+
+  for AudioDevice in AudioDevices:gmatch("([^/]+)/") do
+    -- first time this loop  runs will give us DeviceInfos1
+    -- second time DeviceInfos2
+    -- and so on
   end
+  return DevicesList
 end
 ```
 
-Now, for each line in our loop, we will do the following:
+But before we insert the devices into that array, let's extract there infos.<br/>
 
-First, increase the context index (since we used the context with index 1 as the "Default" option).
-
-```lua
-ContextIndex = ContextIndex + 1
-```
-
-Then we will create a new array to hold the infos of each device. For each audio device, this array will be overridden with the new audio device infos.
+Inside that loop, we will call a function that takes the `DeviceInfos` string, extract the infos, then store them into a table:
 
 ```lua
-AudioDeviceInfos = {}
--- Each time we loop, the infos here will be overridden
-```
-
-The infos of an audio device will look like the following:<br/>
-
-```
-{0.0.0.00000000}.{c73b9bf1-9f30-4a46-9786-c5d3d2c18aba};Realtek High Definition Audio;Speakers;Speakers;48000;fl,fr;
-```
-
-We will extract the infos we want using semicolon as a separator. Then store them in the array.
-
-```lua
-for j in string.gmatch(i, "[^;]+") do
--- Then we store each info in AudioDeviceInfos array
-  table.insert(AudioDeviceInfos, j)
+for AudioDevice in AudioDevices:gmatch("([^/]+)/") do
+  local DeviceProperties = ParseDeviceProperties(AudioDevice)
+  -- example: DeviceProperties = {id: "<DeviceID>", name: "<DeviceName>", ...}
 end
 ```
 
-Now our array contains the infos as the following:
+Let's create that function.<br/>
 
 ```lua
-AudioDeviceInfos = {"{0.0.0.00000000}.{c73b9bf1-9f30-4a46-9786-c5d3d2c18aba}", "Realtek High Definition Audio", "Speakers", "Speakers", "48000", "fl,fr"}
+function ParseDeviceProperties(DeviceProperties)
+  local TempArray = {} -- after we extract the infos, we will store them temporarily in this array
+
+  for property in DeviceProperties:gmatch("([^;]+);") do
+  -- first time this loop runs will give us device id
+  -- second time device name, and so on
+
+  -- we will unescape the device infos then store them inside the temporary array
+    property = unescape(property)
+    table.insert(TempArray, property)
+  end
+
+  local DeviceInfos = {} -- we will make a table to store the device infos
+  DeviceInfos.id = TempArray[1]
+  DeviceInfos.name = TempArray[2]
+  DeviceInfos.description = TempArray[3]
+  DeviceInfos.formFactor = TempArray[4]
+  DeviceInfos.sampleRate = TempArray[5]
+
+  -- channels may be <unknown> if all channels of this device are not supported by the plugin
+  if TempArray[6] == '<unknown>' then
+    DeviceInfos.channels = '<unknown>'
+  else
+    DeviceInfos.channels = {} -- other wise we will store them into an array
+    for channel in TempArray[6]:gmatch("([^,]+),") do
+      table.insert(DeviceInfos.channels, channel)
+    end
+  end
+  DeviceInfos.type = TempArray[7]
+
+  return DeviceInfos
+end
 ```
 
-We can access the infos using there index, 0 will be "nil" value so we will start from 1
+So, if we have the following DeviceList:
+
+```
+<DeviceID1>;<DeviceName1>;.../<DeviceID2>;<DeviceName2>;.../...
+```
+
+We will pass it to `CreateDeviceList` function to extract each device, then we pass each device to `ParseDeviceProperties` function to extract device infos, so we will end up with something like this:
 
 ```lua
-AudioDeviceID = AudioDeviceInfos[1]
-AudioDeviceName = AudioDeviceInfos[2]
+{{id: "<DeviceID1>", name: "<DeviceName1>", ...}, -- DeviceInfos1
+ {id: "<DeviceID2>", name: "<DeviceName2>", ...}, -- DeviceInfos2
+ -- and so on
+}
 ```
 
-Since we are in a loop, and that loop is determined by how many audio devices the user may have, we will create a new option for each audio device.
+Now we need a way to display the devices to the user, to do that, we will use a skin as a context menu, then we will loop through the devices list, and for each device we will add its name to that menu.
+
+?>The following skin is inspired by [@marcopixel](https://github.com/marcopixel) and [@alatsombath](https://github.com/alatsombath), a special thanks for them.
+
+```ini
+[Rainmeter]
+Update=-1
+
+; tell rainmeter: hay, we will use this skin as a context menu
+OnRefreshAction=[!SkinCustomMenu]
+
+; when clicking away, menu will close
+OnUnfocusAction=[!DeactivateConfig]
+
+; a parent measure to get DeviceList from
+[GetAudioDevices]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Parent
+
+; if a device is disconnected, connected, changed, menu will close
+; because you need to reopne the menu to see the changes
+OnDeviceListChange=[!DeactivateConfig]
+
+; the actual script that will parse the DeviceList
+[AudioDeviceList]
+Measure=Script
+ScriptFile=#@#Scripts\AudioDeviceList.lua
+
+; rainmeter won't open skins with no meters
+[DummyMeter]
+Meter=String
+```
+
+But how we will add the devices to that menu? we will use bangs.<br/>
+Also we will make these bangs run when the skin is opened.
+
+1. We need a bang to add the device name to the context menu.
+2. We need to run a bang when a device name is clicked.
+
+The second bang will do few things:
+
+- It will set the new device id in the active skins then updates them, to avoid refreshing the skins.
+- It will store the device name and id to a variables file.
+
+Since we want to change the device id in the active skins, we need to make a group so we can target them more easily.
+
+Let's make a "common variables" file and add it to our skin:
+
+```ini
+[Variables]
+GroupName=Examples
+AudioDeviceName=
+AudioDeviceID=
+```
+
+```ini
+; in context menu skin
+[Variables]
+@IncludeC=#@#Variables/Common.inc
+```
+
+Now, how to use these variables?<br/>
+Let's say you have the following skin:
+
+```ini
+[Rainmeter]
+Update=[#UpdateRate]
+
+[Variables]
+Fps=30
+UpdateRate=(1000 / #Fps#)
+
+[MeasureAudio]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Parent
+```
+
+First you include the common variables inside it, then set the group option to `GroupName` variable.
+
+And for parent measure, you set the source option to `AudioDeviceID`.
+
+Now every time a user change the device using that menu, the skins will automatically reflect that change, without the need for a skin refresh.
+
+```ini
+[Rainmeter]
+Update=[#UpdateRate]
+Group=[#GroupName]
+
+[Variables]
+Fps=30
+UpdateRate=(1000 / #Fps#)
+
+@IncludeC=#@#Variables/Common.inc
+
+[MeasureAudio]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Parent
+Source=[#AudioDeviceID]
+```
+
+Now let's start making the bangs. Instead of creating them one by one, we will create a function that does that for us:
 
 ```lua
-SKIN:Bang("!SetOption", "Rainmeter", "ContextTitle" .. ContextIndex, AudioDeviceName)
+function CreateBang(GroupName, VarName, VarValue, VarFile)
+  local  Bang =  ''
+  Bang = Bang .. '[!SetVariableGroup "'        .. VarName .. '" "' .. VarValue .. '" '  .. GroupName .. ']'
+  Bang = Bang .. '[!WriteKeyValue Variables "' .. VarName .. '" "' .. VarValue .. '" "' .. VarFile   .. '"]'
+  return Bang
+end
 ```
 
-And when the user click on a device, we write the device name/id to there variables in Common file, then we refresh all skins
+We will pass the group name, the variable name, the value of that variable, the location to where to store it, and it will give us a bang that looks like this:
+
+```ini
+[!SetVariableGroup "AudioDeviceName" "<DeviceName>" Examples][!WriteKeyValue Variables "AudioDeviceName" "<DeviceName>" "#@#Variables/Common.inc"]
+[!SetVariableGroup "AudioDeviceID" "ID: <DeviceID>" Examples][!WriteKeyValue Variables "AudioDeviceID" "ID: <DeviceID" "#@#Variables/Common.inc"]
+```
+
+Last thing we need is creating a function that will generate the context menu items.
 
 ```lua
-SKIN:Bang("!SetOption", "Rainmeter", "ContextAction" .. ContextIndex, '[!WriteKeyValue Variables AudioDeviceName "' .. AudioDeviceName .. '" "#@#Variables/Common.inc"][!WriteKeyValue Variables AudioDeviceID "ID: ' .. AudioDeviceID .. '" "#@#Variables/Common.inc"][!RefreshGroup [#GroupName]]')
+function CreateDevicesMenu(DevicesList)
+end
 ```
 
-And the process will be repeated for each audio device. Here is the full code
+Inside this function, we will need some local variables:
+
+```lua
+local GroupName = SKIN:GetVariable('GroupName') -- to get the group name you used in common variables
+local VarDevName = 'AudioDeviceName'
+local VarDevId = 'AudioDeviceID'
+local VarFile = '#@#Variables/Common.inc' -- common variables file path
+local Bang -- we will need this in a moment
+```
+
+First 2 items we are going to make are the default input and default output.
+
+```lua
+-- "Default Input" Option
+Bang = ''
+Bang = Bang    CreateBang(GroupName, VarDevName, 'Default Input', VarFile)
+Bang = Bang .. CreateBang(GroupName, VarDevId  , 'DefaultInput' , VarFile)
+SKIN:Bang("!SetOption", "Rainmeter", "ContextTitle", 'Default Input')
+SKIN:Bang("!SetOption", "Rainmeter", "ContextAction", Bang)
+
+-- "Default Output" Option
+Bang = ''
+Bang = Bang    CreateBang(GroupName, VarDevName, 'Default Output', VarFile)
+Bang = Bang .. CreateBang(GroupName, VarDevId  , 'DefaultOutput' , VarFile)
+SKIN:Bang("!SetOption", "Rainmeter", "ContextTitle2", 'Default Output')
+SKIN:Bang("!SetOption", "Rainmeter", "ContextAction2", Bang)
+```
+
+Now for each device in the array that `CreateDevicesList` gave us, we will create a menu item.
+
+But there is something we need to account for:
+
+In `ParseDeviceProperties` function, when we were storing the device infos, we checked if the device channels are `<unknown>`, if that's the case then device channels will be `<unknown>`.
+
+But we can't display a device with unknown channels to the user, because when they select it they may not know why it's not working.
+
+So we need to add a note beside the device name, something like "Unsupported Channels".
+
+```lua
+-- Audio Devices
+for i, DeviceProperties in pairs(CreateDevicesList(DevicesList)) do
+  local DeviceName = DeviceProperties.description -- for some reason, the windows api gives device name instead of device description and vise versa
+  local DeviceId   = DeviceProperties.id
+
+  if DeviceProperties.channels == '<unknown>' then
+    DeviceName = DeviceName .. '(Unsupported Channels)'
+  end
+
+  Bang = ''
+  Bang = Bang .. CreateBang(GroupName, VarDevName,        DeviceName, VarFile, VarDevName)
+  Bang = Bang .. CreateBang(GroupName, VarDevId, 'ID: ' .. DeviceId, VarFile, VarDevId)
+
+  SKIN:Bang("!SetOption", "Rainmeter", "ContextTitle"  .. (i + 2), DeviceName)
+  SKIN:Bang("!SetOption", "Rainmeter", "ContextAction" .. (i + 2), Bang)
+end
+```
+
+Finally to create the menu when the skin is opened, we are going to use `Initialize` function, and call `CreateDeviceMenu` inside it.
+
+`CreateDeviceMenu` takes a DeviceList as an argument, we are going to use the `SKIN` object that rainmeter provides to get the `DeviceList` from the parent measure.
 
 ```lua
 function Initialize()
-  ContextIndex = 1
+  CreateDevicesMenu(SKIN:ReplaceVariables('[&GetAudioDevices:Resolve(DeviceList)]'))
+end
+```
 
-  for i in string.gmatch(SKIN:ReplaceVariables('[&GetAudioDevices:Resolve(Device List Output)]'), "[^\n]+") do
+Here is the full script:
 
-    ContextIndex = ContextIndex + 1
-    AudioDeviceInfos = {}
+```lua
+--[[
+  Special thanks to both of alatsombath (Github: alatsombath)
+  and marcopixel (Github: marcopixel) for the context menu inspiration
+]]
 
-    for j in string.gmatch(i, "[^;]+") do
-      table.insert(AudioDeviceInfos, j)
+function Initialize()
+  CreateDevicesMenu(SKIN:ReplaceVariables('[&GetAudioDevices:Resolve(DeviceList)]'))
+end
+
+function unescape(str)
+  return str:gsub('%%percent', '%'):gsub('%%semicolon', ';'):gsub('%%forwardslash', '/')
+end
+
+function ParseDeviceProperties(DeviceProperties)
+  local TempArray = {}
+  for property in DeviceProperties:gmatch("([^;]+);") do
+    property = unescape(property)
+    table.insert(TempArray, property)
+  end
+
+  if TempArray[6] == '<unknown>' then
+    return nil
+  end
+
+  local DeviceInfos = {}
+  DeviceInfos.id = TempArray[1]
+  DeviceInfos.name = TempArray[2]
+  DeviceInfos.description = TempArray[3]
+  DeviceInfos.formFactor = TempArray[4]
+  DeviceInfos.sampleRate = TempArray[5]
+  if TempArray[6] == '<unknown>' then
+    DeviceInfos.channels = '<unknown>'
+  else
+    DeviceInfos.channels = {}
+    for channel in TempArray[6]:gmatch("([^,]+),") do
+      table.insert(DeviceInfos.channels, channel)
+    end
+  end
+  DeviceInfos.type = TempArray[7]
+
+  return DeviceInfos
+end
+
+function CreateBang(GroupName, VarName, VarValue, VarFile)
+  local  Bang =  ''
+  Bang = Bang .. '[!SetVariableGroup "'        .. VarName .. '" "' .. VarValue .. '" '  .. GroupName .. ']'
+  Bang = Bang .. '[!WriteKeyValue Variables "' .. VarName .. '" "' .. VarValue .. '" "' .. VarFile   .. '"]'
+  return Bang
+end
+
+function CreateDevicesMenu(DevicesList)
+  local GroupName = SKIN:GetVariable('GroupName')
+  local VarDevName = 'AudioDeviceName'
+  local VarDevId = 'AudioDeviceID'
+  local VarFile = '#@#Variables/Common.inc'
+  local Bang
+
+  -- "Default Input" Option
+  Bang = ''
+  Bang = Bang    CreateBang(GroupName, VarDevName, 'Default Input', VarFile)
+  Bang = Bang .. CreateBang(GroupName, VarDevId  , 'DefaultInput' , VarFile)
+  SKIN:Bang("!SetOption", "Rainmeter", "ContextTitle", 'Default Input')
+  SKIN:Bang("!SetOption", "Rainmeter", "ContextAction", Bang)
+
+  -- "Default Output" Option
+  Bang = ''
+  Bang = Bang    CreateBang(GroupName, VarDevName, 'Default Output', VarFile)
+  Bang = Bang .. CreateBang(GroupName, VarDevId  , 'DefaultOutput' , VarFile)
+  SKIN:Bang("!SetOption", "Rainmeter", "ContextTitle2", 'Default Output')
+  SKIN:Bang("!SetOption", "Rainmeter", "ContextAction2", Bang)
+
+  -- Audio Devices
+  for i, DeviceProperties in pairs(CreateDevicesList(DevicesList)) do
+    local DeviceName = DeviceProperties.description
+    local DeviceId   = DeviceProperties.id
+
+    if DeviceProperties.channels == '<unknown>' then
+      DeviceName = DeviceName .. '(Unsupported Channels)'
     end
 
-    AudioDeviceID = AudioDeviceInfos[1]
-    AudioDeviceName = AudioDeviceInfos[2]
+    Bang = ''
+    Bang = Bang .. CreateBang(GroupName, VarDevName,        DeviceName, VarFile, VarDevName)
+    Bang = Bang .. CreateBang(GroupName, VarDevId, 'ID: ' .. DeviceId, VarFile, VarDevId)
 
-    SKIN:Bang("!SetOption", "Rainmeter", "ContextTitle" .. ContextIndex, AudioDeviceName)
-    SKIN:Bang("!SetOption", "Rainmeter", "ContextAction" .. ContextIndex, '[!WriteKeyValue Variables AudioDeviceName "' .. AudioDeviceName .. '" "#@#Variables/Common.inc"][!WriteKeyValue Variables AudioDeviceID "ID: ' .. AudioDeviceID .. '" "#@#Variables/Common.inc"][!RefreshGroup [#GroupName]]')
+    SKIN:Bang("!SetOption", "Rainmeter", "ContextTitle"  .. (i + 2), DeviceName)
+    SKIN:Bang("!SetOption", "Rainmeter", "ContextAction" .. (i + 2), Bang)
+  end
+end
+
+function CreateDevicesList(AudioDevices)
+  local DevicesList = {}
+  for AudioDevice in AudioDevices:gmatch("([^/]+)/") do
+
+    local DeviceProperties = ParseDeviceProperties(AudioDevice)
+    if DeviceProperties ~= nil then
+      table.insert(DevicesList, DeviceProperties)
+    end
 
   end
+  return DevicesList
 end
 ```
 
-</details> -->
+The context menu skin:
+
+```ini
+[Rainmeter]
+Update=-1
+OnRefreshAction=[!SkinCustomMenu]
+OnUnfocusAction=[!DeactivateConfig]
+
+[Variables]
+@IncludeC=#@#Variables/Common.inc
+
+[GetAudioDevices]
+Measure=Plugin
+Plugin=AudioAnalyzer
+Type=Parent
+OnDeviceListChange=[!DeactivateConfig]
+
+[AudioDeviceList]
+Measure=Script
+ScriptFile=#@#Scripts\AudioDeviceList.lua
+
+[DummyMeter]
+Meter=String
+```
+
+</details>
 
 ## Unused Parameters
 
@@ -348,7 +677,7 @@ For example:
 Unit-UnitName=Channels ... | Handlers ... | TargetRate 44100 | Filter like-a
 ```
 
-You don't need to remove `TargetRate` nor `Filter` parameters to see the difference they make. Simply change there names a bit:
+You don't need to remove `TargetRate` or `Filter` parameter to see the difference they make. Simply change there names a bit:
 
 ```ini
 Unit-UnitName=Channels ... | Handlers ... | Target Rate 44100 | Filter1 like-a
