@@ -44,6 +44,7 @@ Feedback and feature suggestions are also welcomed.
   - [Combine Types](/docs/usage-examples/combine-types/combine-types.md)
     - [Spectrogram Waveform](/docs/usage-examples/combine-types/spectrogram-waveform.md)
     - [FFT Spectrogram Waveform](/docs/usage-examples/combine-types/fft-spectrogram-waveform.md)
+    - [RMS Peak Loudness](/docs/usage-examples/combine-types/rms-peak-loudness.md)
   - [FFT Spectrum](/docs/usage-examples/fft-spectrum.md)
   - [RMS](/docs/usage-examples/rms.md)
   - [Peak](/docs/usage-examples/peak.md)
