@@ -2,7 +2,7 @@
 
 Here we will create a simple Waveform visualizer.
 
-First lets setup the skin.
+First let's setup the skin.
 
 ```ini
 [Rainmeter]
@@ -14,32 +14,33 @@ UpdateRate=(1000 / #Fps#)
 ; Formula is stolen from here: https://forum.rainmeter.net/viewtopic.php?t=26831#p140108
 ```
 
-Now lets create the parent measure.
+Now let's create the parent measure.
 
 ```ini
 [MeasureAudio]
 Measure=Plugin
 Plugin=AudioAnalyzer
 Type=Parent
-MagicNumber=104
 ```
 
-Lets make a new processing unit. We will call it Main.
+Let's make a new processing unit. We will call it Main.
 
 ```ini
 ProcessingUnits=Main
 ```
 
-Lets specify its description.<br/>
+Let's specify its description.<br/>
+
+If you want to use filters, it's better to use custom filters, since filter presets (`like-a`, `like-d`) won't give you a good results when using waveform.
 
 ```ini
 Unit-Main=Channels Auto | Handlers Waveform | Filter None
 ```
 
-Now lets specify the handler description.
+Now let's specify the handler description.
 
 ```ini
-Handler-Waveform=Type Waveform | Folder [#@]Images/ | Width 300 | Height 200 | Stationary false | BorderSize 1 | BorderColor 255, 64, 89 | Resolution 0.6 | Connected true | DefaultColorSpace sRGB255 | BackgroundColor @hsl 237,0.34,0.20 | WaveColor 255, 64, 89 | LineColor @sRGB 0.5,0.5,0.5 | FadingRatio 0.2 | LineDrawingPolicy Never | SilenceThreshold -70
+Handler-Waveform=Type Waveform | Folder [#@]Images/ | Width 300 | Height 200 | Stationary false | BorderSize 1 | BorderColor 255, 64, 89 | UpdateRate 1.666 | Connected true | DefaultColorSpace sRGB255 | BackgroundColor @hsl 237,0.34,0.20 | WaveColor 255, 64, 89 | LineColor @sRGB 0.5,0.5,0.5 | FadingRatio 0.2 | LineDrawingPolicy Never | SilenceThreshold -70
 ```
 
 Waveform handler generates an image and write it to disk, by default the plugin will write it to where the .ini skin file is located, but we can change that using `Folder` parameter.
@@ -52,7 +53,7 @@ In `InfoRequest` option specify the following:
 
 - `HandlerInfo` argument is used when getting infos from handlers.
 - `Channels` parameter to specify the channel.
-- `Handler` parameter to specify the handler we want to get infos from.
+- `HandlerName` parameter to specify the handler we want to get infos from.
 - `Data` parameter to specify what type of data we want this child measure to provide.
 
 ```ini
@@ -65,16 +66,16 @@ Parent=MeasureAudio
 StringValue=Info
 ; And specify what infos you want this child measure to provide
 ; Set the Data parameter to File to get the file path and name
-InfoRequest=HandlerInfo, Channel Auto | Handler Waveform | Data File
+InfoRequest=HandlerInfo, Channel Auto | HandlerName Waveform | Data File
 ```
 
 ?>Note that it's always recommended to use a child measure to get the image, because the image name will change based on your process name and handler name.
 
-`DefaultColorSpace` lets set a default color space for all the colors parameter.<br/>
+`DefaultColorSpace` let's you specify a default color space for any parameter that uses colors.<br/>
 
-Lets say you have `BackgroundColor 0.9,0.4,0.7`, by defaults (without specifying `DefaultColorSpace`) the plugin will parse this as `sRGB` color (which is different from `sRGB255`, because `sRGB` values are in [0, 1] range).
+Let's say you have `BackgroundColor 0.9,0.4,0.7`, by defaults (without specifying `DefaultColorSpace`) the plugin will parse this as `sRGB` color (which is different from `sRGB255`, because `sRGB` values are in [0, 1] range).
 
-If you set `DefaultColorSpace` to lets say `hsl` color space, the 3 values now corresponds to hue, saturation lightness. So it's pretty handy if you want to use one color space for all parameters.
+If you set `DefaultColorSpace` to let's say `hsl` color space, the 3 values now corresponds to hue, saturation lightness. So it's pretty handy if you want to use one color space for all parameters.
 
 But maybe you don't want all parameter to have the same color space, you can override the color space by writing `$<ColorSpace>` after the parameter name but before the color itself.<br/>
 For example: `BackgroundColor @hsv 112,0.6,0.9` or `WaveColor @sRGB255 170, 220, 210`, same process for all parameters that use colors.

@@ -2,7 +2,7 @@
 
 Here we will create a simple Loudness meter.
 
-First lets setup the skin.
+First let's setup the skin.
 
 ```ini
 [Rainmeter]
@@ -14,23 +14,22 @@ UpdateRate=(1000 / #Fps#)
 ; Formula is stolen from here: https://forum.rainmeter.net/viewtopic.php?t=26831#p140108
 ```
 
-Now lets create the parent measure.
+Now let's create the parent measure.
 
 ```ini
 [MeasureAudio]
 Measure=Plugin
 Plugin=AudioAnalyzer
 Type=Parent
-MagicNumber=104
 ```
 
-Lets make a new processing unit. We will call it Main.
+Let's make a new processing unit. We will call it Main.
 
 ```ini
 ProcessingUnits=Main
 ```
 
-Lets specify its description.<br/>
+Let's specify its description.<br/>
 We will make 2 handlers, and set the first handler as a source for the second handler.
 
 - `LoudnessdB` will process the audio signal and give us loudness levels in decibel.
@@ -39,10 +38,10 @@ We will make 2 handlers, and set the first handler as a source for the second ha
 Also we are going to use `like-a` filter, without it, the results will look totally different.
 
 ```ini
-Unit-Main=Channels Auto | Handlers LoudnessdB, LoudnessPerecnt(LoudnessdB) | Filter like-a
+Unit-Main=Channels Auto | Handlers LoudnessdB -> LoudnessPerecnt | Filter like-a
 ```
 
-Now lets specify the handlers description.
+Now let's specify the handlers description.
 
 ```ini
 Handler-LoudnessdB=Type Loudness | Transform dB
@@ -50,7 +49,7 @@ Handler-LoudnessPerecnt=Type ValueTransformer | Transform Map(From -60 : 0), Cla
 ```
 
 That's it! as simple as that.<br/>
-Of course you can specify more parameters in `LoudnessdB` handler and customize it however you like.
+Of course you can specify more parameters in `LoudnessdB` handler to customize it however you like.
 
 Better yet, you can even do everything in one handler, for example:
 
@@ -61,7 +60,7 @@ Handler-Loudness=Type Loudness | Transform dB, Map(From -60 : 0), Clamp | TimeWi
 
 But we wanna be extra fancy, so let's keep using 2 handlers ;)
 
-Now lets create the child measures.<br/>
+Now let's create the child measures.<br/>
 Each measure will get its data from a different handler.
 
 ```ini
@@ -90,7 +89,7 @@ Just make any meter you like (`Bar`, `Line`, `Shape`, `String`, etc..) and use t
 ## Loudness levels for different channels
 
 So far we used the `Auto` channel to get loudness levels, which is more like average between audio channels.<br/>
-But how about getting Loudness levels for each channel separately? lets do that!
+But how about getting Loudness levels for each channel separately? let's do that!
 
 The setup won't change that much, there are few things to change:
 
@@ -98,7 +97,7 @@ The setup won't change that much, there are few things to change:
 - Channel option in child measures.
 - HandlerName option in child measures.
 
-Simply change `Channels Auto` in `Main` unit description and set it to `Channels Auto`, `FR, Right`, or any combination of channels you like.<br/>
+Simply change `Channels Auto` in `Main` unit description and set it to `Channels Auto, FR, Right`, or any combination of channels you like.<br/>
 In our case we want the `Left` and `Right` channels. Also we can do everything in one handler.
 
 ```ini
@@ -108,7 +107,7 @@ Unit-Main=Channels Auto, FL, R | Handlers Loudness | Filter like-a
 Unit-Main=Channels FL, R | Handlers Loudness | Filter like-a
 ```
 
-Now lets make the child measures use these channels.<br/>
+Now let's make the child measures use these channels.<br/>
 To do that, simply change `Channel` option in child measure to the target channel, like so:
 
 ```ini
@@ -133,10 +132,10 @@ Channel=Auto, R
 Channel=FL, R
 ```
 
-Second, the channel name in `Channel` option should be exactly as specified in the process description:
+Second, channels are just values, so the name of the channel won't make any difference:
 
 ```ini
-; This is valid
+; This is fine
 [ParentMeasure]
 Unit-Main=Channels FL, R | Handlers Loudness | Filter like-a
 
@@ -145,17 +144,17 @@ Channel=FL
 ; Or
 Channel=R
 
-; This is invalid
+; This is also fine
 [ParentMeasure]
 Unit-Main=Channels FL, R | Handlers Loudness | Filter like-a
 
 [ChildMeasure]
-Channel=L
+Channel=FrontLeft
 ; Or
 Channel=Right
 ```
 
-Lets change the `HandlerName` option and set it to `Loudness` since we removed the second handler and now both of child measures will get data from the same handler.
+Let's change the `HandlerName` option and set it to `Loudness` since we removed the second handler and now both of child measures will get data from the same handler.
 
 ```ini
 HandlerName=Loudness
