@@ -1,6 +1,6 @@
 ## Why using AudioAnalyzer?
 
-AudioAnalyzer Plugin has much better ways to extract Loudness information from audio stream, it has better implementation of fourier transform with ways to fight fundamental flaws of FFT algorithm.
+Compared to AudioLevel, AudioAnalyzer has much better ways to extract Loudness information from audio stream, it has better implementation of fourier transform with ways to fight fundamental flaws of FFT algorithm.
 
 It also can draw a [Waveform](/docs/examples/waveform.md), and it can draw a [Spectrogram](/docs/examples/spectrogram.md) (not a [Spectrum](/docs/examples/spectrum.md) which only give you slice of frequency information, but a spectrogram). See [Examples](/docs/examples/examples.md) page.
 
